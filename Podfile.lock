@@ -1,0 +1,54 @@
+PODS:
+  - CocoaDebug (1.4.8):
+    - FBRetainCycleDetector
+  - DITranquillity (4.1.1):
+    - SwiftLazy (>= 1.1.6)
+  - FBRetainCycleDetector (0.1.4)
+  - Kingfisher (5.15.6):
+    - Kingfisher/Core (= 5.15.6)
+  - Kingfisher/Core (5.15.6)
+  - R.swift (5.2.2):
+    - R.swift.Library (~> 5.2.0)
+  - R.swift.Library (5.2.0)
+  - RxNetworkApiClient (0.1.3):
+    - RxSwift
+    - SwiftyJSON
+  - RxSwift (5.1.1)
+  - SwiftLazy (1.1.7)
+  - SwiftyJSON (5.0.0)
+
+DEPENDENCIES:
+  - CocoaDebug
+  - DITranquillity
+  - Kingfisher
+  - R.swift
+  - RxNetworkApiClient
+
+SPEC REPOS:
+  trunk:
+    - CocoaDebug
+    - DITranquillity
+    - FBRetainCycleDetector
+    - Kingfisher
+    - R.swift
+    - R.swift.Library
+    - RxNetworkApiClient
+    - RxSwift
+    - SwiftLazy
+    - SwiftyJSON
+
+SPEC CHECKSUMS:
+  CocoaDebug: 438fed049090d61c777d464eb2771ca87e1430ed
+  DITranquillity: f03d76911e8b63df0a4d393932de9a9a415938e7
+  FBRetainCycleDetector: 46f8179bbb1c587deee3ea838a1a3ee02acf5015
+  Kingfisher: b3554e7bf6106115b44e8795300bad580ef2fdc7
+  R.swift: 7c52cdc57a66840ffe6cbd8a823d732059d42a32
+  R.swift.Library: 5ba4f1631300caf9a4d890186930da85d540769d
+  RxNetworkApiClient: 5d6705de5c83b01a400e89f431122d75412b5e41
+  RxSwift: 81470a2074fa8780320ea5fe4102807cb7118178
+  SwiftLazy: dcb1edc6c2b633ba2e68f28554d9dd6d1c0bfd13
+  SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
+
+PODFILE CHECKSUM: bb6c250f178b79366c76d2c20ebf8f9d50721f0f
+
+COCOAPODS: 1.9.3

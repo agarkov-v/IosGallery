@@ -4,6 +4,7 @@ PODS:
   - DITranquillity (4.1.1):
     - SwiftLazy (>= 1.1.6)
   - FBRetainCycleDetector (0.1.4)
+  - IQKeyboardManager (6.5.6)
   - Kingfisher (5.15.6):
     - Kingfisher/Core (= 5.15.6)
   - Kingfisher/Core (5.15.6)
@@ -20,6 +21,7 @@ PODS:
 DEPENDENCIES:
   - CocoaDebug
   - DITranquillity
+  - IQKeyboardManager
   - Kingfisher
   - R.swift
   - RxNetworkApiClient
@@ -29,6 +31,7 @@ SPEC REPOS:
     - CocoaDebug
     - DITranquillity
     - FBRetainCycleDetector
+    - IQKeyboardManager
     - Kingfisher
     - R.swift
     - R.swift.Library
@@ -41,6 +44,7 @@ SPEC CHECKSUMS:
   CocoaDebug: 438fed049090d61c777d464eb2771ca87e1430ed
   DITranquillity: f03d76911e8b63df0a4d393932de9a9a415938e7
   FBRetainCycleDetector: 46f8179bbb1c587deee3ea838a1a3ee02acf5015
+  IQKeyboardManager: 2a6e97afdafc7becf0cb17a9a8d795e3a980717f
   Kingfisher: b3554e7bf6106115b44e8795300bad580ef2fdc7
   R.swift: 7c52cdc57a66840ffe6cbd8a823d732059d42a32
   R.swift.Library: 5ba4f1631300caf9a4d890186930da85d540769d
@@ -49,6 +53,6 @@ SPEC CHECKSUMS:
   SwiftLazy: dcb1edc6c2b633ba2e68f28554d9dd6d1c0bfd13
   SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
 
-PODFILE CHECKSUM: bb6c250f178b79366c76d2c20ebf8f9d50721f0f
+PODFILE CHECKSUM: 372cf6fdfce1bd6c032abfc3156d0daf5e1f1320
 
 COCOAPODS: 1.9.3

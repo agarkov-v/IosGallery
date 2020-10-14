@@ -89,14 +89,59 @@ struct R: Rswift.Validatable {
   }
 
   #if os(iOS) || os(tvOS)
-  /// This `R.storyboard` struct is generated, and contains static references to 3 storyboards.
+  /// This `R.storyboard` struct is generated, and contains static references to 8 storyboards.
   struct storyboard {
+    /// Storyboard `AccountSettings`.
+    static let accountSettings = _R.storyboard.accountSettings()
+    /// Storyboard `Account`.
+    static let account = _R.storyboard.account()
+    /// Storyboard `Detail`.
+    static let detail = _R.storyboard.detail()
+    /// Storyboard `Gallery`.
+    static let gallery = _R.storyboard.gallery()
+    /// Storyboard `Import`.
+    static let `import` = _R.storyboard.`import`()
     /// Storyboard `LaunchScreen`.
     static let launchScreen = _R.storyboard.launchScreen()
     /// Storyboard `Login`.
     static let login = _R.storyboard.login()
     /// Storyboard `Root`.
     static let root = _R.storyboard.root()
+
+    #if os(iOS) || os(tvOS)
+    /// `UIStoryboard(name: "Account", bundle: ...)`
+    static func account(_: Void = ()) -> UIKit.UIStoryboard {
+      return UIKit.UIStoryboard(resource: R.storyboard.account)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIStoryboard(name: "AccountSettings", bundle: ...)`
+    static func accountSettings(_: Void = ()) -> UIKit.UIStoryboard {
+      return UIKit.UIStoryboard(resource: R.storyboard.accountSettings)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIStoryboard(name: "Detail", bundle: ...)`
+    static func detail(_: Void = ()) -> UIKit.UIStoryboard {
+      return UIKit.UIStoryboard(resource: R.storyboard.detail)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIStoryboard(name: "Gallery", bundle: ...)`
+    static func gallery(_: Void = ()) -> UIKit.UIStoryboard {
+      return UIKit.UIStoryboard(resource: R.storyboard.gallery)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIStoryboard(name: "Import", bundle: ...)`
+    static func `import`(_: Void = ()) -> UIKit.UIStoryboard {
+      return UIKit.UIStoryboard(resource: R.storyboard.`import`)
+    }
+    #endif
 
     #if os(iOS) || os(tvOS)
     /// `UIStoryboard(name: "LaunchScreen", bundle: ...)`
@@ -123,12 +168,14 @@ struct R: Rswift.Validatable {
   }
   #endif
 
-  /// This `R.color` struct is generated, and contains static references to 5 colors.
+  /// This `R.color` struct is generated, and contains static references to 6 colors.
   struct color {
     /// Color `AccentColor`.
     static let accentColor = Rswift.ColorResource(bundle: R.hostingBundle, name: "AccentColor")
     /// Color `dark-dark`.
     static let darkDark = Rswift.ColorResource(bundle: R.hostingBundle, name: "dark-dark")
+    /// Color `gray`.
+    static let gray = Rswift.ColorResource(bundle: R.hostingBundle, name: "gray")
     /// Color `inactiveGray`.
     static let inactiveGray = Rswift.ColorResource(bundle: R.hostingBundle, name: "inactiveGray")
     /// Color `pink`.
@@ -151,6 +198,15 @@ struct R: Rswift.Validatable {
     @available(iOS 11.0, *)
     static func darkDark(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIColor? {
       return UIKit.UIColor(resource: R.color.darkDark, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIColor(named: "gray", bundle: ..., traitCollection: ...)`
+    @available(tvOS 11.0, *)
+    @available(iOS 11.0, *)
+    static func gray(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIColor? {
+      return UIKit.UIColor(resource: R.color.gray, compatibleWith: traitCollection)
     }
     #endif
 
@@ -184,20 +240,42 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
 
-  /// This `R.image` struct is generated, and contains static references to 6 images.
+  /// This `R.image` struct is generated, and contains static references to 10 images.
   struct image {
+    /// Image `arrowLeft`.
+    static let arrowLeft = Rswift.ImageResource(bundle: R.hostingBundle, name: "arrowLeft")
+    /// Image `eye_icon`.
+    static let eye_icon = Rswift.ImageResource(bundle: R.hostingBundle, name: "eye_icon")
     /// Image `gLetter`.
     static let gLetter = Rswift.ImageResource(bundle: R.hostingBundle, name: "gLetter")
-    /// Image `noInternet`.
-    static let noInternet = Rswift.ImageResource(bundle: R.hostingBundle, name: "noInternet")
-    /// Image `notFound`.
-    static let notFound = Rswift.ImageResource(bundle: R.hostingBundle, name: "notFound")
+    /// Image `noInternetPlaceholder`.
+    static let noInternetPlaceholder = Rswift.ImageResource(bundle: R.hostingBundle, name: "noInternetPlaceholder")
+    /// Image `notFoundPlaceholder`.
+    static let notFoundPlaceholder = Rswift.ImageResource(bundle: R.hostingBundle, name: "notFoundPlaceholder")
+    /// Image `photoPlaceholder`.
+    static let photoPlaceholder = Rswift.ImageResource(bundle: R.hostingBundle, name: "photoPlaceholder")
+    /// Image `settingsGear`.
+    static let settingsGear = Rswift.ImageResource(bundle: R.hostingBundle, name: "settingsGear")
     /// Image `tabBarHome`.
     static let tabBarHome = Rswift.ImageResource(bundle: R.hostingBundle, name: "tabBarHome")
     /// Image `tabBarImage`.
     static let tabBarImage = Rswift.ImageResource(bundle: R.hostingBundle, name: "tabBarImage")
     /// Image `tabBarPersonal`.
     static let tabBarPersonal = Rswift.ImageResource(bundle: R.hostingBundle, name: "tabBarPersonal")
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "arrowLeft", bundle: ..., traitCollection: ...)`
+    static func arrowLeft(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.arrowLeft, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "eye_icon", bundle: ..., traitCollection: ...)`
+    static func eye_icon(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.eye_icon, compatibleWith: traitCollection)
+    }
+    #endif
 
     #if os(iOS) || os(tvOS)
     /// `UIImage(named: "gLetter", bundle: ..., traitCollection: ...)`
@@ -207,16 +285,30 @@ struct R: Rswift.Validatable {
     #endif
 
     #if os(iOS) || os(tvOS)
-    /// `UIImage(named: "noInternet", bundle: ..., traitCollection: ...)`
-    static func noInternet(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.noInternet, compatibleWith: traitCollection)
+    /// `UIImage(named: "noInternetPlaceholder", bundle: ..., traitCollection: ...)`
+    static func noInternetPlaceholder(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.noInternetPlaceholder, compatibleWith: traitCollection)
     }
     #endif
 
     #if os(iOS) || os(tvOS)
-    /// `UIImage(named: "notFound", bundle: ..., traitCollection: ...)`
-    static func notFound(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.notFound, compatibleWith: traitCollection)
+    /// `UIImage(named: "notFoundPlaceholder", bundle: ..., traitCollection: ...)`
+    static func notFoundPlaceholder(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.notFoundPlaceholder, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "photoPlaceholder", bundle: ..., traitCollection: ...)`
+    static func photoPlaceholder(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.photoPlaceholder, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "settingsGear", bundle: ..., traitCollection: ...)`
+    static func settingsGear(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.settingsGear, compatibleWith: traitCollection)
     }
     #endif
 
@@ -299,6 +391,21 @@ struct _R: Rswift.Validatable {
   struct storyboard: Rswift.Validatable {
     static func validate() throws {
       #if os(iOS) || os(tvOS)
+      try account.validate()
+      #endif
+      #if os(iOS) || os(tvOS)
+      try accountSettings.validate()
+      #endif
+      #if os(iOS) || os(tvOS)
+      try detail.validate()
+      #endif
+      #if os(iOS) || os(tvOS)
+      try gallery.validate()
+      #endif
+      #if os(iOS) || os(tvOS)
+      try `import`.validate()
+      #endif
+      #if os(iOS) || os(tvOS)
       try launchScreen.validate()
       #endif
       #if os(iOS) || os(tvOS)
@@ -308,6 +415,116 @@ struct _R: Rswift.Validatable {
       try root.validate()
       #endif
     }
+
+    #if os(iOS) || os(tvOS)
+    struct `import`: Rswift.StoryboardResourceType, Rswift.Validatable {
+      let bundle = R.hostingBundle
+      let importVC = StoryboardViewControllerResource<ImportViewController>(identifier: "ImportVC")
+      let name = "Import"
+
+      func importVC(_: Void = ()) -> ImportViewController? {
+        return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: importVC)
+      }
+
+      static func validate() throws {
+        if UIKit.UIImage(named: "photoPlaceholder", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'photoPlaceholder' is used in storyboard 'Import', but couldn't be loaded.") }
+        if #available(iOS 11.0, tvOS 11.0, *) {
+          if UIKit.UIColor(named: "dark-dark", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Color named 'dark-dark' is used in storyboard 'Import', but couldn't be loaded.") }
+        }
+        if _R.storyboard.`import`().importVC() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'importVC' could not be loaded from storyboard 'Import' as 'ImportViewController'.") }
+      }
+
+      fileprivate init() {}
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    struct account: Rswift.StoryboardResourceType, Rswift.Validatable {
+      let accountVC = StoryboardViewControllerResource<AccountViewController>(identifier: "accountVC")
+      let bundle = R.hostingBundle
+      let name = "Account"
+
+      func accountVC(_: Void = ()) -> AccountViewController? {
+        return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: accountVC)
+      }
+
+      static func validate() throws {
+        if #available(iOS 11.0, tvOS 11.0, *) {
+          if UIKit.UIColor(named: "dark-dark", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Color named 'dark-dark' is used in storyboard 'Account', but couldn't be loaded.") }
+          if UIKit.UIColor(named: "gray", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Color named 'gray' is used in storyboard 'Account', but couldn't be loaded.") }
+          if UIKit.UIColor(named: "inactiveGray", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Color named 'inactiveGray' is used in storyboard 'Account', but couldn't be loaded.") }
+        }
+        if _R.storyboard.account().accountVC() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'accountVC' could not be loaded from storyboard 'Account' as 'AccountViewController'.") }
+      }
+
+      fileprivate init() {}
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    struct accountSettings: Rswift.StoryboardResourceType, Rswift.Validatable {
+      let accountSettingsVC = StoryboardViewControllerResource<AccountSettingsViewController>(identifier: "AccountSettingsVC")
+      let bundle = R.hostingBundle
+      let name = "AccountSettings"
+
+      func accountSettingsVC(_: Void = ()) -> AccountSettingsViewController? {
+        return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: accountSettingsVC)
+      }
+
+      static func validate() throws {
+        if #available(iOS 11.0, tvOS 11.0, *) {
+          if UIKit.UIColor(named: "dark-dark", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Color named 'dark-dark' is used in storyboard 'AccountSettings', but couldn't be loaded.") }
+          if UIKit.UIColor(named: "pink", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Color named 'pink' is used in storyboard 'AccountSettings', but couldn't be loaded.") }
+        }
+        if _R.storyboard.accountSettings().accountSettingsVC() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'accountSettingsVC' could not be loaded from storyboard 'AccountSettings' as 'AccountSettingsViewController'.") }
+      }
+
+      fileprivate init() {}
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    struct detail: Rswift.StoryboardResourceType, Rswift.Validatable {
+      let bundle = R.hostingBundle
+      let detailVC = StoryboardViewControllerResource<DetailViewController>(identifier: "DetailVC")
+      let name = "Detail"
+
+      func detailVC(_: Void = ()) -> DetailViewController? {
+        return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: detailVC)
+      }
+
+      static func validate() throws {
+        if #available(iOS 11.0, tvOS 11.0, *) {
+          if UIKit.UIColor(named: "dark-dark", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Color named 'dark-dark' is used in storyboard 'Detail', but couldn't be loaded.") }
+          if UIKit.UIColor(named: "inactiveGray", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Color named 'inactiveGray' is used in storyboard 'Detail', but couldn't be loaded.") }
+        }
+        if _R.storyboard.detail().detailVC() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'detailVC' could not be loaded from storyboard 'Detail' as 'DetailViewController'.") }
+      }
+
+      fileprivate init() {}
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    struct gallery: Rswift.StoryboardResourceType, Rswift.Validatable {
+      let bundle = R.hostingBundle
+      let galleryVC = StoryboardViewControllerResource<GalleryViewController>(identifier: "galleryVC")
+      let name = "Gallery"
+
+      func galleryVC(_: Void = ()) -> GalleryViewController? {
+        return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: galleryVC)
+      }
+
+      static func validate() throws {
+        if #available(iOS 11.0, tvOS 11.0, *) {
+          if UIKit.UIColor(named: "dark-dark", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Color named 'dark-dark' is used in storyboard 'Gallery', but couldn't be loaded.") }
+        }
+        if _R.storyboard.gallery().galleryVC() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'galleryVC' could not be loaded from storyboard 'Gallery' as 'GalleryViewController'.") }
+      }
+
+      fileprivate init() {}
+    }
+    #endif
 
     #if os(iOS) || os(tvOS)
     struct launchScreen: Rswift.StoryboardResourceWithInitialControllerType, Rswift.Validatable {
@@ -366,7 +583,12 @@ struct _R: Rswift.Validatable {
       }
 
       static func validate() throws {
+        if UIKit.UIImage(named: "tabBarHome", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'tabBarHome' is used in storyboard 'Root', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "tabBarImage", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'tabBarImage' is used in storyboard 'Root', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "tabBarPersonal", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'tabBarPersonal' is used in storyboard 'Root', but couldn't be loaded.") }
         if #available(iOS 11.0, tvOS 11.0, *) {
+          if UIKit.UIColor(named: "inactiveGray", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Color named 'inactiveGray' is used in storyboard 'Root', but couldn't be loaded.") }
+          if UIKit.UIColor(named: "pink", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Color named 'pink' is used in storyboard 'Root', but couldn't be loaded.") }
         }
         if _R.storyboard.root().rootVC() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'rootVC' could not be loaded from storyboard 'Root' as 'RootViewController'.") }
       }

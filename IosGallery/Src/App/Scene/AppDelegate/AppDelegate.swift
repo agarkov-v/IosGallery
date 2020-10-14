@@ -19,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         #if DEBUG
-        CocoaDebug.enable()
+//        CocoaDebug.enable()
         #endif
         IQKeyboardManager.shared().isEnabled = true
         openStartScreen(window: window)
@@ -57,6 +57,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         guard let window = self.window else { return }
         let rootView = R.storyboard.root().instantiateInitialViewController()
 //        let rootView = R.storyboard.root.rootVC()!
+//        let rootView = R.storyboard.login.loginVC()!
         window.rootViewController = rootView
         window.makeKeyAndVisible()
     }

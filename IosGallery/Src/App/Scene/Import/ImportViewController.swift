@@ -13,6 +13,7 @@ class ImportViewController: UIViewController {
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var descriptionTextView: UITextView!
     
+    var presenter: ImportPresenterProtocol!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -83,4 +84,8 @@ extension ImportViewController: UITextViewDelegate {
             textView.textColor = .lightGray
         }
     }
+}
+
+extension ImportViewController: ImportView {
+    
 }

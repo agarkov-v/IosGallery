@@ -6,3 +6,19 @@
 //
 
 import Foundation
+import UIKit
+
+class AccountSettingsConfigurator {
+    
+    func configure(view: AccountSettingsViewController) {
+        let router = AccountSettingsRouter(view)
+        let presenter = AccountSettingsPresenter(view, router)
+        view.presenter = presenter
+    }
+    
+    static func open(navigationController: UINavigationController) {
+        let view = R.storyboard.accountSettings.accountSettingsVC()!
+        AccountSettingsConfigurator().configure(view: view)
+        navigationController.pushViewController(view, animated: true)
+    }
+}

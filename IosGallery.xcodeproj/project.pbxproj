@@ -57,6 +57,8 @@
 		23A623C625372A3B00F6F7DF /* AccountSettingsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23A623C525372A3B00F6F7DF /* AccountSettingsPresenter.swift */; };
 		23A623CB25372A4300F6F7DF /* AccountSettingsConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23A623CA25372A4300F6F7DF /* AccountSettingsConfigurator.swift */; };
 		23A623D025372A4A00F6F7DF /* AccountSettingsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23A623CF25372A4A00F6F7DF /* AccountSettingsRouter.swift */; };
+		23A623D525372CDA00F6F7DF /* NavigationControllerUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23A623D425372CDA00F6F7DF /* NavigationControllerUtil.swift */; };
+		23A623DA2537317300F6F7DF /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23A623D92537317300F6F7DF /* BaseView.swift */; };
 		B3D12C8061D6088850C217DC /* Pods_IosGallery_IosGalleryUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8CC792BF5BE182BAAD9D763 /* Pods_IosGallery_IosGalleryUITests.framework */; };
 		CB4D68FB3BA80F90F2AE8B7B /* Pods_IosGalleryTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD7CB0FB457936A61458D8D9 /* Pods_IosGalleryTests.framework */; };
 /* End PBXBuildFile section */
@@ -134,6 +136,8 @@
 		23A623C525372A3B00F6F7DF /* AccountSettingsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSettingsPresenter.swift; sourceTree = "<group>"; };
 		23A623CA25372A4300F6F7DF /* AccountSettingsConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSettingsConfigurator.swift; sourceTree = "<group>"; };
 		23A623CF25372A4A00F6F7DF /* AccountSettingsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSettingsRouter.swift; sourceTree = "<group>"; };
+		23A623D425372CDA00F6F7DF /* NavigationControllerUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationControllerUtil.swift; sourceTree = "<group>"; };
+		23A623D92537317300F6F7DF /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
 		7069CCA179E351F270D654F4 /* Pods_IosGallery.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_IosGallery.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7BBF9F813350DDD76E47D73E /* Pods-IosGalleryTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IosGalleryTests.debug.xcconfig"; path = "Target Support Files/Pods-IosGalleryTests/Pods-IosGalleryTests.debug.xcconfig"; sourceTree = "<group>"; };
 		A457C25693530A820C4BE81D /* Pods-IosGallery.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IosGallery.debug.xcconfig"; path = "Target Support Files/Pods-IosGallery/Pods-IosGallery.debug.xcconfig"; sourceTree = "<group>"; };
@@ -335,6 +339,7 @@
 				23A623682537178200F6F7DF /* TableViewUtil.swift */,
 				23A6236D253717E600F6F7DF /* ButtonUtil.swift */,
 				23A62372253718CE00F6F7DF /* TextFieldUtil.swift */,
+				23A623D425372CDA00F6F7DF /* NavigationControllerUtil.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -423,6 +428,7 @@
 			isa = PBXGroup;
 			children = (
 				239449052535C60E0083878A /* BaseRouter.swift */,
+				23A623D92537317300F6F7DF /* BaseView.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -730,6 +736,7 @@
 				23A6234B2536F0EC00F6F7DF /* StringUtil.swift in Sources */,
 				23A623C1253729B400F6F7DF /* AccountRouter.swift in Sources */,
 				23775F802535F521004C530F /* GalleryViewController.swift in Sources */,
+				23A623DA2537317300F6F7DF /* BaseView.swift in Sources */,
 				239448F12535C2860083878A /* LoginViewController.swift in Sources */,
 				23A6238F2537293500F6F7DF /* GalleryConfigurator.swift in Sources */,
 				23775F942535F559004C530F /* AccountSettingsViewController.swift in Sources */,
@@ -746,6 +753,7 @@
 				23A6237B2537290900F6F7DF /* RootPresenter.swift in Sources */,
 				23775F8A2535F541004C530F /* ImportViewController.swift in Sources */,
 				23775F852535F535004C530F /* DetailViewController.swift in Sources */,
+				23A623D525372CDA00F6F7DF /* NavigationControllerUtil.swift in Sources */,
 				239448F62535C5760083878A /* LoginPresenter.swift in Sources */,
 				23A62373253718CE00F6F7DF /* TextFieldUtil.swift in Sources */,
 				23A623692537178200F6F7DF /* TableViewUtil.swift in Sources */,

@@ -6,3 +6,19 @@
 //
 
 import Foundation
+import UIKit
+
+class GalleryConfigurator {
+    
+    func configure(view: GalleryViewController) {
+        let router = GalleryRouter(view)
+        let presenter = GalleryPresenter(view, router)
+        view.presenter = presenter
+    }
+    
+    static func open(navigationController: UINavigationController) {
+        let view = R.storyboard.gallery.galleryVC()!
+        GalleryConfigurator().configure(view: view)
+        navigationController.pushViewController(view, animated: true)
+    }
+}

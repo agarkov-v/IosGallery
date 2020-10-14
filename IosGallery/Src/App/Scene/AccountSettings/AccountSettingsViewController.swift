@@ -24,6 +24,7 @@ class AccountSettingsViewController: UIViewController {
     @IBOutlet weak var errorView: UIView!
     @IBOutlet weak var errorLabel: UILabel!
     
+    var presenter: AccountSettingsPresenterProtocol!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -90,4 +91,8 @@ class AccountSettingsViewController: UIViewController {
         print("onRightBarButtonItem click")
     }
 
+}
+
+extension AccountSettingsViewController: AccountSettingsView {
+    
 }

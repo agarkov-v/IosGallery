@@ -5,4 +5,14 @@
 //  Created by Вячеслав Агарков on 14.10.2020.
 //
 
-import Foundation
+import UIKit
+
+class ImportRouter: BaseRouter {
+    
+    weak var view: UIViewController!
+    
+    init(_ view: ImportViewController) {
+        self.view = view
+    }
+    
+}

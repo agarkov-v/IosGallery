@@ -6,3 +6,30 @@
 //
 
 import Foundation
+import RxSwift
+import RxNetworkApiClient
+
+protocol AccountView: BaseView {
+    
+}
+
+protocol AccountPresenterProtocol {
+    
+}
+
+class AccountPresenter {
+    
+    private weak var view: AccountView!
+    private let router: AccountRouter
+    private var disposeBag = DisposeBag()
+    
+    init(_ view: AccountView,
+         _ router: AccountRouter) {
+        self.view = view
+        self.router = router
+    }
+}
+
+extension AccountPresenter: AccountPresenterProtocol {
+    
+}

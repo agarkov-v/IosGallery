@@ -15,6 +15,7 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var descriptionTextView: UITextView!
     
+    var presenter: DetailPresenterProtocol!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,5 +37,8 @@ class DetailViewController: UIViewController {
         
     }
     
+}
+
+extension DetailViewController: DetailView {
     
 }

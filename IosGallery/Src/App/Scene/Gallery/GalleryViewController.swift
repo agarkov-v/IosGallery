@@ -12,6 +12,7 @@ class GalleryViewController: UIViewController {
     @IBOutlet weak var modeSegmentControl: UISegmentedControl!
     @IBOutlet weak var collectionView: UICollectionView!
     
+    var presenter: GalleryPresenterProtocol!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,5 +45,9 @@ extension GalleryViewController: UICollectionViewDataSource {
         return UICollectionViewCell()
     }
     
+    
+}
+
+extension GalleryViewController: GalleryView {
     
 }

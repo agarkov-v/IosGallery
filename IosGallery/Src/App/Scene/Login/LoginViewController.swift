@@ -17,6 +17,8 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var errorView: UIView!
     @IBOutlet weak var errorLabel: UILabel!
     
+    var presenter: LoginPresenterProtocol!
+    
     private var deviceOreintation: UIDeviceOrientation {
         get {
             return UIDevice.current.orientation
@@ -78,4 +80,8 @@ class LoginViewController: UIViewController {
             logoView.isHidden = false
         }
     }
+}
+
+extension LoginViewController: LoginView {
+    
 }

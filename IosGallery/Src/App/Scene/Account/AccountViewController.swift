@@ -13,6 +13,7 @@ class AccountViewController: UIViewController {
     @IBOutlet weak var birthdayLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
     
+    var presenter: AccountPresenterProtocol!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -66,5 +67,9 @@ extension AccountViewController: UITableViewDataSource {
         return UITableViewCell()
     }
     
+    
+}
+
+extension AccountViewController: AccountView {
     
 }

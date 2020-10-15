@@ -24,7 +24,7 @@ class DetailViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+        setupTitleNavigationBar(title: "Image Detail")
     }
     
     override func viewDidAppear(_ animated: Bool) {

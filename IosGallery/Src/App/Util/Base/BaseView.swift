@@ -41,7 +41,7 @@ extension BaseView {
         okAction.setValue(#colorLiteral(red: 0, green: 0, blue: 0, alpha: 1), forKey: "titleTextColor")
         
         if !withoutCancel {
-            let cancelAction = UIAlertAction(title: "Calcel".localization(), style: .cancel, handler: nil)
+            let cancelAction = UIAlertAction(title: "Cancel".localization(), style: .cancel, handler: nil)
             alert.addAction(cancelAction)
             cancelAction.setValue(#colorLiteral(red: 0, green: 0, blue: 0, alpha: 1), forKey: "titleTextColor")
         }
@@ -99,7 +99,7 @@ extension BaseView {
         }
 
         if withoutCancel != true {
-            let cancelButton = UIAlertAction(title: "Calcel".localization(),
+            let cancelButton = UIAlertAction(title: "Cancel".localization(),
                                              style: .cancel,
                                              handler: nil)
             cancelButton.setValue(#colorLiteral(red: 0, green: 0, blue: 0, alpha: 1), forKey: "titleTextColor")
@@ -221,7 +221,7 @@ extension BaseView {
             mainActionHandler?(textField.text)
         })
         
-        let cancelAction = UIAlertAction(title: "Calcel".localization(), style: .cancel, handler: cancelHandler)
+        let cancelAction = UIAlertAction(title: "Cancel".localization(), style: .cancel, handler: cancelHandler)
 
         mainAction.setValue(#colorLiteral(red: 0, green: 0, blue: 0, alpha: 1), forKey: "titleTextColor")
         cancelAction.setValue(#colorLiteral(red: 0, green: 0, blue: 0, alpha: 1), forKey: "titleTextColor")

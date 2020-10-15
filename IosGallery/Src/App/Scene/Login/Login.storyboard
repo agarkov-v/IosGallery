@@ -129,7 +129,7 @@
                             </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="daU-GJ-AKu"/>
-                        <color key="backgroundColor" name="dark-dark"/>
+                        <color key="backgroundColor" name="darkDark"/>
                         <constraints>
                             <constraint firstItem="7yV-d7-GpZ" firstAttribute="leading" secondItem="daU-GJ-AKu" secondAttribute="leading" constant="16" id="65w-nU-jJN"/>
                             <constraint firstItem="7yV-d7-GpZ" firstAttribute="top" relation="greaterThanOrEqual" secondItem="daU-GJ-AKu" secondAttribute="top" constant="10" id="DfB-Ho-0dS"/>
@@ -155,7 +155,7 @@
     </scenes>
     <resources>
         <image name="gLetter" width="148" height="148"/>
-        <namedColor name="dark-dark">
+        <namedColor name="darkDark">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="white-dark">

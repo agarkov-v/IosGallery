@@ -20,13 +20,14 @@ class AccountViewController: UIViewController {
 
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.removeSeparatorsOfEmptyCells()
+        registerNib()
         configureBarButtonItem()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+        setupTitleNavigationBar(entity: .accountGallery)
+        tableView.removeSeparatorsOfEmptyCells()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -49,6 +50,11 @@ class AccountViewController: UIViewController {
         print("onRightBarButtonItem click")
     }
     
+    func registerNib() {
+        let accountNib = R.nib.accountCell
+        tableView.register(accountNib)
+    }
+    
     
 
 }
@@ -63,8 +69,9 @@ extension AccountViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: R.nib.accountCell.identifier, for: indexPath)
         
-        return UITableViewCell()
+        return cell
     }
     
     

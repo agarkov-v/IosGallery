@@ -278,7 +278,7 @@
                             </scrollView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="d7R-Oj-bTO"/>
-                        <color key="backgroundColor" name="dark-dark"/>
+                        <color key="backgroundColor" name="darkDark"/>
                         <constraints>
                             <constraint firstItem="jDH-fp-dIK" firstAttribute="trailing" secondItem="d7R-Oj-bTO" secondAttribute="trailing" id="0UU-RW-vnC"/>
                             <constraint firstItem="jDH-fp-dIK" firstAttribute="top" secondItem="d7R-Oj-bTO" secondAttribute="top" id="3ML-r6-XQt"/>
@@ -292,6 +292,7 @@
                         <outlet property="birthdayTextField" destination="DfQ-sd-RNm" id="fFo-DO-oMf"/>
                         <outlet property="colorModeLabel" destination="8jT-Su-ViP" id="D7D-RY-JHA"/>
                         <outlet property="colorModeSegmentControl" destination="iJF-7f-lEV" id="4Y1-eR-rEB"/>
+                        <outlet property="colorModeView" destination="QOx-Dg-cfi" id="YA3-aS-CCn"/>
                         <outlet property="confirmPasswordTextField" destination="CTg-hz-W3g" id="Gld-XQ-oBH"/>
                         <outlet property="emailLabel" destination="ELz-vb-ptN" id="wyx-eI-I6E"/>
                         <outlet property="emailTextField" destination="YVR-ju-CT2" id="BgC-qU-aTQ"/>
@@ -311,7 +312,7 @@
         </scene>
     </scenes>
     <resources>
-        <namedColor name="dark-dark">
+        <namedColor name="darkDark">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="pink">

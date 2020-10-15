@@ -72,7 +72,7 @@
                             </scrollView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="jms-GC-FQ3"/>
-                        <color key="backgroundColor" name="dark-dark"/>
+                        <color key="backgroundColor" name="darkDark"/>
                         <constraints>
                             <constraint firstItem="3iE-T4-Nhq" firstAttribute="leading" secondItem="jms-GC-FQ3" secondAttribute="leading" id="37P-ec-3x4"/>
                             <constraint firstItem="3iE-T4-Nhq" firstAttribute="trailing" secondItem="jms-GC-FQ3" secondAttribute="trailing" id="Vvx-jU-kwE"/>
@@ -95,7 +95,7 @@
     </scenes>
     <resources>
         <image name="photoPlaceholder" width="375" height="229"/>
-        <namedColor name="dark-dark">
+        <namedColor name="darkDark">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="labelColor">

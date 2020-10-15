@@ -29,14 +29,14 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="IosGallery" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0QY-Tr-s4M">
                                         <rect key="frame" x="0.0" y="150.5" width="150.5" height="38.5"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="32"/>
-                                        <color key="textColor" name="white-dark"/>
+                                        <color key="textColor" name="whiteDark"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
                             </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" name="dark-dark"/>
+                        <color key="backgroundColor" name="darkDark"/>
                         <constraints>
                             <constraint firstItem="YLN-BX-AmC" firstAttribute="top" relation="greaterThanOrEqual" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="16" id="Au6-at-dIo"/>
                             <constraint firstItem="YLN-BX-AmC" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="OKu-9E-Eoz"/>
@@ -54,10 +54,10 @@
     </scenes>
     <resources>
         <image name="gLetter" width="148" height="148"/>
-        <namedColor name="dark-dark">
+        <namedColor name="darkDark">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <namedColor name="white-dark">
+        <namedColor name="whiteDark">
             <color red="0.16078431372549021" green="0.15294117647058825" blue="0.19215686274509805" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>

@@ -9,6 +9,7 @@ import UIKit
 
 class AccountSettingsViewController: UIViewController {
 
+    @IBOutlet weak var colorModeView: UIView!
     @IBOutlet weak var colorModeLabel: UILabel!
     @IBOutlet weak var colorModeSegmentControl: UISegmentedControl!
     @IBOutlet weak var personalDataLabel: UILabel!
@@ -34,7 +35,14 @@ class AccountSettingsViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        setupTitleNavigationBar(title: "Settings")
+        if #available(iOS 13.0, *) {
+            colorModeView.isHidden = false
+        } else {
+            colorModeView.isHidden = true
+        }
         prepateView()
+        setupActionBackButton(action: #selector(onBackButtonTap))
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -48,11 +56,19 @@ class AccountSettingsViewController: UIViewController {
     }
     
     @IBAction func onSignOut(_ sender: UIButton) {
+//        if self.presenter.hasChanged  {
+//            self.onTryToClose()
+//        } else {
+//            self.presenter.close()
+//        }
+    }
+    
+    @objc func onBackButtonTap() {
         
     }
     
     func prepateView() {
-        colorModeLabel.text = "Choose color mode:".localization()
+        colorModeLabel.text = "Color mode:".localization()
         colorModeSegmentControl.setTitle("System".localization(), forSegmentAt: 0)
         colorModeSegmentControl.setTitle("Light".localization(), forSegmentAt: 1)
         colorModeSegmentControl.setTitle("Dark".localization(), forSegmentAt: 2)

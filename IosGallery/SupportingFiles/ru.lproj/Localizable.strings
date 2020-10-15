@@ -1,0 +1,42 @@
+/* 
+  Localizable.strings
+  IosGallery
+
+  Created by Вячеслав Агарков on 15.10.2020.
+  
+*/
+
+"Ok" = "Ок";
+"Warning" = "Внимание";
+"Cancel" = "Отменить";
+"Error" = "Ошибка";
+"Continue" = "Продолжить";
+"Gallery" = "Галерея";
+"Upload Image" = "Загрузить изображение";
+"Account Gallery" = "Галерея Аккаунта";
+"Welcome" = "Добро пожаловать";
+"login" = "Логин";
+"password" = "Пароль";
+"Sign In" = "Войти";
+"New" = "Новые";
+"Popular" = "Популярные";
+"Search" = "Поиск";
+"Image Detail" = "Подробнее";
+"Name" = "Название";
+"Description" = "Описание";
+"Add" = "Добавить";
+"Color mode:" = "Цветовой режим:";
+"System" = "Системный";
+"Light" = "Светлый";
+"Dark" = "Темный";
+"Personal data" = "Персональные данные";
+"User name" = "Имя пользователя";
+"Date of birth" = "Дата рождения";
+"E-mail adress" = "E-mail адрес";
+"E-mail" = "E-mail";
+"Password" = "Пароль";
+"Old password" = "Старый пароль";
+"New password" = "Новый пароль";
+"Confirm password" = "Подтвердите пароль";
+"Sign Out" = "Выйти";
+"Save" = "Сохранить";

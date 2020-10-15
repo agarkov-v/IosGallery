@@ -1,0 +1,43 @@
+/* 
+  Localizable.strings
+  IosGallery
+
+  Created by Вячеслав Агарков on 15.10.2020.
+  
+*/
+
+"Ok" = "Ok";
+"Warning" = "Warning";
+"Cancel" = "Cancel";
+"Error" = "Error";
+"Continue" = "Continue";
+"Gallery" = "Gallery";
+"Upload Image" = "Upload Image";
+"Account Gallery" = "Account Gallery";
+"Welcome" = "Welcome";
+"login" = "login";
+"password" = "password";
+"Sign In" = "Sign In";
+"New" = "New";
+"Popular" = "Popular";
+"Search" = "Search";
+"Image Detail" = "Image Detail";
+"Name" = "Name";
+"Description" = "Description";
+"Add" = "Add";
+"Color mode:" = "Color mode:";
+"System" = "System";
+"Light" = "Light";
+"Dark" = "Dark";
+"Personal data" = "Personal data";
+"User name" = "User name";
+"Date of birth" = "Date of birth";
+"E-mail adress" = "E-mail adress";
+"E-mail" = "E-mail";
+"Password" = "Password";
+"Old password" = "Old password";
+"New password" = "New password";
+"Confirm password" = "Confirm password";
+"Sign Out" = "Sign Out";
+"Save" = "Save";
+

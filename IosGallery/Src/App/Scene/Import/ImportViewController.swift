@@ -23,17 +23,22 @@ class ImportViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        setupTitleNavigationBar(entity: .uploadImage)
         prepateView()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
+    }
+    
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        descriptionTextView.layer.borderColor = R.color.gray()!.cgColor
     }
     
     func prepateView() {
@@ -43,8 +48,8 @@ class ImportViewController: UIViewController {
         descriptionTextView.layer.cornerRadius = 4
         descriptionTextView.layer.borderWidth = 1
         descriptionTextView.layer.borderColor = R.color.gray()!.cgColor
-        descriptionTextView.text = "Description"
-        descriptionTextView.textColor = .lightGray
+        descriptionTextView.text = "Description".localization()
+        descriptionTextView.textColor = R.color.placeholderGray()
         descriptionTextView.delegate = self
     }
     
@@ -67,7 +72,7 @@ extension ImportViewController: UITextViewDelegate {
     func textViewDidBeginEditing(_ textView: UITextView) {
         if textView.text == "Description" {
             textView.text = ""
-            textView.textColor = .black
+            textView.textColor = R.color.blackWhite()
         }
     }
     
@@ -81,7 +86,7 @@ extension ImportViewController: UITextViewDelegate {
     func textViewDidEndEditing(_ textView: UITextView) {
         if textView.text == "" {
             textView.text = "Description"
-            textView.textColor = .lightGray
+            textView.textColor = R.color.placeholderGray()
         }
     }
 }

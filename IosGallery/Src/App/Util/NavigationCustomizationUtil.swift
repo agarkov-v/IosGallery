@@ -9,14 +9,14 @@ import UIKit
 
 enum NavigationType {
     case gallery
-    case exportImage
+    case uploadImage
     case accountGallery
 
     
     var title: String {
         switch self {
         case .gallery:        return "Gallery".localization()
-        case .exportImage:  return "Import".localization()
+        case .uploadImage:  return "Upload Image".localization()
         case .accountGallery:    return "Account Gallery".localization()
         }
     }

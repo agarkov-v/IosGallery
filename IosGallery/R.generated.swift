@@ -168,20 +168,24 @@ struct R: Rswift.Validatable {
   }
   #endif
 
-  /// This `R.color` struct is generated, and contains static references to 6 colors.
+  /// This `R.color` struct is generated, and contains static references to 8 colors.
   struct color {
     /// Color `AccentColor`.
     static let accentColor = Rswift.ColorResource(bundle: R.hostingBundle, name: "AccentColor")
-    /// Color `dark-dark`.
-    static let darkDark = Rswift.ColorResource(bundle: R.hostingBundle, name: "dark-dark")
+    /// Color `blackWhite`.
+    static let blackWhite = Rswift.ColorResource(bundle: R.hostingBundle, name: "blackWhite")
+    /// Color `darkDark`.
+    static let darkDark = Rswift.ColorResource(bundle: R.hostingBundle, name: "darkDark")
     /// Color `gray`.
     static let gray = Rswift.ColorResource(bundle: R.hostingBundle, name: "gray")
     /// Color `inactiveGray`.
     static let inactiveGray = Rswift.ColorResource(bundle: R.hostingBundle, name: "inactiveGray")
     /// Color `pink`.
     static let pink = Rswift.ColorResource(bundle: R.hostingBundle, name: "pink")
-    /// Color `white-dark`.
-    static let whiteDark = Rswift.ColorResource(bundle: R.hostingBundle, name: "white-dark")
+    /// Color `placeholderGray`.
+    static let placeholderGray = Rswift.ColorResource(bundle: R.hostingBundle, name: "placeholderGray")
+    /// Color `whiteDark`.
+    static let whiteDark = Rswift.ColorResource(bundle: R.hostingBundle, name: "whiteDark")
 
     #if os(iOS) || os(tvOS)
     /// `UIColor(named: "AccentColor", bundle: ..., traitCollection: ...)`
@@ -193,7 +197,16 @@ struct R: Rswift.Validatable {
     #endif
 
     #if os(iOS) || os(tvOS)
-    /// `UIColor(named: "dark-dark", bundle: ..., traitCollection: ...)`
+    /// `UIColor(named: "blackWhite", bundle: ..., traitCollection: ...)`
+    @available(tvOS 11.0, *)
+    @available(iOS 11.0, *)
+    static func blackWhite(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIColor? {
+      return UIKit.UIColor(resource: R.color.blackWhite, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIColor(named: "darkDark", bundle: ..., traitCollection: ...)`
     @available(tvOS 11.0, *)
     @available(iOS 11.0, *)
     static func darkDark(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIColor? {
@@ -229,7 +242,16 @@ struct R: Rswift.Validatable {
     #endif
 
     #if os(iOS) || os(tvOS)
-    /// `UIColor(named: "white-dark", bundle: ..., traitCollection: ...)`
+    /// `UIColor(named: "placeholderGray", bundle: ..., traitCollection: ...)`
+    @available(tvOS 11.0, *)
+    @available(iOS 11.0, *)
+    static func placeholderGray(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIColor? {
+      return UIKit.UIColor(resource: R.color.placeholderGray, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIColor(named: "whiteDark", bundle: ..., traitCollection: ...)`
     @available(tvOS 11.0, *)
     @available(iOS 11.0, *)
     static func whiteDark(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIColor? {
@@ -411,6 +433,650 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
 
+  /// This `R.string` struct is generated, and contains static references to 2 localization tables.
+  struct string {
+    /// This `R.string.launchScreen` struct is generated, and contains static references to 1 localization keys.
+    struct launchScreen {
+      /// en translation: IosGallery
+      ///
+      /// Locales: ru, en
+      static let qyTrS4MText = Rswift.StringResource(key: "0QY-Tr-s4M.text", tableName: "LaunchScreen", bundle: R.hostingBundle, locales: ["ru", "en"], comment: nil)
+
+      /// en translation: IosGallery
+      ///
+      /// Locales: ru, en
+      static func qyTrS4MText(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("0QY-Tr-s4M.text", tableName: "LaunchScreen", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "LaunchScreen", preferredLanguages: preferredLanguages) else {
+          return "0QY-Tr-s4M.text"
+        }
+
+        return NSLocalizedString("0QY-Tr-s4M.text", tableName: "LaunchScreen", bundle: bundle, comment: "")
+      }
+
+      fileprivate init() {}
+    }
+
+    /// This `R.string.localizable` struct is generated, and contains static references to 32 localization keys.
+    struct localizable {
+      /// en translation: Account Gallery
+      ///
+      /// Locales: ru, en
+      static let accountGallery = Rswift.StringResource(key: "Account Gallery", tableName: "Localizable", bundle: R.hostingBundle, locales: ["ru", "en"], comment: nil)
+      /// en translation: Add
+      ///
+      /// Locales: ru, en
+      static let add = Rswift.StringResource(key: "Add", tableName: "Localizable", bundle: R.hostingBundle, locales: ["ru", "en"], comment: nil)
+      /// en translation: Cancel
+      ///
+      /// Locales: ru, en
+      static let cancel = Rswift.StringResource(key: "Cancel", tableName: "Localizable", bundle: R.hostingBundle, locales: ["ru", "en"], comment: nil)
+      /// en translation: Color mode:
+      ///
+      /// Locales: ru, en
+      static let colorMode = Rswift.StringResource(key: "Color mode:", tableName: "Localizable", bundle: R.hostingBundle, locales: ["ru", "en"], comment: nil)
+      /// en translation: Confirm password
+      ///
+      /// Locales: ru, en
+      static let confirmPassword = Rswift.StringResource(key: "Confirm password", tableName: "Localizable", bundle: R.hostingBundle, locales: ["ru", "en"], comment: nil)
+      /// en translation: Continue
+      ///
+      /// Locales: ru, en
+      static let `continue` = Rswift.StringResource(key: "Continue", tableName: "Localizable", bundle: R.hostingBundle, locales: ["ru", "en"], comment: nil)
+      /// en translation: Dark
+      ///
+      /// Locales: ru, en
+      static let dark = Rswift.StringResource(key: "Dark", tableName: "Localizable", bundle: R.hostingBundle, locales: ["ru", "en"], comment: nil)
+      /// en translation: Date of birth
+      ///
+      /// Locales: ru, en
+      static let dateOfBirth = Rswift.StringResource(key: "Date of birth", tableName: "Localizable", bundle: R.hostingBundle, locales: ["ru", "en"], comment: nil)
+      /// en translation: Description
+      ///
+      /// Locales: ru, en
+      static let description = Rswift.StringResource(key: "Description", tableName: "Localizable", bundle: R.hostingBundle, locales: ["ru", "en"], comment: nil)
+      /// en translation: E-mail
+      ///
+      /// Locales: ru, en
+      static let eMail = Rswift.StringResource(key: "E-mail", tableName: "Localizable", bundle: R.hostingBundle, locales: ["ru", "en"], comment: nil)
+      /// en translation: E-mail adress
+      ///
+      /// Locales: ru, en
+      static let eMailAdress = Rswift.StringResource(key: "E-mail adress", tableName: "Localizable", bundle: R.hostingBundle, locales: ["ru", "en"], comment: nil)
+      /// en translation: Error
+      ///
+      /// Locales: ru, en
+      static let error = Rswift.StringResource(key: "Error", tableName: "Localizable", bundle: R.hostingBundle, locales: ["ru", "en"], comment: nil)
+      /// en translation: Gallery
+      ///
+      /// Locales: ru, en
+      static let gallery = Rswift.StringResource(key: "Gallery", tableName: "Localizable", bundle: R.hostingBundle, locales: ["ru", "en"], comment: nil)
+      /// en translation: Image Detail
+      ///
+      /// Locales: ru, en
+      static let imageDetail = Rswift.StringResource(key: "Image Detail", tableName: "Localizable", bundle: R.hostingBundle, locales: ["ru", "en"], comment: nil)
+      /// en translation: Light
+      ///
+      /// Locales: ru, en
+      static let light = Rswift.StringResource(key: "Light", tableName: "Localizable", bundle: R.hostingBundle, locales: ["ru", "en"], comment: nil)
+      /// en translation: Name
+      ///
+      /// Locales: ru, en
+      static let name = Rswift.StringResource(key: "Name", tableName: "Localizable", bundle: R.hostingBundle, locales: ["ru", "en"], comment: nil)
+      /// en translation: New
+      ///
+      /// Locales: ru, en
+      static let new = Rswift.StringResource(key: "New", tableName: "Localizable", bundle: R.hostingBundle, locales: ["ru", "en"], comment: nil)
+      /// en translation: New password
+      ///
+      /// Locales: ru, en
+      static let newPassword = Rswift.StringResource(key: "New password", tableName: "Localizable", bundle: R.hostingBundle, locales: ["ru", "en"], comment: nil)
+      /// en translation: Ok
+      ///
+      /// Locales: ru, en
+      static let ok = Rswift.StringResource(key: "Ok", tableName: "Localizable", bundle: R.hostingBundle, locales: ["ru", "en"], comment: nil)
+      /// en translation: Old password
+      ///
+      /// Locales: ru, en
+      static let oldPassword = Rswift.StringResource(key: "Old password", tableName: "Localizable", bundle: R.hostingBundle, locales: ["ru", "en"], comment: nil)
+      /// en translation: Personal data
+      ///
+      /// Locales: ru, en
+      static let personalData = Rswift.StringResource(key: "Personal data", tableName: "Localizable", bundle: R.hostingBundle, locales: ["ru", "en"], comment: nil)
+      /// en translation: Popular
+      ///
+      /// Locales: ru, en
+      static let popular = Rswift.StringResource(key: "Popular", tableName: "Localizable", bundle: R.hostingBundle, locales: ["ru", "en"], comment: nil)
+      /// en translation: Save
+      ///
+      /// Locales: ru, en
+      static let save = Rswift.StringResource(key: "Save", tableName: "Localizable", bundle: R.hostingBundle, locales: ["ru", "en"], comment: nil)
+      /// en translation: Search
+      ///
+      /// Locales: ru, en
+      static let search = Rswift.StringResource(key: "Search", tableName: "Localizable", bundle: R.hostingBundle, locales: ["ru", "en"], comment: nil)
+      /// en translation: Sign In
+      ///
+      /// Locales: ru, en
+      static let signIn = Rswift.StringResource(key: "Sign In", tableName: "Localizable", bundle: R.hostingBundle, locales: ["ru", "en"], comment: nil)
+      /// en translation: Sign Out
+      ///
+      /// Locales: ru, en
+      static let signOut = Rswift.StringResource(key: "Sign Out", tableName: "Localizable", bundle: R.hostingBundle, locales: ["ru", "en"], comment: nil)
+      /// en translation: System
+      ///
+      /// Locales: ru, en
+      static let system = Rswift.StringResource(key: "System", tableName: "Localizable", bundle: R.hostingBundle, locales: ["ru", "en"], comment: nil)
+      /// en translation: Upload Image
+      ///
+      /// Locales: ru, en
+      static let uploadImage = Rswift.StringResource(key: "Upload Image", tableName: "Localizable", bundle: R.hostingBundle, locales: ["ru", "en"], comment: nil)
+      /// en translation: User name
+      ///
+      /// Locales: ru, en
+      static let userName = Rswift.StringResource(key: "User name", tableName: "Localizable", bundle: R.hostingBundle, locales: ["ru", "en"], comment: nil)
+      /// en translation: Warning
+      ///
+      /// Locales: ru, en
+      static let warning = Rswift.StringResource(key: "Warning", tableName: "Localizable", bundle: R.hostingBundle, locales: ["ru", "en"], comment: nil)
+      /// en translation: Welcome
+      ///
+      /// Locales: ru, en
+      static let welcome = Rswift.StringResource(key: "Welcome", tableName: "Localizable", bundle: R.hostingBundle, locales: ["ru", "en"], comment: nil)
+      /// en translation: login
+      ///
+      /// Locales: ru, en
+      static let login = Rswift.StringResource(key: "login", tableName: "Localizable", bundle: R.hostingBundle, locales: ["ru", "en"], comment: nil)
+
+      /// en translation: Account Gallery
+      ///
+      /// Locales: ru, en
+      static func accountGallery(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("Account Gallery", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "Account Gallery"
+        }
+
+        return NSLocalizedString("Account Gallery", bundle: bundle, comment: "")
+      }
+
+      /// en translation: Add
+      ///
+      /// Locales: ru, en
+      static func add(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("Add", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "Add"
+        }
+
+        return NSLocalizedString("Add", bundle: bundle, comment: "")
+      }
+
+      /// en translation: Cancel
+      ///
+      /// Locales: ru, en
+      static func cancel(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("Cancel", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "Cancel"
+        }
+
+        return NSLocalizedString("Cancel", bundle: bundle, comment: "")
+      }
+
+      /// en translation: Color mode:
+      ///
+      /// Locales: ru, en
+      static func colorMode(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("Color mode:", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "Color mode:"
+        }
+
+        return NSLocalizedString("Color mode:", bundle: bundle, comment: "")
+      }
+
+      /// en translation: Confirm password
+      ///
+      /// Locales: ru, en
+      static func confirmPassword(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("Confirm password", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "Confirm password"
+        }
+
+        return NSLocalizedString("Confirm password", bundle: bundle, comment: "")
+      }
+
+      /// en translation: Continue
+      ///
+      /// Locales: ru, en
+      static func `continue`(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("Continue", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "Continue"
+        }
+
+        return NSLocalizedString("Continue", bundle: bundle, comment: "")
+      }
+
+      /// en translation: Dark
+      ///
+      /// Locales: ru, en
+      static func dark(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("Dark", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "Dark"
+        }
+
+        return NSLocalizedString("Dark", bundle: bundle, comment: "")
+      }
+
+      /// en translation: Date of birth
+      ///
+      /// Locales: ru, en
+      static func dateOfBirth(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("Date of birth", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "Date of birth"
+        }
+
+        return NSLocalizedString("Date of birth", bundle: bundle, comment: "")
+      }
+
+      /// en translation: Description
+      ///
+      /// Locales: ru, en
+      static func description(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("Description", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "Description"
+        }
+
+        return NSLocalizedString("Description", bundle: bundle, comment: "")
+      }
+
+      /// en translation: E-mail
+      ///
+      /// Locales: ru, en
+      static func eMail(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("E-mail", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "E-mail"
+        }
+
+        return NSLocalizedString("E-mail", bundle: bundle, comment: "")
+      }
+
+      /// en translation: E-mail adress
+      ///
+      /// Locales: ru, en
+      static func eMailAdress(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("E-mail adress", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "E-mail adress"
+        }
+
+        return NSLocalizedString("E-mail adress", bundle: bundle, comment: "")
+      }
+
+      /// en translation: Error
+      ///
+      /// Locales: ru, en
+      static func error(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("Error", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "Error"
+        }
+
+        return NSLocalizedString("Error", bundle: bundle, comment: "")
+      }
+
+      /// en translation: Gallery
+      ///
+      /// Locales: ru, en
+      static func gallery(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("Gallery", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "Gallery"
+        }
+
+        return NSLocalizedString("Gallery", bundle: bundle, comment: "")
+      }
+
+      /// en translation: Image Detail
+      ///
+      /// Locales: ru, en
+      static func imageDetail(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("Image Detail", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "Image Detail"
+        }
+
+        return NSLocalizedString("Image Detail", bundle: bundle, comment: "")
+      }
+
+      /// en translation: Light
+      ///
+      /// Locales: ru, en
+      static func light(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("Light", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "Light"
+        }
+
+        return NSLocalizedString("Light", bundle: bundle, comment: "")
+      }
+
+      /// en translation: Name
+      ///
+      /// Locales: ru, en
+      static func name(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("Name", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "Name"
+        }
+
+        return NSLocalizedString("Name", bundle: bundle, comment: "")
+      }
+
+      /// en translation: New
+      ///
+      /// Locales: ru, en
+      static func new(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("New", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "New"
+        }
+
+        return NSLocalizedString("New", bundle: bundle, comment: "")
+      }
+
+      /// en translation: New password
+      ///
+      /// Locales: ru, en
+      static func newPassword(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("New password", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "New password"
+        }
+
+        return NSLocalizedString("New password", bundle: bundle, comment: "")
+      }
+
+      /// en translation: Ok
+      ///
+      /// Locales: ru, en
+      static func ok(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("Ok", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "Ok"
+        }
+
+        return NSLocalizedString("Ok", bundle: bundle, comment: "")
+      }
+
+      /// en translation: Old password
+      ///
+      /// Locales: ru, en
+      static func oldPassword(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("Old password", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "Old password"
+        }
+
+        return NSLocalizedString("Old password", bundle: bundle, comment: "")
+      }
+
+      /// en translation: Personal data
+      ///
+      /// Locales: ru, en
+      static func personalData(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("Personal data", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "Personal data"
+        }
+
+        return NSLocalizedString("Personal data", bundle: bundle, comment: "")
+      }
+
+      /// en translation: Popular
+      ///
+      /// Locales: ru, en
+      static func popular(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("Popular", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "Popular"
+        }
+
+        return NSLocalizedString("Popular", bundle: bundle, comment: "")
+      }
+
+      /// en translation: Save
+      ///
+      /// Locales: ru, en
+      static func save(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("Save", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "Save"
+        }
+
+        return NSLocalizedString("Save", bundle: bundle, comment: "")
+      }
+
+      /// en translation: Search
+      ///
+      /// Locales: ru, en
+      static func search(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("Search", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "Search"
+        }
+
+        return NSLocalizedString("Search", bundle: bundle, comment: "")
+      }
+
+      /// en translation: Sign In
+      ///
+      /// Locales: ru, en
+      static func signIn(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("Sign In", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "Sign In"
+        }
+
+        return NSLocalizedString("Sign In", bundle: bundle, comment: "")
+      }
+
+      /// en translation: Sign Out
+      ///
+      /// Locales: ru, en
+      static func signOut(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("Sign Out", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "Sign Out"
+        }
+
+        return NSLocalizedString("Sign Out", bundle: bundle, comment: "")
+      }
+
+      /// en translation: System
+      ///
+      /// Locales: ru, en
+      static func system(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("System", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "System"
+        }
+
+        return NSLocalizedString("System", bundle: bundle, comment: "")
+      }
+
+      /// en translation: Upload Image
+      ///
+      /// Locales: ru, en
+      static func uploadImage(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("Upload Image", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "Upload Image"
+        }
+
+        return NSLocalizedString("Upload Image", bundle: bundle, comment: "")
+      }
+
+      /// en translation: User name
+      ///
+      /// Locales: ru, en
+      static func userName(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("User name", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "User name"
+        }
+
+        return NSLocalizedString("User name", bundle: bundle, comment: "")
+      }
+
+      /// en translation: Warning
+      ///
+      /// Locales: ru, en
+      static func warning(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("Warning", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "Warning"
+        }
+
+        return NSLocalizedString("Warning", bundle: bundle, comment: "")
+      }
+
+      /// en translation: Welcome
+      ///
+      /// Locales: ru, en
+      static func welcome(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("Welcome", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "Welcome"
+        }
+
+        return NSLocalizedString("Welcome", bundle: bundle, comment: "")
+      }
+
+      /// en translation: login
+      ///
+      /// Locales: ru, en
+      static func login(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("login", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "login"
+        }
+
+        return NSLocalizedString("login", bundle: bundle, comment: "")
+      }
+
+      fileprivate init() {}
+    }
+
+    fileprivate init() {}
+  }
+
   fileprivate struct intern: Rswift.Validatable {
     fileprivate static func validate() throws {
       try _R.validate()
@@ -507,7 +1173,7 @@ struct _R: Rswift.Validatable {
       static func validate() throws {
         if UIKit.UIImage(named: "photoPlaceholder", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'photoPlaceholder' is used in storyboard 'Import', but couldn't be loaded.") }
         if #available(iOS 11.0, tvOS 11.0, *) {
-          if UIKit.UIColor(named: "dark-dark", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Color named 'dark-dark' is used in storyboard 'Import', but couldn't be loaded.") }
+          if UIKit.UIColor(named: "darkDark", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Color named 'darkDark' is used in storyboard 'Import', but couldn't be loaded.") }
         }
         if _R.storyboard.`import`().importVC() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'importVC' could not be loaded from storyboard 'Import' as 'ImportViewController'.") }
       }
@@ -528,7 +1194,7 @@ struct _R: Rswift.Validatable {
 
       static func validate() throws {
         if #available(iOS 11.0, tvOS 11.0, *) {
-          if UIKit.UIColor(named: "dark-dark", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Color named 'dark-dark' is used in storyboard 'Account', but couldn't be loaded.") }
+          if UIKit.UIColor(named: "darkDark", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Color named 'darkDark' is used in storyboard 'Account', but couldn't be loaded.") }
           if UIKit.UIColor(named: "gray", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Color named 'gray' is used in storyboard 'Account', but couldn't be loaded.") }
           if UIKit.UIColor(named: "inactiveGray", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Color named 'inactiveGray' is used in storyboard 'Account', but couldn't be loaded.") }
         }
@@ -551,7 +1217,7 @@ struct _R: Rswift.Validatable {
 
       static func validate() throws {
         if #available(iOS 11.0, tvOS 11.0, *) {
-          if UIKit.UIColor(named: "dark-dark", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Color named 'dark-dark' is used in storyboard 'AccountSettings', but couldn't be loaded.") }
+          if UIKit.UIColor(named: "darkDark", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Color named 'darkDark' is used in storyboard 'AccountSettings', but couldn't be loaded.") }
           if UIKit.UIColor(named: "pink", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Color named 'pink' is used in storyboard 'AccountSettings', but couldn't be loaded.") }
         }
         if _R.storyboard.accountSettings().accountSettingsVC() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'accountSettingsVC' could not be loaded from storyboard 'AccountSettings' as 'AccountSettingsViewController'.") }
@@ -573,7 +1239,7 @@ struct _R: Rswift.Validatable {
 
       static func validate() throws {
         if #available(iOS 11.0, tvOS 11.0, *) {
-          if UIKit.UIColor(named: "dark-dark", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Color named 'dark-dark' is used in storyboard 'Detail', but couldn't be loaded.") }
+          if UIKit.UIColor(named: "darkDark", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Color named 'darkDark' is used in storyboard 'Detail', but couldn't be loaded.") }
           if UIKit.UIColor(named: "inactiveGray", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Color named 'inactiveGray' is used in storyboard 'Detail', but couldn't be loaded.") }
         }
         if _R.storyboard.detail().detailVC() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'detailVC' could not be loaded from storyboard 'Detail' as 'DetailViewController'.") }
@@ -595,7 +1261,7 @@ struct _R: Rswift.Validatable {
 
       static func validate() throws {
         if #available(iOS 11.0, tvOS 11.0, *) {
-          if UIKit.UIColor(named: "dark-dark", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Color named 'dark-dark' is used in storyboard 'Gallery', but couldn't be loaded.") }
+          if UIKit.UIColor(named: "darkDark", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Color named 'darkDark' is used in storyboard 'Gallery', but couldn't be loaded.") }
         }
         if _R.storyboard.gallery().galleryVC() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'galleryVC' could not be loaded from storyboard 'Gallery' as 'GalleryViewController'.") }
       }
@@ -614,8 +1280,8 @@ struct _R: Rswift.Validatable {
       static func validate() throws {
         if UIKit.UIImage(named: "gLetter", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'gLetter' is used in storyboard 'LaunchScreen', but couldn't be loaded.") }
         if #available(iOS 11.0, tvOS 11.0, *) {
-          if UIKit.UIColor(named: "dark-dark", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Color named 'dark-dark' is used in storyboard 'LaunchScreen', but couldn't be loaded.") }
-          if UIKit.UIColor(named: "white-dark", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Color named 'white-dark' is used in storyboard 'LaunchScreen', but couldn't be loaded.") }
+          if UIKit.UIColor(named: "darkDark", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Color named 'darkDark' is used in storyboard 'LaunchScreen', but couldn't be loaded.") }
+          if UIKit.UIColor(named: "whiteDark", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Color named 'whiteDark' is used in storyboard 'LaunchScreen', but couldn't be loaded.") }
         }
       }
 
@@ -638,7 +1304,7 @@ struct _R: Rswift.Validatable {
       static func validate() throws {
         if UIKit.UIImage(named: "gLetter", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'gLetter' is used in storyboard 'Login', but couldn't be loaded.") }
         if #available(iOS 11.0, tvOS 11.0, *) {
-          if UIKit.UIColor(named: "dark-dark", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Color named 'dark-dark' is used in storyboard 'Login', but couldn't be loaded.") }
+          if UIKit.UIColor(named: "darkDark", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Color named 'darkDark' is used in storyboard 'Login', but couldn't be loaded.") }
           if UIKit.UIColor(named: "white-dark", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Color named 'white-dark' is used in storyboard 'Login', but couldn't be loaded.") }
         }
         if _R.storyboard.login().loginVC() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'loginVC' could not be loaded from storyboard 'Login' as 'LoginViewController'.") }

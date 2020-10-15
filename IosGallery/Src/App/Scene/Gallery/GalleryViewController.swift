@@ -25,12 +25,14 @@ class GalleryViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        registerNib()
+        createSearchBar()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         prepareView()
+//        setupTitleNavigationBar(entity: .accountGallery)
     }
     
     func prepareView() {
@@ -51,6 +53,11 @@ class GalleryViewController: UIViewController {
 //        self.navigationItem.hidesSearchBarWhenScrolling = false
 //        self.navigationItem.searchController = self.searchController
     }
+    
+    func registerNib() {
+        let galletyNib = R.nib.galleryCell
+        collectionView.register(galletyNib)
+    }
 
 }
 
@@ -64,10 +71,13 @@ extension GalleryViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: R.nib.galleryCell.identifier, for: indexPath)
         
-        return UICollectionViewCell()
+        return cell
     }
-    
+}
+
+extension GalleryViewController: UICollectionViewDelegateFlowLayout {
     
 }
 

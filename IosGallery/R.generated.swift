@@ -367,6 +367,50 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
 
+  /// This `R.nib` struct is generated, and contains static references to 2 nibs.
+  struct nib {
+    /// Nib `AccountCell`.
+    static let accountCell = _R.nib._AccountCell()
+    /// Nib `GalleryCell`.
+    static let galleryCell = _R.nib._GalleryCell()
+
+    #if os(iOS) || os(tvOS)
+    /// `UINib(name: "AccountCell", in: bundle)`
+    @available(*, deprecated, message: "Use UINib(resource: R.nib.accountCell) instead")
+    static func accountCell(_: Void = ()) -> UIKit.UINib {
+      return UIKit.UINib(resource: R.nib.accountCell)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UINib(name: "GalleryCell", in: bundle)`
+    @available(*, deprecated, message: "Use UINib(resource: R.nib.galleryCell) instead")
+    static func galleryCell(_: Void = ()) -> UIKit.UINib {
+      return UIKit.UINib(resource: R.nib.galleryCell)
+    }
+    #endif
+
+    static func accountCell(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> AccountCell? {
+      return R.nib.accountCell.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? AccountCell
+    }
+
+    static func galleryCell(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> GalleryCell? {
+      return R.nib.galleryCell.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? GalleryCell
+    }
+
+    fileprivate init() {}
+  }
+
+  /// This `R.reuseIdentifier` struct is generated, and contains static references to 2 reuse identifiers.
+  struct reuseIdentifier {
+    /// Reuse identifier `accountCell`.
+    static let accountCell: Rswift.ReuseIdentifier<AccountCell> = Rswift.ReuseIdentifier(identifier: "accountCell")
+    /// Reuse identifier `galleryCell`.
+    static let galleryCell: Rswift.ReuseIdentifier<GalleryCell> = Rswift.ReuseIdentifier(identifier: "galleryCell")
+
+    fileprivate init() {}
+  }
+
   fileprivate struct intern: Rswift.Validatable {
     fileprivate static func validate() throws {
       try _R.validate()
@@ -386,6 +430,40 @@ struct _R: Rswift.Validatable {
     try storyboard.validate()
     #endif
   }
+
+  #if os(iOS) || os(tvOS)
+  struct nib {
+    struct _AccountCell: Rswift.NibResourceType, Rswift.ReuseIdentifierType {
+      typealias ReusableType = AccountCell
+
+      let bundle = R.hostingBundle
+      let identifier = "accountCell"
+      let name = "AccountCell"
+
+      func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> AccountCell? {
+        return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? AccountCell
+      }
+
+      fileprivate init() {}
+    }
+
+    struct _GalleryCell: Rswift.NibResourceType, Rswift.ReuseIdentifierType {
+      typealias ReusableType = GalleryCell
+
+      let bundle = R.hostingBundle
+      let identifier = "galleryCell"
+      let name = "GalleryCell"
+
+      func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> GalleryCell? {
+        return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? GalleryCell
+      }
+
+      fileprivate init() {}
+    }
+
+    fileprivate init() {}
+  }
+  #endif
 
   #if os(iOS) || os(tvOS)
   struct storyboard: Rswift.Validatable {

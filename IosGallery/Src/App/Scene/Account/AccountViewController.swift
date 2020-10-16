@@ -60,17 +60,21 @@ class AccountViewController: UIViewController {
 }
 
 extension AccountViewController: UITableViewDelegate {
-    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
+    }
 }
 
 extension AccountViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        return 50
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: R.nib.accountCell.identifier, for: indexPath)
-        
+        let cell = tableView.dequeueReusableCell(withIdentifier: R.nib.accountCell.identifier, for: indexPath) as! AccountCell
+        cell.accountImageView.image = R.image.testPlaceholderBlueSquare()!
+        cell.nameLabel.text = "Test name"
+        cell.descriptionLabel.text = "This is test description text. This is test description text. This is test description text. This is test description text."
         return cell
     }
     

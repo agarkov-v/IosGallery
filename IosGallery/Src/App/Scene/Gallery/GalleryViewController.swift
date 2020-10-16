@@ -14,6 +14,7 @@ class GalleryViewController: UIViewController {
     
     var presenter: GalleryPresenterProtocol!
     private var searchController = UISearchController(searchResultsController: nil)
+    private var currentIndexPath: IndexPath?
     //second variant
 //    private var searchController: UISearchController {
 //        let searchController = UISearchController()
@@ -33,6 +34,19 @@ class GalleryViewController: UIViewController {
         super.viewWillAppear(animated)
         prepareView()
 //        setupTitleNavigationBar(entity: .accountGallery)
+    }
+    
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        if self.view.window != nil {
+            self.collectionView.collectionViewLayout.invalidateLayout()
+            if let indexPath = self.currentIndexPath {
+                DispatchQueue.main.async {
+                    self.collectionView.scrollToItem(at: indexPath,
+                                                     at: .centeredVertically,
+                                                     animated: false)
+                }
+            }
+        }
     }
     
     func prepareView() {
@@ -58,6 +72,13 @@ class GalleryViewController: UIViewController {
         let galletyNib = R.nib.galleryCell
         collectionView.register(galletyNib)
     }
+    
+    func collectionCellSize(noOfCellsInRow: Int, leftSectionInset: CGFloat, rightSectionInset: CGFloat, minInteritemSpacing: CGFloat) -> Int {
+        let minInteritemSpacing = minInteritemSpacing * CGFloat((noOfCellsInRow - 1))
+        let totalSpace = (leftSectionInset + rightSectionInset + minInteritemSpacing)
+        let cellSize = (Int(collectionView.bounds.width) - Int(totalSpace)) / noOfCellsInRow
+        return cellSize
+    }
 
 }
 
@@ -67,17 +88,46 @@ extension GalleryViewController: UICollectionViewDelegate {
 
 extension GalleryViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 0
+        return 60
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: R.nib.galleryCell.identifier, for: indexPath)
-        
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: R.nib.galleryCell.identifier, for: indexPath) as! GalleryCell
+        let visibles = collectionView.indexPathsForVisibleItems.sorted()
+        if !visibles.isEmpty {
+            self.currentIndexPath = visibles[visibles.count / 2]
+        }
+        cell.galleryImageView.image = R.image.testPlaceholderImage()
         return cell
     }
 }
 
 extension GalleryViewController: UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 20, left: 16, bottom: 20, right: 16)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 10
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 5
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let leftInset = CGFloat(16)
+        let rightSectionInset = CGFloat(16)
+        let minInteritemSpacing = CGFloat(10)
+        if UIDevice.current.orientation.isLandscape {
+            let cellSize = collectionCellSize(noOfCellsInRow: 3, leftSectionInset: leftInset, rightSectionInset: rightSectionInset, minInteritemSpacing: minInteritemSpacing)
+            return CGSize(width: cellSize, height: cellSize)
+        }
+        let cellSize = collectionCellSize(noOfCellsInRow: 2, leftSectionInset: leftInset, rightSectionInset: rightSectionInset, minInteritemSpacing: minInteritemSpacing)
+        return CGSize(width: cellSize, height: cellSize)
+
+    }
     
 }
 

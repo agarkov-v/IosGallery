@@ -9,16 +9,19 @@ import UIKit
 
 class ImportViewController: UIViewController {
 
-    @IBOutlet weak var importImageView: UIScrollView!
+ 
+    @IBOutlet weak var importImageView: UIImageView!
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var descriptionTextView: UITextView!
     
     var presenter: ImportPresenterProtocol!
+//    private let pickerController = UIImagePickerController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         configureBarButtonItem()
+        configureImageGesture()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -64,7 +67,29 @@ class ImportViewController: UIViewController {
     @objc func onRightBarButtonItem() {
         print("onRightBarButtonItem click")
     }
-
+    
+    func showImagePickerController(sourceType: UIImagePickerController.SourceType) {
+        let imagePickerController = UIImagePickerController()
+        imagePickerController.sourceType = sourceType
+        imagePickerController.delegate = self
+        imagePickerController.allowsEditing = true
+        present(imagePickerController, animated: true, completion: nil)
+    }
+    
+    func configureImageGesture() {
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(showImagePickerControllerActionSheet))
+        importImageView.addGestureRecognizer(tapGestureRecognizer)
+        importImageView.isUserInteractionEnabled = true
+    }
+    
+    @objc func showImagePickerControllerActionSheet() {
+        self.showActionSheetAlert(title: "",
+                                  message: "Choose image from:".localization(),
+                                  firstActionTitle: "Photo library".localization(),
+                                  secondActionTitle: "Camera".localization(),
+                                  firstCompletion: { [weak self] in self?.showImagePickerController(sourceType: .photoLibrary) },
+                                  secondCompletion: { [weak self] in self?.showImagePickerController(sourceType: .camera) })
+    }
 }
 
 extension ImportViewController: UITextViewDelegate {
@@ -93,4 +118,15 @@ extension ImportViewController: UITextViewDelegate {
 
 extension ImportViewController: ImportView {
     
+}
+
+extension ImportViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        if let editedImage = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
+            importImageView.image = editedImage
+        } else if let originalImage = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
+            importImageView.image = originalImage
+        }
+        dismiss(animated: true, completion: nil)
+    }
 }

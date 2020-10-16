@@ -17,15 +17,13 @@
                 <rect key="frame" x="0.0" y="0.0" width="166" height="166"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Zvx-y5-zEC">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Zvx-y5-zEC">
                         <rect key="frame" x="0.0" y="0.0" width="166" height="166"/>
-                        <constraints>
-                            <constraint firstAttribute="width" secondItem="Zvx-y5-zEC" secondAttribute="height" multiplier="1:1" id="pmH-Nb-HFs"/>
-                        </constraints>
                     </imageView>
                 </subviews>
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="Zvx-y5-zEC" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="NdT-Qj-L71"/>
                 <constraint firstAttribute="trailing" secondItem="Zvx-y5-zEC" secondAttribute="trailing" id="Qn3-a2-ybh"/>

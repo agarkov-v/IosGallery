@@ -11,6 +11,7 @@ extension UITextField {
 
     func setRightViewIcon(icon: UIImage) {
         let buttonView = UIButton(frame: CGRect(x: 0, y: 0, width: ((self.frame.height) * 0.70), height: ((self.frame.height) * 0.70)))
+        buttonView.imageEdgeInsets = UIEdgeInsets(top: 0, left: -10, bottom: 0, right: 0)
 
         buttonView.setImage(icon.withRenderingMode(UIImage.RenderingMode.alwaysTemplate), for: .normal)
         buttonView.tintColor = .lightGray
@@ -25,7 +26,6 @@ extension UITextField {
         self.isSecureTextEntry.toggle()
         
         if button.tintColor == .lightGray {
-//            button.tintColor = UIColor(red: 0.465, green: 0.166, blue: 0.952, alpha: 1)
             button.tintColor = R.color.pink()
         } else {
             button.tintColor = .lightGray

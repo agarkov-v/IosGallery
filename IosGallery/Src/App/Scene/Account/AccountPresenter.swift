@@ -14,10 +14,10 @@ protocol AccountView: BaseView {
 }
 
 protocol AccountPresenterProtocol {
-    
+    func openAccountSettings()
 }
 
-class AccountPresenter {
+class AccountPresenter: AccountPresenterProtocol {
     
     private weak var view: AccountView!
     private let router: AccountRouter
@@ -28,8 +28,9 @@ class AccountPresenter {
         self.view = view
         self.router = router
     }
+    
+    func openAccountSettings() {
+        router.openAccountSettings()
+    }
 }
 
-extension AccountPresenter: AccountPresenterProtocol {
-    
-}

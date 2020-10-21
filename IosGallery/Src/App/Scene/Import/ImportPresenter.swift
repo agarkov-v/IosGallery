@@ -17,7 +17,7 @@ protocol ImportPresenterProtocol {
     
 }
 
-class ImportPresenter {
+class ImportPresenter: ImportPresenterProtocol {
     
     private weak var view: ImportView!
     private let router: ImportRouter
@@ -28,9 +28,5 @@ class ImportPresenter {
         self.view = view
         self.router = router
     }
-}
-
-extension ImportPresenter: ImportPresenterProtocol {
-    
 }
 

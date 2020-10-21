@@ -53,8 +53,8 @@
                         <constraints>
                             <constraint firstItem="SWb-Xa-pQN" firstAttribute="leading" secondItem="NIi-MK-BfR" secondAttribute="leading" id="GnH-tm-p72"/>
                             <constraint firstItem="NIi-MK-BfR" firstAttribute="trailing" secondItem="SWb-Xa-pQN" secondAttribute="trailing" id="LOo-SY-QFi"/>
-                            <constraint firstItem="NIi-MK-BfR" firstAttribute="trailing" secondItem="KXe-Qw-i2Y" secondAttribute="trailing" id="TQN-q6-0D9"/>
-                            <constraint firstItem="KXe-Qw-i2Y" firstAttribute="leading" secondItem="NIi-MK-BfR" secondAttribute="leading" id="f3w-Wd-UZs"/>
+                            <constraint firstAttribute="trailing" secondItem="KXe-Qw-i2Y" secondAttribute="trailing" id="TQN-q6-0D9"/>
+                            <constraint firstItem="KXe-Qw-i2Y" firstAttribute="leading" secondItem="awg-S7-6CR" secondAttribute="leading" id="f3w-Wd-UZs"/>
                             <constraint firstItem="KXe-Qw-i2Y" firstAttribute="top" secondItem="NIi-MK-BfR" secondAttribute="top" constant="10" id="g0A-wl-fdE"/>
                             <constraint firstItem="NIi-MK-BfR" firstAttribute="bottom" secondItem="SWb-Xa-pQN" secondAttribute="bottom" id="iqg-tx-yoe"/>
                             <constraint firstItem="SWb-Xa-pQN" firstAttribute="top" secondItem="KXe-Qw-i2Y" secondAttribute="bottom" id="sRh-rh-0Y3"/>
@@ -75,7 +75,7 @@
     </scenes>
     <resources>
         <namedColor name="darkDark">
-            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.97254901960784312" green="0.97254901960784312" blue="0.97254901960784312" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <namedColor name="gray">
             <color red="0.90196078431372551" green="0.90196078431372551" blue="0.90196078431372551" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>

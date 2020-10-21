@@ -43,6 +43,10 @@
 "Choose image from" = "Выбрать изображение из:";
 "Photo library" = "Библиотеки фото";
 "Camera" = "Камеры";
+
 "This app wants to use your photo libraru" = "Приложение хочет использовать вашу библиотеку фотографий";
 "This app wants to use your camera" = "Приложение хочет использовать вашу камеру";
+
+"Dark app icon:" = "Темная иконка приложения:";
+
 

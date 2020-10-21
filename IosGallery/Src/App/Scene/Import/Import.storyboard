@@ -24,7 +24,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nOg-Df-uGM">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="619"/>
                                         <subviews>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="photoPlaceholderNew" translatesAutoresizingMaskIntoConstraints="NO" id="41l-jw-Bxz">
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="photoPlaceholder" translatesAutoresizingMaskIntoConstraints="NO" id="41l-jw-Bxz">
                                                 <rect key="frame" x="0.0" y="30" width="375" height="200"/>
                                                 <color key="tintColor" name="placeholderGray"/>
                                                 <constraints>
@@ -95,9 +95,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="photoPlaceholderNew" width="256" height="256"/>
+        <image name="photoPlaceholder" width="256" height="256"/>
         <namedColor name="darkDark">
-            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.97254901960784312" green="0.97254901960784312" blue="0.97254901960784312" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <namedColor name="placeholderGray">
             <color red="0.7803921568627451" green="0.7803921568627451" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

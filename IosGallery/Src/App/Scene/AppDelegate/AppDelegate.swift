@@ -8,7 +8,8 @@
 import UIKit
 import IQKeyboardManager
 #if DEBUG
-import CocoaDebug
+    import CocoaDebug
+//    import DBDebugToolkit
 #endif
 
 @main
@@ -19,7 +20,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         #if DEBUG
-//        CocoaDebug.enable()
+            CocoaDebug.enable()
+//            DBDebugToolkit.setup()
         #endif
         IQKeyboardManager.shared().isEnabled = true
         openStartScreen(window: window)

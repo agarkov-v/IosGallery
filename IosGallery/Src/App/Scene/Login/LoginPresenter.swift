@@ -17,7 +17,7 @@ protocol LoginPresenterProtocol {
     
 }
 
-class LoginPresenter {
+class LoginPresenter: LoginPresenterProtocol {
     
     private weak var view: LoginView!
     private let router: LoginRouter
@@ -28,8 +28,4 @@ class LoginPresenter {
         self.view = view
         self.router = router
     }
-}
-
-extension LoginPresenter: LoginPresenterProtocol {
-    
 }

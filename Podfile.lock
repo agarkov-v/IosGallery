@@ -1,6 +1,7 @@
 PODS:
   - CocoaDebug (1.4.8):
     - FBRetainCycleDetector
+  - DBDebugToolkit (0.6.0)
   - DITranquillity (4.1.1):
     - SwiftLazy (>= 1.1.6)
   - FBRetainCycleDetector (0.1.4)
@@ -20,6 +21,7 @@ PODS:
 
 DEPENDENCIES:
   - CocoaDebug
+  - DBDebugToolkit
   - DITranquillity
   - IQKeyboardManager
   - Kingfisher
@@ -29,6 +31,7 @@ DEPENDENCIES:
 SPEC REPOS:
   trunk:
     - CocoaDebug
+    - DBDebugToolkit
     - DITranquillity
     - FBRetainCycleDetector
     - IQKeyboardManager
@@ -42,6 +45,7 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   CocoaDebug: 438fed049090d61c777d464eb2771ca87e1430ed
+  DBDebugToolkit: 03eb3483da4daf03b853b83ade5a8da9c8b7aff4
   DITranquillity: f03d76911e8b63df0a4d393932de9a9a415938e7
   FBRetainCycleDetector: 46f8179bbb1c587deee3ea838a1a3ee02acf5015
   IQKeyboardManager: 2a6e97afdafc7becf0cb17a9a8d795e3a980717f
@@ -53,6 +57,6 @@ SPEC CHECKSUMS:
   SwiftLazy: dcb1edc6c2b633ba2e68f28554d9dd6d1c0bfd13
   SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
 
-PODFILE CHECKSUM: 372cf6fdfce1bd6c032abfc3156d0daf5e1f1320
+PODFILE CHECKSUM: fac01457d0db8d8817c9b5888645a62f87604fea
 
 COCOAPODS: 1.9.3

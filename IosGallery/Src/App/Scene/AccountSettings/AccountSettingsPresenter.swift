@@ -14,10 +14,10 @@ protocol AccountSettingsView: BaseView {
 }
 
 protocol AccountSettingsPresenterProtocol {
-    
+    func onBackBarButtonItem()
 }
 
-class AccountSettingsPresenter {
+class AccountSettingsPresenter: AccountSettingsPresenterProtocol {
     
     private weak var view: AccountSettingsView!
     private let router: AccountSettingsRouter
@@ -28,9 +28,9 @@ class AccountSettingsPresenter {
         self.view = view
         self.router = router
     }
-}
-
-extension AccountSettingsPresenter: AccountSettingsPresenterProtocol {
     
+    func onBackBarButtonItem() {
+        router.pop()
+    }
 }
 

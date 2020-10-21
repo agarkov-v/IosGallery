@@ -14,10 +14,10 @@ protocol GalleryView: BaseView {
 }
 
 protocol GalleryPresenterProtocol {
-    
+    func openTestDetail(image: UIImage, label: String, user: String, date: String, descr: String)
 }
 
-class GalleryPresenter {
+class GalleryPresenter: GalleryPresenterProtocol {
     
     private weak var view: GalleryView!
     private let router: GalleryRouter
@@ -28,8 +28,8 @@ class GalleryPresenter {
         self.view = view
         self.router = router
     }
-}
-
-extension GalleryPresenter: GalleryPresenterProtocol {
     
+    func openTestDetail(image: UIImage, label: String, user: String, date: String, descr: String) {
+        router.openTestDetail(image: image, label: label, user: user, date: date, descr: descr)
+    }
 }

@@ -27,7 +27,7 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        LoginConfigurator().configure(view: self)
         let viewGesture = UITapGestureRecognizer(target: self, action: #selector(onViewTap))
         view.addGestureRecognizer(viewGesture)
     }
@@ -63,7 +63,7 @@ class LoginViewController: UIViewController {
         loginTextField.layer.cornerRadius = 4
         passwordTextField.layer.cornerRadius = 4
         signInButton.layer.cornerRadius = 4
-        passwordTextField.setRightViewIcon(icon: R.image.eye_icon()!)
+        passwordTextField.setRightViewIcon(icon: R.image.eyeIcon()!)
     }
     
     func loadInLanscape() {

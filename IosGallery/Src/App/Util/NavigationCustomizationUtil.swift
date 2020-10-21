@@ -32,92 +32,102 @@ extension UIViewController {
         return navVC
     }
     
-    func setupTitleNavigationBar(entity: NavigationType) {
-        let title = entity.title
+    func setupTitleNavigationBar(entity: NavigationType? = nil, _ customString: String = "") {
+        var title: String
+        let image = R.image.arrowLeft()
+        let tintColor = R.color.whiteDark()
 
-        navVC?.navigationBar.topItem?.title = title
-        self.navigationItem.title = title
-        // removed ios 14 long tap
-        if #available(iOS 14.0, *) {
-            addBackBarButtonOnNavigationBar()
+        if let entity = entity {
+            title = entity.title
         } else {
-            self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+            title = customString
         }
-        
+        navVC?.navigationBar.topItem?.title = title
+        navVC?.navigationBar.isTranslucent = true
+        self.navigationItem.title = title
+        navVC?.navigationBar.tintColor = tintColor
         navVC?.navigationBar.titleTextAttributes = [
             NSAttributedString.Key.font: UIFont.systemFont(ofSize: 18, weight: UIFont.Weight.semibold)
         ]
-        navVC?.navigationBar.tintColor = .black
-        
-        
-        let backButtonBackgroundImage = R.image.arrowLeft()
+
         if #available(iOS 13.0, *) {
             let barAppearance = UINavigationBarAppearance()
-            barAppearance.setBackIndicatorImage(backButtonBackgroundImage, transitionMaskImage: backButtonBackgroundImage)
+            barAppearance.setBackIndicatorImage(image, transitionMaskImage: image)
+            navVC?.navigationBar.backIndicatorImage = image
+            navVC?.navigationBar.backIndicatorTransitionMaskImage = image
         } else {
-            navVC?.navigationBar.backIndicatorImage = backButtonBackgroundImage
-            navVC?.navigationBar.backIndicatorTransitionMaskImage = backButtonBackgroundImage
+            navVC?.navigationBar.backIndicatorImage = image
+            navVC?.navigationBar.backIndicatorTransitionMaskImage = image
         }
+        if #available(iOS 14.0, *) {
+            self.addBackBarButtonOnNavigationBar()
+        }
+
     }
     
     func addBackBarButtonOnNavigationBar() {
-        let backBtn: BaseBackBarButtonItem = BaseBackBarButtonItem(image: R.image.arrowLeft(), style: .plain, target: self, action: #selector(backButtonAction))
-        backBtn.tintColor = .black
+        let backImage: UIImage = UIImage()
+        let backBtn: BaseBackBarButtonItem = BaseBackBarButtonItem(image: backImage, style: .plain, target: self, action: #selector(backButtonAction))
+        backBtn.tintColor = R.color.whiteDark()
         backBtn.setTitleTextAttributes([NSAttributedString.Key.font: UIFont.systemFont(ofSize: 18, weight: UIFont.Weight.semibold)], for: .normal)
         navigationItem.backBarButtonItem = backBtn
+
     }
     
     @objc func backButtonAction() {
         self.navigationController!.popViewController(animated: true)
     }
-
     
-    func setupTitleNavigationBar(title: String) {
-        let locTitle = title.localization()
-        navVC?.navigationBar.topItem?.title = locTitle
-        self.navigationItem.title = locTitle
-        // removed ios 14 long tap
-        if #available(iOS 14.0, *) {
-            addBackBarButtonOnNavigationBar()
+    func addBackBarButtonOnNavigationBar(action: Selector, entity: NavigationType? = nil, _ customString: String = "") {
+        let image = R.image.arrowLeft()
+        let tintColor = R.color.whiteDark()
+        var title: String
+        if let entity = entity {
+            title = entity.title
         } else {
-            self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+            title = customString
         }
-        navVC?.navigationBar.tintColor = .black
-        navVC?.navigationBar.titleTextAttributes = [
-            NSAttributedString.Key.font: UIFont.systemFont(ofSize: 18, weight: UIFont.Weight.semibold)
-        ]
         
-        let backButtonBackgroundImage = R.image.arrowLeft()
-        if #available(iOS 13.0, *) {
-            let barAppearance = UINavigationBarAppearance()
-            barAppearance.setBackIndicatorImage(backButtonBackgroundImage, transitionMaskImage: backButtonBackgroundImage)
-        } else {
-            navVC?.navigationBar.backIndicatorImage = backButtonBackgroundImage
-            navVC?.navigationBar.backIndicatorTransitionMaskImage = backButtonBackgroundImage
-        }
+        navVC?.navigationBar.topItem?.title = title
+        self.navigationItem.title = title
+        navVC?.navigationBar.isTranslucent = true
+        
+        let backBtn: BaseBackBarButtonItem = BaseBackBarButtonItem(image: image, style: .plain, target: self, action: action)
+        backBtn.tintColor = tintColor
+        backBtn.setTitleTextAttributes([NSAttributedString.Key.font: UIFont.systemFont(ofSize: 18, weight: UIFont.Weight.semibold)], for: .normal)
+        navigationItem.backBarButtonItem = backBtn
     }
+ 
     
-    func setupActionBackButton(action: Selector) {
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: R.image.arrowLeft(), style: .done, target: self, action: action)
-        self.navigationItem.leftBarButtonItem?.imageInsets = UIEdgeInsets(top: -1, left: -8, bottom: 0, right: 0)
+    func setupActionLeftButton(action: Selector) {
+        let image = R.image.arrowLeft()
+        let tintColor = R.color.whiteDark()
+        let edgeInsets = UIEdgeInsets(top: -1, left: -8, bottom: 0, right: 0)
+        
+        navVC?.navigationBar.isTranslucent = true
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: image, style: .done, target: self, action: action)
+        self.navigationItem.leftBarButtonItem?.tintColor = tintColor
+        self.navigationItem.leftBarButtonItem?.imageInsets = edgeInsets
     }
     
     func setupDefaultNavigationBar() {
         let title = "Gallery"
+        let image = R.image.arrowLeft()
+        let tintColor = R.color.whiteDark()
+        
+        navVC?.navigationBar.tintColor = tintColor
+        navVC?.navigationBar.backIndicatorImage = image
+        navVC?.navigationBar.backIndicatorTransitionMaskImage = image
         
         navVC?.navigationBar.topItem?.title = title.localization()
         self.navigationItem.title = title.localization()
-        // removed ios 14 long tap
-        if #available(iOS 14.0, *) {
-            addBackBarButtonOnNavigationBar()
-        } else {
-            self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
-        }
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         navVC?.navigationBar.titleTextAttributes = [
             NSAttributedString.Key.font: UIFont.systemFont(ofSize: 18, weight: UIFont.Weight.semibold)
         ]
-        navVC?.navigationBar.tintColor = .black
-        navVC?.navigationBar.backIndicatorImage = R.image.arrowLeft()
-        navVC?.navigationBar.backIndicatorTransitionMaskImage = R.image.arrowLeft()
+        // removed ios 14 long tap
+        if #available(iOS 14.0, *) {
+            addBackBarButtonOnNavigationBar()
+        }
     }
 }

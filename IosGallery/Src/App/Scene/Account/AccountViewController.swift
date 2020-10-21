@@ -17,7 +17,7 @@ class AccountViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        AccountConfigurator().configure(view: self)
         tableView.delegate = self
         tableView.dataSource = self
         registerNib()
@@ -48,6 +48,7 @@ class AccountViewController: UIViewController {
     
     @objc func onRightBarButtonItem() {
         print("onRightBarButtonItem click")
+        presenter.openAccountSettings()
     }
     
     func registerNib() {

@@ -17,7 +17,7 @@ protocol DetailPresenterProtocol {
     
 }
 
-class DetailPresenter {
+class DetailPresenter: DetailPresenterProtocol {
     
     private weak var view: DetailView!
     private let router: DetailRouter
@@ -28,8 +28,4 @@ class DetailPresenter {
         self.view = view
         self.router = router
     }
-}
-
-extension DetailPresenter: DetailPresenterProtocol {
-    
 }

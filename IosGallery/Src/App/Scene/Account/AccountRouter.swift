@@ -15,4 +15,7 @@ class AccountRouter: BaseRouter {
         self.view = view
     }
     
+    func openAccountSettings() {
+        AccountSettingsConfigurator.open(navigationController: view.navigationController!)
+    }
 }

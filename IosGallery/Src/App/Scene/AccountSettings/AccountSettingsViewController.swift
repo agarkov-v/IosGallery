@@ -9,9 +9,11 @@ import UIKit
 
 class AccountSettingsViewController: UIViewController {
 
-    @IBOutlet weak var colorModeView: UIView!
+    @IBOutlet weak var modeView: UIView!
     @IBOutlet weak var colorModeLabel: UILabel!
     @IBOutlet weak var colorModeSegmentControl: UISegmentedControl!
+    @IBOutlet weak var iconModeLabel: UILabel!
+    @IBOutlet weak var iconModeSwitch: UISwitch!
     @IBOutlet weak var personalDataLabel: UILabel!
     @IBOutlet weak var userNameTextField: UITextField!
     @IBOutlet weak var birthdayTextField: UITextField!
@@ -25,6 +27,8 @@ class AccountSettingsViewController: UIViewController {
     @IBOutlet weak var errorView: UIView!
     @IBOutlet weak var errorLabel: UILabel!
     
+    private let appIconService = AppIconService()
+    private let userDefaults = UserDefaults.standard
     var presenter: AccountSettingsPresenterProtocol!
     
     override func viewDidLoad() {
@@ -35,19 +39,22 @@ class AccountSettingsViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        setupTitleNavigationBar(title: "Settings")
+        
         if #available(iOS 13.0, *) {
-            colorModeView.isHidden = false
+            modeView.isHidden = false
+            userDefaults.bool(forKey: "isDarkModeIcon") ? iconModeSwitch.setOn(true, animated: false) : iconModeSwitch.setOn(false, animated: false)
         } else {
-            colorModeView.isHidden = true
+            modeView.isHidden = true
         }
         prepateView()
-        setupActionBackButton(action: #selector(onBackButtonTap))
+        addBackBarButtonOnNavigationBar(action: #selector(onBackButtonTap), "Settings")
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
+//        if isDarkModeIcon
+//
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -63,13 +70,26 @@ class AccountSettingsViewController: UIViewController {
 //        }
     }
     
-    @objc func onBackButtonTap() {
+    @IBAction func onIconModeSwitch(_ sender: UISwitch) {
+        if sender.isOn {
+            appIconService.changeAppIcon(to: .iconDark)
+            userDefaults.set(true, forKey: "isDarkModeIcon")
+        } else {
+            appIconService.changeAppIcon(to: .iconPrimary)
+            userDefaults.set(false, forKey: "isDarkModeIcon")
+        }
         
+//        sender.isOn ? appIconService.changeAppIcon(to: .iconDark) : appIconService.changeAppIcon(to: .iconPrimary)
+    }
+    
+    @objc func onBackButtonTap() {
+        presenter.onBackBarButtonItem()
     }
     
     func prepateView() {
         colorModeLabel.text = "Color mode:".localization()
         colorModeSegmentControl.setTitle("System".localization(), forSegmentAt: 0)
+        iconModeLabel.text = "Dark app icon:".localization()
         colorModeSegmentControl.setTitle("Light".localization(), forSegmentAt: 1)
         colorModeSegmentControl.setTitle("Dark".localization(), forSegmentAt: 2)
         personalDataLabel.text = "Personal data".localization()
@@ -83,13 +103,13 @@ class AccountSettingsViewController: UIViewController {
         passwordLabel.text = "Password".localization()
         oldPasswordTextField.layer.cornerRadius = 4
         oldPasswordTextField.placeholder = "Old password".localization()
-        oldPasswordTextField.setRightViewIcon(icon: R.image.eye_icon()!)
+        oldPasswordTextField.setRightViewIcon(icon: R.image.eyeIcon_second()!)
         newPasswordTextField.layer.cornerRadius = 4
         newPasswordTextField.placeholder = "New password".localization()
-        newPasswordTextField.setRightViewIcon(icon: R.image.eye_icon()!)
+        newPasswordTextField.setRightViewIcon(icon: R.image.eyeIcon_second()!)
         confirmPasswordTextField.layer.cornerRadius = 4
         confirmPasswordTextField.placeholder = "Confirm password".localization()
-        confirmPasswordTextField.setRightViewIcon(icon: R.image.eye_icon()!)
+        confirmPasswordTextField.setRightViewIcon(icon: R.image.eyeIcon_second()!)
         signOutButton.titleLabel?.text = "Sign Out".localization()
         signOutButton.layer.cornerRadius = 4
         

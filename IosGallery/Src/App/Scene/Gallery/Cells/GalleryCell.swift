@@ -18,17 +18,23 @@ class GalleryCell: UICollectionViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        self.layer.cornerRadius = 8
+        setupShadow()
+    }
+    
+    func setupShadow() {
+        let radius: CGFloat = 8
+        let bezierPath = UIBezierPath(roundedRect: bounds, byRoundingCorners: [.allCorners], cornerRadii: CGSize(width: radius, height: radius))
+        self.layer.masksToBounds = false
+        self.layer.cornerRadius = radius
         self.layer.shadowColor = UIColor.darkGray.cgColor
         self.layer.shadowOffset = CGSize(width: 0, height: 0)
-        self.layer.shadowRadius = 4
-        self.layer.shadowOpacity = 0.75
-        self.layer.masksToBounds = false
-        self.layer.shadowPath = UIBezierPath(roundedRect: bounds, cornerRadius: 8).cgPath
+        self.layer.shadowRadius = radius
+        self.layer.shadowOpacity = 0.7
+        self.layer.shadowPath = bezierPath.cgPath
         self.layer.shouldRasterize = true
         self.layer.rasterizationScale = UIScreen.main.scale
 
-        galleryImageView.layer.cornerRadius = 8
+        galleryImageView.layer.cornerRadius = radius
     }
     
 

@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="2jh-1c-8te">
-                                <rect key="frame" x="0.0" y="88" width="375" height="32"/>
+                                <rect key="frame" x="16" y="88" width="343" height="32"/>
                                 <segments>
                                     <segment title="New"/>
                                     <segment title="Popular"/>
@@ -45,8 +45,8 @@
                         <constraints>
                             <constraint firstItem="2jh-1c-8te" firstAttribute="top" secondItem="z6y-0r-zrB" secondAttribute="top" id="8cF-OQ-4gO"/>
                             <constraint firstItem="z6y-0r-zrB" firstAttribute="trailing" secondItem="hEd-KB-zWB" secondAttribute="trailing" id="Io6-BN-8ty"/>
-                            <constraint firstItem="z6y-0r-zrB" firstAttribute="trailing" secondItem="2jh-1c-8te" secondAttribute="trailing" id="J2c-2w-zmH"/>
-                            <constraint firstItem="2jh-1c-8te" firstAttribute="leading" secondItem="z6y-0r-zrB" secondAttribute="leading" id="JFJ-5s-Rde"/>
+                            <constraint firstItem="z6y-0r-zrB" firstAttribute="trailing" secondItem="2jh-1c-8te" secondAttribute="trailing" constant="16" id="J2c-2w-zmH"/>
+                            <constraint firstItem="2jh-1c-8te" firstAttribute="leading" secondItem="z6y-0r-zrB" secondAttribute="leading" constant="16" id="JFJ-5s-Rde"/>
                             <constraint firstItem="hEd-KB-zWB" firstAttribute="leading" secondItem="z6y-0r-zrB" secondAttribute="leading" id="gqm-E8-DrB"/>
                             <constraint firstItem="hEd-KB-zWB" firstAttribute="top" secondItem="2jh-1c-8te" secondAttribute="bottom" id="n9I-Z0-CXn"/>
                             <constraint firstItem="z6y-0r-zrB" firstAttribute="bottom" secondItem="hEd-KB-zWB" secondAttribute="bottom" id="olc-5o-ebV"/>
@@ -66,7 +66,7 @@
     </scenes>
     <resources>
         <namedColor name="darkDark">
-            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.97254901960784312" green="0.97254901960784312" blue="0.97254901960784312" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
     </resources>
 </document>

@@ -26,6 +26,7 @@ class GalleryViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        GalleryConfigurator().configure(view: self)
         registerNib()
         createSearchBar()
     }
@@ -34,6 +35,11 @@ class GalleryViewController: UIViewController {
         super.viewWillAppear(animated)
         prepareView()
 //        setupTitleNavigationBar(entity: .accountGallery)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        setupTitleNavigationBar("")
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
@@ -83,7 +89,9 @@ class GalleryViewController: UIViewController {
 }
 
 extension GalleryViewController: UICollectionViewDelegate {
-    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        presenter.openTestDetail(image: R.image.testPlaceholderImage()!, label: "Test name", user: "User123", date: "01.01.2000", descr: "This is test description.")
+    }
 }
 
 extension GalleryViewController: UICollectionViewDataSource {

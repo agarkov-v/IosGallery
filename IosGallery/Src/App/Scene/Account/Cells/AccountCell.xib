@@ -80,10 +80,10 @@
     </objects>
     <resources>
         <namedColor name="darkDark">
-            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.94131982329999997" green="0.94081562760000004" blue="0.96078830959999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <namedColor name="tableBaseView">
-            <color red="0.85098039215686272" green="0.8784313725490196" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.94901960784313721" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
     </resources>
 </document>

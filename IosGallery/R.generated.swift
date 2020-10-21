@@ -273,20 +273,80 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
 
-  /// This `R.image` struct is generated, and contains static references to 13 images.
+  /// This `R.file` struct is generated, and contains static references to 5 files.
+  struct file {
+    /// Resource file `iconDark@2x.png`.
+    static let iconDark2xPng = Rswift.FileResource(bundle: R.hostingBundle, name: "iconDark@2x", pathExtension: "png")
+    /// Resource file `iconDark@3x.png`.
+    static let iconDark3xPng = Rswift.FileResource(bundle: R.hostingBundle, name: "iconDark@3x", pathExtension: "png")
+    /// Resource file `iconDarkIpad.png`.
+    static let iconDarkIpadPng = Rswift.FileResource(bundle: R.hostingBundle, name: "iconDarkIpad", pathExtension: "png")
+    /// Resource file `iconDarkIpad@2x.png`.
+    static let iconDarkIpad2xPng = Rswift.FileResource(bundle: R.hostingBundle, name: "iconDarkIpad@2x", pathExtension: "png")
+    /// Resource file `iconDarkIpadPro.png`.
+    static let iconDarkIpadProPng = Rswift.FileResource(bundle: R.hostingBundle, name: "iconDarkIpadPro", pathExtension: "png")
+
+    /// `bundle.url(forResource: "iconDark@2x", withExtension: "png")`
+    static func iconDark2xPng(_: Void = ()) -> Foundation.URL? {
+      let fileResource = R.file.iconDark2xPng
+      return fileResource.bundle.url(forResource: fileResource)
+    }
+
+    /// `bundle.url(forResource: "iconDark@3x", withExtension: "png")`
+    static func iconDark3xPng(_: Void = ()) -> Foundation.URL? {
+      let fileResource = R.file.iconDark3xPng
+      return fileResource.bundle.url(forResource: fileResource)
+    }
+
+    /// `bundle.url(forResource: "iconDarkIpad", withExtension: "png")`
+    static func iconDarkIpadPng(_: Void = ()) -> Foundation.URL? {
+      let fileResource = R.file.iconDarkIpadPng
+      return fileResource.bundle.url(forResource: fileResource)
+    }
+
+    /// `bundle.url(forResource: "iconDarkIpad@2x", withExtension: "png")`
+    static func iconDarkIpad2xPng(_: Void = ()) -> Foundation.URL? {
+      let fileResource = R.file.iconDarkIpad2xPng
+      return fileResource.bundle.url(forResource: fileResource)
+    }
+
+    /// `bundle.url(forResource: "iconDarkIpadPro", withExtension: "png")`
+    static func iconDarkIpadProPng(_: Void = ()) -> Foundation.URL? {
+      let fileResource = R.file.iconDarkIpadProPng
+      return fileResource.bundle.url(forResource: fileResource)
+    }
+
+    fileprivate init() {}
+  }
+
+  /// This `R.image` struct is generated, and contains static references to 20 images.
   struct image {
+    /// Image `IconDark2`.
+    static let iconDark2 = Rswift.ImageResource(bundle: R.hostingBundle, name: "IconDark2")
+    /// Image `arrowLeft_old`.
+    static let arrowLeft_old = Rswift.ImageResource(bundle: R.hostingBundle, name: "arrowLeft_old")
     /// Image `arrowLeft`.
     static let arrowLeft = Rswift.ImageResource(bundle: R.hostingBundle, name: "arrowLeft")
-    /// Image `eye_icon`.
-    static let eye_icon = Rswift.ImageResource(bundle: R.hostingBundle, name: "eye_icon")
+    /// Image `eyeIcon_second`.
+    static let eyeIcon_second = Rswift.ImageResource(bundle: R.hostingBundle, name: "eyeIcon_second")
+    /// Image `eyeIcon`.
+    static let eyeIcon = Rswift.ImageResource(bundle: R.hostingBundle, name: "eyeIcon")
     /// Image `gLetter`.
     static let gLetter = Rswift.ImageResource(bundle: R.hostingBundle, name: "gLetter")
+    /// Image `iconDarkIpadPro`.
+    static let iconDarkIpadPro = Rswift.ImageResource(bundle: R.hostingBundle, name: "iconDarkIpadPro")
+    /// Image `iconDarkIpad`.
+    static let iconDarkIpad = Rswift.ImageResource(bundle: R.hostingBundle, name: "iconDarkIpad")
+    /// Image `iconDark`.
+    static let iconDark = Rswift.ImageResource(bundle: R.hostingBundle, name: "iconDark")
+    /// Image `iconPrimary`.
+    static let iconPrimary = Rswift.ImageResource(bundle: R.hostingBundle, name: "iconPrimary")
     /// Image `noInternetPlaceholder`.
     static let noInternetPlaceholder = Rswift.ImageResource(bundle: R.hostingBundle, name: "noInternetPlaceholder")
     /// Image `notFoundPlaceholder`.
     static let notFoundPlaceholder = Rswift.ImageResource(bundle: R.hostingBundle, name: "notFoundPlaceholder")
-    /// Image `photoPlaceholderNew`.
-    static let photoPlaceholderNew = Rswift.ImageResource(bundle: R.hostingBundle, name: "photoPlaceholderNew")
+    /// Image `photoPlaceholder_old`.
+    static let photoPlaceholder_old = Rswift.ImageResource(bundle: R.hostingBundle, name: "photoPlaceholder_old")
     /// Image `photoPlaceholder`.
     static let photoPlaceholder = Rswift.ImageResource(bundle: R.hostingBundle, name: "photoPlaceholder")
     /// Image `settingsGear`.
@@ -303,6 +363,13 @@ struct R: Rswift.Validatable {
     static let testPlaceholderImage = Rswift.ImageResource(bundle: R.hostingBundle, name: "testPlaceholderImage")
 
     #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "IconDark2", bundle: ..., traitCollection: ...)`
+    static func iconDark2(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.iconDark2, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
     /// `UIImage(named: "arrowLeft", bundle: ..., traitCollection: ...)`
     static func arrowLeft(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.arrowLeft, compatibleWith: traitCollection)
@@ -310,9 +377,23 @@ struct R: Rswift.Validatable {
     #endif
 
     #if os(iOS) || os(tvOS)
-    /// `UIImage(named: "eye_icon", bundle: ..., traitCollection: ...)`
-    static func eye_icon(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.eye_icon, compatibleWith: traitCollection)
+    /// `UIImage(named: "arrowLeft_old", bundle: ..., traitCollection: ...)`
+    static func arrowLeft_old(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.arrowLeft_old, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "eyeIcon", bundle: ..., traitCollection: ...)`
+    static func eyeIcon(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.eyeIcon, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "eyeIcon_second", bundle: ..., traitCollection: ...)`
+    static func eyeIcon_second(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.eyeIcon_second, compatibleWith: traitCollection)
     }
     #endif
 
@@ -320,6 +401,34 @@ struct R: Rswift.Validatable {
     /// `UIImage(named: "gLetter", bundle: ..., traitCollection: ...)`
     static func gLetter(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.gLetter, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "iconDark", bundle: ..., traitCollection: ...)`
+    static func iconDark(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.iconDark, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "iconDarkIpad", bundle: ..., traitCollection: ...)`
+    static func iconDarkIpad(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.iconDarkIpad, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "iconDarkIpadPro", bundle: ..., traitCollection: ...)`
+    static func iconDarkIpadPro(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.iconDarkIpadPro, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "iconPrimary", bundle: ..., traitCollection: ...)`
+    static func iconPrimary(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.iconPrimary, compatibleWith: traitCollection)
     }
     #endif
 
@@ -345,9 +454,9 @@ struct R: Rswift.Validatable {
     #endif
 
     #if os(iOS) || os(tvOS)
-    /// `UIImage(named: "photoPlaceholderNew", bundle: ..., traitCollection: ...)`
-    static func photoPlaceholderNew(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.photoPlaceholderNew, compatibleWith: traitCollection)
+    /// `UIImage(named: "photoPlaceholder_old", bundle: ..., traitCollection: ...)`
+    static func photoPlaceholder_old(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.photoPlaceholder_old, compatibleWith: traitCollection)
     }
     #endif
 
@@ -498,7 +607,7 @@ struct R: Rswift.Validatable {
       fileprivate init() {}
     }
 
-    /// This `R.string.localizable` struct is generated, and contains static references to 35 localization keys.
+    /// This `R.string.localizable` struct is generated, and contains static references to 38 localization keys.
     struct localizable {
       /// en translation: Account Gallery
       ///
@@ -536,6 +645,10 @@ struct R: Rswift.Validatable {
       ///
       /// Locales: ru, en
       static let dark = Rswift.StringResource(key: "Dark", tableName: "Localizable", bundle: R.hostingBundle, locales: ["ru", "en"], comment: nil)
+      /// en translation: Dark app icon:
+      ///
+      /// Locales: ru, en
+      static let darkAppIcon = Rswift.StringResource(key: "Dark app icon:", tableName: "Localizable", bundle: R.hostingBundle, locales: ["ru", "en"], comment: nil)
       /// en translation: Date of birth
       ///
       /// Locales: ru, en
@@ -620,6 +733,14 @@ struct R: Rswift.Validatable {
       ///
       /// Locales: ru, en
       static let system = Rswift.StringResource(key: "System", tableName: "Localizable", bundle: R.hostingBundle, locales: ["ru", "en"], comment: nil)
+      /// en translation: This app wants to use your camera
+      ///
+      /// Locales: ru, en
+      static let thisAppWantsToUseYourCamera = Rswift.StringResource(key: "This app wants to use your camera", tableName: "Localizable", bundle: R.hostingBundle, locales: ["ru", "en"], comment: nil)
+      /// en translation: This app wants to use your photo libraru
+      ///
+      /// Locales: ru, en
+      static let thisAppWantsToUseYourPhotoLibraru = Rswift.StringResource(key: "This app wants to use your photo libraru", tableName: "Localizable", bundle: R.hostingBundle, locales: ["ru", "en"], comment: nil)
       /// en translation: Upload Image
       ///
       /// Locales: ru, en
@@ -774,6 +895,21 @@ struct R: Rswift.Validatable {
         }
 
         return NSLocalizedString("Dark", bundle: bundle, comment: "")
+      }
+
+      /// en translation: Dark app icon:
+      ///
+      /// Locales: ru, en
+      static func darkAppIcon(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("Dark app icon:", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "Dark app icon:"
+        }
+
+        return NSLocalizedString("Dark app icon:", bundle: bundle, comment: "")
       }
 
       /// en translation: Date of birth
@@ -1091,6 +1227,36 @@ struct R: Rswift.Validatable {
         return NSLocalizedString("System", bundle: bundle, comment: "")
       }
 
+      /// en translation: This app wants to use your camera
+      ///
+      /// Locales: ru, en
+      static func thisAppWantsToUseYourCamera(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("This app wants to use your camera", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "This app wants to use your camera"
+        }
+
+        return NSLocalizedString("This app wants to use your camera", bundle: bundle, comment: "")
+      }
+
+      /// en translation: This app wants to use your photo libraru
+      ///
+      /// Locales: ru, en
+      static func thisAppWantsToUseYourPhotoLibraru(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("This app wants to use your photo libraru", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "This app wants to use your photo libraru"
+        }
+
+        return NSLocalizedString("This app wants to use your photo libraru", bundle: bundle, comment: "")
+      }
+
       /// en translation: Upload Image
       ///
       /// Locales: ru, en
@@ -1266,7 +1432,7 @@ struct _R: Rswift.Validatable {
       }
 
       static func validate() throws {
-        if UIKit.UIImage(named: "photoPlaceholderNew", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'photoPlaceholderNew' is used in storyboard 'Import', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "photoPlaceholder", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'photoPlaceholder' is used in storyboard 'Import', but couldn't be loaded.") }
         if #available(iOS 11.0, tvOS 11.0, *) {
           if UIKit.UIColor(named: "darkDark", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Color named 'darkDark' is used in storyboard 'Import', but couldn't be loaded.") }
           if UIKit.UIColor(named: "placeholderGray", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Color named 'placeholderGray' is used in storyboard 'Import', but couldn't be loaded.") }

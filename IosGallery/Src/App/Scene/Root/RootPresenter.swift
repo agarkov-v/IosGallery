@@ -17,7 +17,7 @@ protocol RootPresenterProtocol {
     
 }
 
-class RootPresenter {
+class RootPresenter: RootPresenterProtocol {
     
     private weak var view: RootView!
     private let router: RootRouter
@@ -28,8 +28,4 @@ class RootPresenter {
         self.view = view
         self.router = router
     }
-}
-
-extension RootPresenter: RootPresenterProtocol {
-    
 }

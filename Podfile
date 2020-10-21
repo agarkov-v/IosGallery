@@ -11,8 +11,8 @@ target 'IosGallery' do
   pod 'DITranquillity'
   pod 'IQKeyboardManager'
   pod 'R.swift'
-  pod 'CocoaDebug'
-  pod 'DBDebugToolkit'
+  pod 'CocoaDebug', :configurations => ['Debug']
+  pod "DBDebugToolkit", :configurations => ['Debug']
 
   target 'IosGalleryTests' do
     inherit! :search_paths

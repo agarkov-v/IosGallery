@@ -155,3 +155,9 @@ extension GalleryViewController: UISearchResultsUpdating {
 extension GalleryViewController: UISearchControllerDelegate {
     
 }
+
+extension GalleryViewController: ScrollableToTop {
+    func scrollToTop() {
+        self.collectionView.scrollToTop(true)
+    }
+}

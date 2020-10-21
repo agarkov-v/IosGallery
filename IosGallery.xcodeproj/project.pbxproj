@@ -73,6 +73,7 @@
 		23B26B4125405318003AAED1 /* iconDarkIpad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 23B26B3E25405318003AAED1 /* iconDarkIpad@2x.png */; };
 		23B26B4225405318003AAED1 /* iconDarkIpad.png in Resources */ = {isa = PBXBuildFile; fileRef = 23B26B3F25405318003AAED1 /* iconDarkIpad.png */; };
 		23B26B4325405318003AAED1 /* iconDarkIpadPro.png in Resources */ = {isa = PBXBuildFile; fileRef = 23B26B4025405318003AAED1 /* iconDarkIpadPro.png */; };
+		23B26BB225406C23003AAED1 /* ScrollViewUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B26BB125406C23003AAED1 /* ScrollViewUtil.swift */; };
 		B3D12C8061D6088850C217DC /* Pods_IosGallery_IosGalleryUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8CC792BF5BE182BAAD9D763 /* Pods_IosGallery_IosGalleryUITests.framework */; };
 		CB4D68FB3BA80F90F2AE8B7B /* Pods_IosGalleryTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD7CB0FB457936A61458D8D9 /* Pods_IosGalleryTests.framework */; };
 /* End PBXBuildFile section */
@@ -169,6 +170,7 @@
 		23B26B3E25405318003AAED1 /* iconDarkIpad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iconDarkIpad@2x.png"; sourceTree = "<group>"; };
 		23B26B3F25405318003AAED1 /* iconDarkIpad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iconDarkIpad.png; sourceTree = "<group>"; };
 		23B26B4025405318003AAED1 /* iconDarkIpadPro.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iconDarkIpadPro.png; sourceTree = "<group>"; };
+		23B26BB125406C23003AAED1 /* ScrollViewUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollViewUtil.swift; sourceTree = "<group>"; };
 		7069CCA179E351F270D654F4 /* Pods_IosGallery.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_IosGallery.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7BBF9F813350DDD76E47D73E /* Pods-IosGalleryTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IosGalleryTests.debug.xcconfig"; path = "Target Support Files/Pods-IosGalleryTests/Pods-IosGalleryTests.debug.xcconfig"; sourceTree = "<group>"; };
 		A457C25693530A820C4BE81D /* Pods-IosGallery.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IosGallery.debug.xcconfig"; path = "Target Support Files/Pods-IosGallery/Pods-IosGallery.debug.xcconfig"; sourceTree = "<group>"; };
@@ -378,6 +380,7 @@
 				23A623D425372CDA00F6F7DF /* NavigationControllerUtil.swift */,
 				23A623F12538540B00F6F7DF /* NavigationCustomizationUtil.swift */,
 				23A624372539DD0800F6F7DF /* UIViewControllerAllerts.swift */,
+				23B26BB125406C23003AAED1 /* ScrollViewUtil.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -852,6 +855,7 @@
 				2394480E25359DBE0083878A /* SceneDelegate.swift in Sources */,
 				23A623B72537299300F6F7DF /* AccountPresenter.swift in Sources */,
 				23A623A32537296300F6F7DF /* DetailRouter.swift in Sources */,
+				23B26BB225406C23003AAED1 /* ScrollViewUtil.swift in Sources */,
 				23A623F22538540B00F6F7DF /* NavigationCustomizationUtil.swift in Sources */,
 				239449062535C60E0083878A /* BaseRouter.swift in Sources */,
 				23A623E92537459C00F6F7DF /* GalleryCell.swift in Sources */,

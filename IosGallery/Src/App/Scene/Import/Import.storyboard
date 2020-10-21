@@ -86,6 +86,7 @@
                     <connections>
                         <outlet property="descriptionTextView" destination="k0P-vK-vH0" id="Mdd-AH-9yx"/>
                         <outlet property="importImageView" destination="41l-jw-Bxz" id="bbK-VH-jm4"/>
+                        <outlet property="importScrollView" destination="3iE-T4-Nhq" id="cB2-cS-4p2"/>
                         <outlet property="nameTextField" destination="IeN-iG-fnc" id="YRj-T2-Ivu"/>
                     </connections>
                 </viewController>

@@ -10,6 +10,7 @@ import UIKit
 class ImportViewController: UIViewController {
 
  
+    @IBOutlet weak var importScrollView: UIScrollView!
     @IBOutlet weak var importImageView: UIImageView!
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var descriptionTextView: UITextView!
@@ -128,5 +129,11 @@ extension ImportViewController: UIImagePickerControllerDelegate, UINavigationCon
             importImageView.image = originalImage
         }
         dismiss(animated: true, completion: nil)
+    }
+}
+
+extension ImportViewController: ScrollableToTop {
+    func scrollToTop() {
+        self.importScrollView.scrollToTop(true)
     }
 }

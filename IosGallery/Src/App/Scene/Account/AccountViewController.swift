@@ -85,3 +85,9 @@ extension AccountViewController: UITableViewDataSource {
 extension AccountViewController: AccountView {
     
 }
+
+extension AccountViewController: ScrollableToTop {
+    func scrollToTop() {
+        self.tableView.scrollToTop(true)
+    }
+}

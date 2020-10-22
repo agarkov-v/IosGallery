@@ -48,5 +48,12 @@
 "This app wants to use your camera" = "Приложение хочет использовать вашу камеру";
 
 "Dark app icon:" = "Темная иконка приложения:";
+"Wow!" = "Ого!";
+"Oops!" = "Упс!";
+"Sorry!" = "Извините!";
+"There is no pictures yet." = "Пока что здесь нет изображений.";
+"Bad connection. Please check your connection and reload the page." = "Плохое интернет соединение. Пожалуйста, проверьте свое соединение и перезагрузите страницу";
+"Nothing found." = "Ничего не найдено.";
+"Loading..." = "Загрузка...";
 
 

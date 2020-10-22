@@ -90,7 +90,8 @@ class GalleryViewController: UIViewController {
 
 extension GalleryViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        presenter.openTestDetail(image: R.image.testPlaceholderImage()!, label: "Test name", user: "User123", date: "01.01.2000", descr: "This is test description.")
+        self.showActivityIndicator()
+//        presenter.openTestDetail(image: R.image.testPlaceholderImage()!, label: "Test name", user: "User123", date: "01.01.2000", descr: "This is test description.")
     }
 }
 

@@ -4,7 +4,7 @@
 //
 //  Created by Вячеслав Агарков on 14.10.2020.
 //
-
+import Foundation
 import UIKit
 
 typealias ActionChoiceDialog = (title: String, action: () -> Void)
@@ -15,8 +15,12 @@ protocol BaseView: class {
 extension BaseView {
 
     // TODO: ActivityIndicators
-    func showActivityIndicator(_ withCancelButton: Bool = false) {
-//        ProgressHudControl.show(withCancelButton)
+    func showActivityIndicator() {
+//        let vc = StubLoadViewController()
+        let vc = StubLoadViewController()
+        vc.modalPresentationStyle = .overFullScreen
+        (self as? UIViewController)?.present(vc, animated: true, completion: nil)
+//        (self as? UIViewController)?.present(sheet, animated: true)
     }
 
     func hideActivityIndicator() {

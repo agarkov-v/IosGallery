@@ -327,6 +327,8 @@ struct R: Rswift.Validatable {
     static let arrowLeft_old = Rswift.ImageResource(bundle: R.hostingBundle, name: "arrowLeft_old")
     /// Image `arrowLeft`.
     static let arrowLeft = Rswift.ImageResource(bundle: R.hostingBundle, name: "arrowLeft")
+    /// Image `badConnectionPlaceholder`.
+    static let badConnectionPlaceholder = Rswift.ImageResource(bundle: R.hostingBundle, name: "badConnectionPlaceholder")
     /// Image `eyeIcon_second`.
     static let eyeIcon_second = Rswift.ImageResource(bundle: R.hostingBundle, name: "eyeIcon_second")
     /// Image `eyeIcon`.
@@ -341,8 +343,6 @@ struct R: Rswift.Validatable {
     static let iconDark = Rswift.ImageResource(bundle: R.hostingBundle, name: "iconDark")
     /// Image `iconPrimary`.
     static let iconPrimary = Rswift.ImageResource(bundle: R.hostingBundle, name: "iconPrimary")
-    /// Image `noInternetPlaceholder`.
-    static let noInternetPlaceholder = Rswift.ImageResource(bundle: R.hostingBundle, name: "noInternetPlaceholder")
     /// Image `notFoundPlaceholder`.
     static let notFoundPlaceholder = Rswift.ImageResource(bundle: R.hostingBundle, name: "notFoundPlaceholder")
     /// Image `photoPlaceholder_old`.
@@ -380,6 +380,13 @@ struct R: Rswift.Validatable {
     /// `UIImage(named: "arrowLeft_old", bundle: ..., traitCollection: ...)`
     static func arrowLeft_old(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.arrowLeft_old, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "badConnectionPlaceholder", bundle: ..., traitCollection: ...)`
+    static func badConnectionPlaceholder(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.badConnectionPlaceholder, compatibleWith: traitCollection)
     }
     #endif
 
@@ -429,13 +436,6 @@ struct R: Rswift.Validatable {
     /// `UIImage(named: "iconPrimary", bundle: ..., traitCollection: ...)`
     static func iconPrimary(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.iconPrimary, compatibleWith: traitCollection)
-    }
-    #endif
-
-    #if os(iOS) || os(tvOS)
-    /// `UIImage(named: "noInternetPlaceholder", bundle: ..., traitCollection: ...)`
-    static func noInternetPlaceholder(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.noInternetPlaceholder, compatibleWith: traitCollection)
     }
     #endif
 
@@ -536,12 +536,18 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
 
-  /// This `R.nib` struct is generated, and contains static references to 2 nibs.
+  /// This `R.nib` struct is generated, and contains static references to 5 nibs.
   struct nib {
     /// Nib `AccountCell`.
     static let accountCell = _R.nib._AccountCell()
     /// Nib `GalleryCell`.
     static let galleryCell = _R.nib._GalleryCell()
+    /// Nib `StubLoadViewController`.
+    static let stubLoadViewController = _R.nib._StubLoadViewController()
+    /// Nib `StubLoad`.
+    static let stubLoad = _R.nib._StubLoad()
+    /// Nib `StubView`.
+    static let stubView = _R.nib._StubView()
 
     #if os(iOS) || os(tvOS)
     /// `UINib(name: "AccountCell", in: bundle)`
@@ -559,12 +565,48 @@ struct R: Rswift.Validatable {
     }
     #endif
 
+    #if os(iOS) || os(tvOS)
+    /// `UINib(name: "StubLoad", in: bundle)`
+    @available(*, deprecated, message: "Use UINib(resource: R.nib.stubLoad) instead")
+    static func stubLoad(_: Void = ()) -> UIKit.UINib {
+      return UIKit.UINib(resource: R.nib.stubLoad)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UINib(name: "StubLoadViewController", in: bundle)`
+    @available(*, deprecated, message: "Use UINib(resource: R.nib.stubLoadViewController) instead")
+    static func stubLoadViewController(_: Void = ()) -> UIKit.UINib {
+      return UIKit.UINib(resource: R.nib.stubLoadViewController)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UINib(name: "StubView", in: bundle)`
+    @available(*, deprecated, message: "Use UINib(resource: R.nib.stubView) instead")
+    static func stubView(_: Void = ()) -> UIKit.UINib {
+      return UIKit.UINib(resource: R.nib.stubView)
+    }
+    #endif
+
     static func accountCell(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> AccountCell? {
       return R.nib.accountCell.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? AccountCell
     }
 
     static func galleryCell(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> GalleryCell? {
       return R.nib.galleryCell.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? GalleryCell
+    }
+
+    static func stubLoad(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> StubLoad? {
+      return R.nib.stubLoad.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? StubLoad
+    }
+
+    static func stubLoadViewController(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> UIKit.UIView? {
+      return R.nib.stubLoadViewController.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? UIKit.UIView
+    }
+
+    static func stubView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> StubView? {
+      return R.nib.stubView.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? StubView
     }
 
     fileprivate init() {}
@@ -607,7 +649,7 @@ struct R: Rswift.Validatable {
       fileprivate init() {}
     }
 
-    /// This `R.string.localizable` struct is generated, and contains static references to 38 localization keys.
+    /// This `R.string.localizable` struct is generated, and contains static references to 45 localization keys.
     struct localizable {
       /// en translation: Account Gallery
       ///
@@ -617,6 +659,10 @@ struct R: Rswift.Validatable {
       ///
       /// Locales: ru, en
       static let add = Rswift.StringResource(key: "Add", tableName: "Localizable", bundle: R.hostingBundle, locales: ["ru", "en"], comment: nil)
+      /// en translation: Bad connection. Please check your connection and reload the page.
+      ///
+      /// Locales: ru, en
+      static let badConnectionPleaseCheckYourConnectionAndReloadThePage = Rswift.StringResource(key: "Bad connection. Please check your connection and reload the page.", tableName: "Localizable", bundle: R.hostingBundle, locales: ["ru", "en"], comment: nil)
       /// en translation: Camera
       ///
       /// Locales: ru, en
@@ -681,6 +727,10 @@ struct R: Rswift.Validatable {
       ///
       /// Locales: ru, en
       static let light = Rswift.StringResource(key: "Light", tableName: "Localizable", bundle: R.hostingBundle, locales: ["ru", "en"], comment: nil)
+      /// en translation: Loading...
+      ///
+      /// Locales: ru, en
+      static let loading = Rswift.StringResource(key: "Loading...", tableName: "Localizable", bundle: R.hostingBundle, locales: ["ru", "en"], comment: nil)
       /// en translation: Name
       ///
       /// Locales: ru, en
@@ -693,6 +743,10 @@ struct R: Rswift.Validatable {
       ///
       /// Locales: ru, en
       static let newPassword = Rswift.StringResource(key: "New password", tableName: "Localizable", bundle: R.hostingBundle, locales: ["ru", "en"], comment: nil)
+      /// en translation: Nothing found.
+      ///
+      /// Locales: ru, en
+      static let nothingFound = Rswift.StringResource(key: "Nothing found.", tableName: "Localizable", bundle: R.hostingBundle, locales: ["ru", "en"], comment: nil)
       /// en translation: Ok
       ///
       /// Locales: ru, en
@@ -701,6 +755,10 @@ struct R: Rswift.Validatable {
       ///
       /// Locales: ru, en
       static let oldPassword = Rswift.StringResource(key: "Old password", tableName: "Localizable", bundle: R.hostingBundle, locales: ["ru", "en"], comment: nil)
+      /// en translation: Oops!
+      ///
+      /// Locales: ru, en
+      static let oops = Rswift.StringResource(key: "Oops!", tableName: "Localizable", bundle: R.hostingBundle, locales: ["ru", "en"], comment: nil)
       /// en translation: Personal data
       ///
       /// Locales: ru, en
@@ -729,10 +787,18 @@ struct R: Rswift.Validatable {
       ///
       /// Locales: ru, en
       static let signOut = Rswift.StringResource(key: "Sign Out", tableName: "Localizable", bundle: R.hostingBundle, locales: ["ru", "en"], comment: nil)
+      /// en translation: Sorry!
+      ///
+      /// Locales: ru, en
+      static let sorry = Rswift.StringResource(key: "Sorry!", tableName: "Localizable", bundle: R.hostingBundle, locales: ["ru", "en"], comment: nil)
       /// en translation: System
       ///
       /// Locales: ru, en
       static let system = Rswift.StringResource(key: "System", tableName: "Localizable", bundle: R.hostingBundle, locales: ["ru", "en"], comment: nil)
+      /// en translation: There is no pictures yet
+      ///
+      /// Locales: en
+      static let thereIsNoPicturesYet = Rswift.StringResource(key: "There is no pictures yet", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en"], comment: nil)
       /// en translation: This app wants to use your camera
       ///
       /// Locales: ru, en
@@ -757,6 +823,10 @@ struct R: Rswift.Validatable {
       ///
       /// Locales: ru, en
       static let welcome = Rswift.StringResource(key: "Welcome", tableName: "Localizable", bundle: R.hostingBundle, locales: ["ru", "en"], comment: nil)
+      /// en translation: Wow!
+      ///
+      /// Locales: ru, en
+      static let wow = Rswift.StringResource(key: "Wow!", tableName: "Localizable", bundle: R.hostingBundle, locales: ["ru", "en"], comment: nil)
       /// en translation: login
       ///
       /// Locales: ru, en
@@ -790,6 +860,21 @@ struct R: Rswift.Validatable {
         }
 
         return NSLocalizedString("Add", bundle: bundle, comment: "")
+      }
+
+      /// en translation: Bad connection. Please check your connection and reload the page.
+      ///
+      /// Locales: ru, en
+      static func badConnectionPleaseCheckYourConnectionAndReloadThePage(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("Bad connection. Please check your connection and reload the page.", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "Bad connection. Please check your connection and reload the page."
+        }
+
+        return NSLocalizedString("Bad connection. Please check your connection and reload the page.", bundle: bundle, comment: "")
       }
 
       /// en translation: Camera
@@ -1032,6 +1117,21 @@ struct R: Rswift.Validatable {
         return NSLocalizedString("Light", bundle: bundle, comment: "")
       }
 
+      /// en translation: Loading...
+      ///
+      /// Locales: ru, en
+      static func loading(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("Loading...", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "Loading..."
+        }
+
+        return NSLocalizedString("Loading...", bundle: bundle, comment: "")
+      }
+
       /// en translation: Name
       ///
       /// Locales: ru, en
@@ -1077,6 +1177,21 @@ struct R: Rswift.Validatable {
         return NSLocalizedString("New password", bundle: bundle, comment: "")
       }
 
+      /// en translation: Nothing found.
+      ///
+      /// Locales: ru, en
+      static func nothingFound(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("Nothing found.", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "Nothing found."
+        }
+
+        return NSLocalizedString("Nothing found.", bundle: bundle, comment: "")
+      }
+
       /// en translation: Ok
       ///
       /// Locales: ru, en
@@ -1105,6 +1220,21 @@ struct R: Rswift.Validatable {
         }
 
         return NSLocalizedString("Old password", bundle: bundle, comment: "")
+      }
+
+      /// en translation: Oops!
+      ///
+      /// Locales: ru, en
+      static func oops(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("Oops!", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "Oops!"
+        }
+
+        return NSLocalizedString("Oops!", bundle: bundle, comment: "")
       }
 
       /// en translation: Personal data
@@ -1212,6 +1342,21 @@ struct R: Rswift.Validatable {
         return NSLocalizedString("Sign Out", bundle: bundle, comment: "")
       }
 
+      /// en translation: Sorry!
+      ///
+      /// Locales: ru, en
+      static func sorry(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("Sorry!", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "Sorry!"
+        }
+
+        return NSLocalizedString("Sorry!", bundle: bundle, comment: "")
+      }
+
       /// en translation: System
       ///
       /// Locales: ru, en
@@ -1225,6 +1370,21 @@ struct R: Rswift.Validatable {
         }
 
         return NSLocalizedString("System", bundle: bundle, comment: "")
+      }
+
+      /// en translation: There is no pictures yet
+      ///
+      /// Locales: en
+      static func thereIsNoPicturesYet(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("There is no pictures yet", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "There is no pictures yet"
+        }
+
+        return NSLocalizedString("There is no pictures yet", bundle: bundle, comment: "")
       }
 
       /// en translation: This app wants to use your camera
@@ -1317,6 +1477,21 @@ struct R: Rswift.Validatable {
         return NSLocalizedString("Welcome", bundle: bundle, comment: "")
       }
 
+      /// en translation: Wow!
+      ///
+      /// Locales: ru, en
+      static func wow(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("Wow!", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "Wow!"
+        }
+
+        return NSLocalizedString("Wow!", bundle: bundle, comment: "")
+      }
+
       /// en translation: login
       ///
       /// Locales: ru, en
@@ -1383,6 +1558,39 @@ struct _R: Rswift.Validatable {
 
       func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> GalleryCell? {
         return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? GalleryCell
+      }
+
+      fileprivate init() {}
+    }
+
+    struct _StubLoad: Rswift.NibResourceType {
+      let bundle = R.hostingBundle
+      let name = "StubLoad"
+
+      func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> StubLoad? {
+        return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? StubLoad
+      }
+
+      fileprivate init() {}
+    }
+
+    struct _StubLoadViewController: Rswift.NibResourceType {
+      let bundle = R.hostingBundle
+      let name = "StubLoadViewController"
+
+      func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> UIKit.UIView? {
+        return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? UIKit.UIView
+      }
+
+      fileprivate init() {}
+    }
+
+    struct _StubView: Rswift.NibResourceType {
+      let bundle = R.hostingBundle
+      let name = "StubView"
+
+      func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> StubView? {
+        return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? StubView
       }
 
       fileprivate init() {}

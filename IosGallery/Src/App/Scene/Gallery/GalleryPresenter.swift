@@ -9,6 +9,11 @@ import Foundation
 import RxSwift
 import RxNetworkApiClient
 
+enum GalleryType {
+    case new
+    case popular
+}
+
 protocol GalleryView: BaseView {
     
 }

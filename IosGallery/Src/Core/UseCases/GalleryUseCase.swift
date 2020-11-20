@@ -8,7 +8,7 @@
 import Foundation
 import RxSwift
 
-protocol GalleryUseCaseProtocol {
+protocol GalleryUseCase {
     
     var source: PublishSubject<[GalleryEntity]> { get }
     //var limit: Int { get set }
@@ -21,9 +21,9 @@ protocol GalleryUseCaseProtocol {
     func reset()
 }
 
-class GalleryUseCase: GalleryUseCaseProtocol {
+class GalleryUseCaseImp: GalleryUseCase {
     
-    let gateway: GalleryGatewayProtocol
+    let gateway: GalleryGateway
     var source = PublishSubject<[GalleryEntity]>()
     
     private var limit = 10
@@ -42,7 +42,7 @@ class GalleryUseCase: GalleryUseCaseProtocol {
         return self.currentPage < countOfPages
     }
     
-    init (gateway: GalleryGatewayProtocol) {
+    init (gateway: GalleryGateway) {
         self.gateway = gateway
     }
     

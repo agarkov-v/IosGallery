@@ -7,13 +7,13 @@
 
 import RxSwift
 
-protocol AuthGatewayProtocol {
+protocol AuthGateway {
     
     func auth(username: String, password: String) -> Single<TokenEntity>
     func refreshToken(refreshToken: String) -> Single<TokenEntity>
 }
 
-class ApiAuthGateway: ApiBaseGateway, AuthGatewayProtocol {
+class ApiAuthGateway: ApiBaseGateway, AuthGateway {
     
     func auth(username: String, password: String) -> Single<TokenEntity> {
         return self.apiClient.execute(request: .login(username: username, password: password))

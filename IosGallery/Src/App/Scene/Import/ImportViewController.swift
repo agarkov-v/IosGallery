@@ -15,7 +15,7 @@ class ImportViewController: UIViewController {
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var descriptionTextView: UITextView!
     
-    var presenter: ImportPresenterProtocol!
+    var presenter: ImportPresenter!
 //    private let pickerController = UIImagePickerController()
     
     override func viewDidLoad() {

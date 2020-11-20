@@ -16,14 +16,13 @@ extension BaseView {
 
     // TODO: ActivityIndicators
     func showActivityIndicator() {
-//        let vc = StubLoadViewController()
         let vc = StubLoadViewController()
         vc.modalPresentationStyle = .overFullScreen
         (self as? UIViewController)?.present(vc, animated: true, completion: nil)
-//        (self as? UIViewController)?.present(sheet, animated: true)
     }
 
     func hideActivityIndicator() {
+        (self as? StubLoadViewController)?.dismiss(animated: true, completion: nil)
 //        ProgressHudControl.dismiss()
     }
     

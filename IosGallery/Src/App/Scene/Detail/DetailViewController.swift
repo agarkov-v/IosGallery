@@ -21,7 +21,7 @@ class DetailViewController: UIViewController {
     var testDescr: String!
     
     
-    var presenter: DetailPresenterProtocol!
+    var presenter: DetailPresenter!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,6 +35,7 @@ class DetailViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setupTitleNavigationBar("Image Detail")
+        prepateView()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -44,6 +45,10 @@ class DetailViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
+    }
+    
+    func prepateView() {
+        descriptionTextView.textContainer.lineFragmentPadding = 0
     }
     
 }

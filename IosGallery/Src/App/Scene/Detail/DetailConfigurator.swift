@@ -12,13 +12,13 @@ class DetailConfigurator {
     
     func configure(view: DetailViewController) {
         let router = DetailRouter(view)
-        let presenter = DetailPresenter(view, router)
+        let presenter = DetailPresenterImp(view, router)
         view.presenter = presenter
     }
     
     func testConfigure(view: DetailViewController, image: UIImage, label: String, user: String, date: String, descr: String) {
         let router = DetailRouter(view)
-        let presenter = DetailPresenter(view, router)
+        let presenter = DetailPresenterImp(view, router)
         view.presenter = presenter
         view.testImage = image
         view.testLabel = label

@@ -13,11 +13,11 @@ protocol AccountSettingsView: BaseView {
     
 }
 
-protocol AccountSettingsPresenterProtocol {
+protocol AccountSettingsPresenter {
     func onBackBarButtonItem()
 }
 
-class AccountSettingsPresenter: AccountSettingsPresenterProtocol {
+class AccountSettingsPresenterImp: AccountSettingsPresenter {
     
     private weak var view: AccountSettingsView!
     private let router: AccountSettingsRouter

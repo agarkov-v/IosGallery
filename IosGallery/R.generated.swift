@@ -319,7 +319,7 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
 
-  /// This `R.image` struct is generated, and contains static references to 20 images.
+  /// This `R.image` struct is generated, and contains static references to 21 images.
   struct image {
     /// Image `IconDark2`.
     static let iconDark2 = Rswift.ImageResource(bundle: R.hostingBundle, name: "IconDark2")
@@ -329,6 +329,8 @@ struct R: Rswift.Validatable {
     static let arrowLeft = Rswift.ImageResource(bundle: R.hostingBundle, name: "arrowLeft")
     /// Image `badConnectionPlaceholder`.
     static let badConnectionPlaceholder = Rswift.ImageResource(bundle: R.hostingBundle, name: "badConnectionPlaceholder")
+    /// Image `closeIcon`.
+    static let closeIcon = Rswift.ImageResource(bundle: R.hostingBundle, name: "closeIcon")
     /// Image `eyeIcon_second`.
     static let eyeIcon_second = Rswift.ImageResource(bundle: R.hostingBundle, name: "eyeIcon_second")
     /// Image `eyeIcon`.
@@ -387,6 +389,13 @@ struct R: Rswift.Validatable {
     /// `UIImage(named: "badConnectionPlaceholder", bundle: ..., traitCollection: ...)`
     static func badConnectionPlaceholder(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.badConnectionPlaceholder, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "closeIcon", bundle: ..., traitCollection: ...)`
+    static func closeIcon(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.closeIcon, compatibleWith: traitCollection)
     }
     #endif
 
@@ -649,7 +658,7 @@ struct R: Rswift.Validatable {
       fileprivate init() {}
     }
 
-    /// This `R.string.localizable` struct is generated, and contains static references to 45 localization keys.
+    /// This `R.string.localizable` struct is generated, and contains static references to 51 localization keys.
     struct localizable {
       /// en translation: Account Gallery
       ///
@@ -659,6 +668,10 @@ struct R: Rswift.Validatable {
       ///
       /// Locales: ru, en
       static let add = Rswift.StringResource(key: "Add", tableName: "Localizable", bundle: R.hostingBundle, locales: ["ru", "en"], comment: nil)
+      /// en translation: Authorization error, please try again
+      ///
+      /// Locales: ru, en
+      static let authorizationErrorPleaseTryAgain = Rswift.StringResource(key: "Authorization error, please try again", tableName: "Localizable", bundle: R.hostingBundle, locales: ["ru", "en"], comment: nil)
       /// en translation: Bad connection. Please check your connection and reload the page.
       ///
       /// Locales: ru, en
@@ -715,6 +728,10 @@ struct R: Rswift.Validatable {
       ///
       /// Locales: ru, en
       static let error = Rswift.StringResource(key: "Error", tableName: "Localizable", bundle: R.hostingBundle, locales: ["ru", "en"], comment: nil)
+      /// en translation: Fields must not be empty
+      ///
+      /// Locales: ru, en
+      static let fieldsMustNotBeEmpty = Rswift.StringResource(key: "Fields must not be empty", tableName: "Localizable", bundle: R.hostingBundle, locales: ["ru", "en"], comment: nil)
       /// en translation: Gallery
       ///
       /// Locales: ru, en
@@ -723,6 +740,14 @@ struct R: Rswift.Validatable {
       ///
       /// Locales: ru, en
       static let imageDetail = Rswift.StringResource(key: "Image Detail", tableName: "Localizable", bundle: R.hostingBundle, locales: ["ru", "en"], comment: nil)
+      /// en translation: Image processing error
+      ///
+      /// Locales: ru, en
+      static let imageProcessingError = Rswift.StringResource(key: "Image processing error", tableName: "Localizable", bundle: R.hostingBundle, locales: ["ru", "en"], comment: nil)
+      /// en translation: Invalid username or password
+      ///
+      /// Locales: ru, en
+      static let invalidUsernameOrPassword = Rswift.StringResource(key: "Invalid username or password", tableName: "Localizable", bundle: R.hostingBundle, locales: ["ru", "en"], comment: nil)
       /// en translation: Light
       ///
       /// Locales: ru, en
@@ -795,6 +820,10 @@ struct R: Rswift.Validatable {
       ///
       /// Locales: ru, en
       static let system = Rswift.StringResource(key: "System", tableName: "Localizable", bundle: R.hostingBundle, locales: ["ru", "en"], comment: nil)
+      /// en translation: Tap on screen to close
+      ///
+      /// Locales: ru, en
+      static let tapOnScreenToClose = Rswift.StringResource(key: "Tap on screen to close", tableName: "Localizable", bundle: R.hostingBundle, locales: ["ru", "en"], comment: nil)
       /// en translation: There is no pictures yet
       ///
       /// Locales: en
@@ -811,6 +840,10 @@ struct R: Rswift.Validatable {
       ///
       /// Locales: ru, en
       static let uploadImage = Rswift.StringResource(key: "Upload Image", tableName: "Localizable", bundle: R.hostingBundle, locales: ["ru", "en"], comment: nil)
+      /// en translation: User data error, please try again
+      ///
+      /// Locales: ru, en
+      static let userDataErrorPleaseTryAgain = Rswift.StringResource(key: "User data error, please try again", tableName: "Localizable", bundle: R.hostingBundle, locales: ["ru", "en"], comment: nil)
       /// en translation: User name
       ///
       /// Locales: ru, en
@@ -860,6 +893,21 @@ struct R: Rswift.Validatable {
         }
 
         return NSLocalizedString("Add", bundle: bundle, comment: "")
+      }
+
+      /// en translation: Authorization error, please try again
+      ///
+      /// Locales: ru, en
+      static func authorizationErrorPleaseTryAgain(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("Authorization error, please try again", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "Authorization error, please try again"
+        }
+
+        return NSLocalizedString("Authorization error, please try again", bundle: bundle, comment: "")
       }
 
       /// en translation: Bad connection. Please check your connection and reload the page.
@@ -1072,6 +1120,21 @@ struct R: Rswift.Validatable {
         return NSLocalizedString("Error", bundle: bundle, comment: "")
       }
 
+      /// en translation: Fields must not be empty
+      ///
+      /// Locales: ru, en
+      static func fieldsMustNotBeEmpty(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("Fields must not be empty", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "Fields must not be empty"
+        }
+
+        return NSLocalizedString("Fields must not be empty", bundle: bundle, comment: "")
+      }
+
       /// en translation: Gallery
       ///
       /// Locales: ru, en
@@ -1100,6 +1163,36 @@ struct R: Rswift.Validatable {
         }
 
         return NSLocalizedString("Image Detail", bundle: bundle, comment: "")
+      }
+
+      /// en translation: Image processing error
+      ///
+      /// Locales: ru, en
+      static func imageProcessingError(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("Image processing error", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "Image processing error"
+        }
+
+        return NSLocalizedString("Image processing error", bundle: bundle, comment: "")
+      }
+
+      /// en translation: Invalid username or password
+      ///
+      /// Locales: ru, en
+      static func invalidUsernameOrPassword(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("Invalid username or password", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "Invalid username or password"
+        }
+
+        return NSLocalizedString("Invalid username or password", bundle: bundle, comment: "")
       }
 
       /// en translation: Light
@@ -1372,6 +1465,21 @@ struct R: Rswift.Validatable {
         return NSLocalizedString("System", bundle: bundle, comment: "")
       }
 
+      /// en translation: Tap on screen to close
+      ///
+      /// Locales: ru, en
+      static func tapOnScreenToClose(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("Tap on screen to close", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "Tap on screen to close"
+        }
+
+        return NSLocalizedString("Tap on screen to close", bundle: bundle, comment: "")
+      }
+
       /// en translation: There is no pictures yet
       ///
       /// Locales: en
@@ -1430,6 +1538,21 @@ struct R: Rswift.Validatable {
         }
 
         return NSLocalizedString("Upload Image", bundle: bundle, comment: "")
+      }
+
+      /// en translation: User data error, please try again
+      ///
+      /// Locales: ru, en
+      static func userDataErrorPleaseTryAgain(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("User data error, please try again", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "User data error, please try again"
+        }
+
+        return NSLocalizedString("User data error, please try again", bundle: bundle, comment: "")
       }
 
       /// en translation: User name

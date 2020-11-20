@@ -11,7 +11,7 @@ import UIKit
 class LoginConfigurator {
     func configure(view: LoginViewController) {
         let router = LoginRouter(view)
-        let presenter = LoginPresenter(view, router)
+        let presenter = LoginPresenterImp(view, router, DI.resolve())
         view.presenter = presenter
         
     }

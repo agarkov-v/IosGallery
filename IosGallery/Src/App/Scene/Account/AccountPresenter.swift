@@ -13,11 +13,11 @@ protocol AccountView: BaseView {
     
 }
 
-protocol AccountPresenterProtocol {
+protocol AccountPresenter {
     func openAccountSettings()
 }
 
-class AccountPresenter: AccountPresenterProtocol {
+class AccountPresenterImp: AccountPresenter {
     
     private weak var view: AccountView!
     private let router: AccountRouter

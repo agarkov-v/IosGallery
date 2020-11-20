@@ -8,7 +8,7 @@
 import Foundation
 import RxSwift
 
-protocol AccountUseCaseProtocol {
+protocol AccountUseCase {
     
     var source: PublishSubject<[GalleryEntity]> { get }
     //var limit: Int { get set }
@@ -21,10 +21,10 @@ protocol AccountUseCaseProtocol {
     func reset()
 }
 
-class AccountUseCase: AccountUseCaseProtocol {
+class AccountUseCaseImp: AccountUseCase {
     
     let manager: UserManager
-    let gateway: GalleryGatewayProtocol
+    let gateway: GalleryGateway
     var source = PublishSubject<[GalleryEntity]>()
     
     private var limit = 10
@@ -43,7 +43,7 @@ class AccountUseCase: AccountUseCaseProtocol {
         return self.currentPage < countOfPages
     }
     
-    init (manager: UserManager, gateway: GalleryGatewayProtocol) {
+    init (manager: UserManager, gateway: GalleryGateway) {
         self.manager = manager
         self.gateway = gateway
     }
@@ -61,7 +61,7 @@ class AccountUseCase: AccountUseCaseProtocol {
                 return .error(AppError.userDataError)
             }
             
-            return self.gateway.getPhotos(page: self.currentPage + 1, limit: self.limit, userId: userId)
+            return self.gateway.getUserPhotos(page: self.currentPage + 1, limit: self.limit, userId: userId)
                 .do(onSuccess: { (result: PaginationEntity<GalleryEntity>) in
                     self.currentPage += 1
                     self.countOfPages = result.countOfPages
@@ -75,6 +75,7 @@ class AccountUseCase: AccountUseCaseProtocol {
                 .asCompletable()
         }
     }
+    
     
     func reset() {
         self.items.removeAll()

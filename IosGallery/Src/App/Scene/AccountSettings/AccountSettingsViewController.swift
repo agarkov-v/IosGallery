@@ -29,7 +29,7 @@ class AccountSettingsViewController: UIViewController {
     
     private let appIconService = AppIconService()
     private let userDefaults = UserDefaults.standard
-    var presenter: AccountSettingsPresenterProtocol!
+    var presenter: AccountSettingsPresenter!
     
     override func viewDidLoad() {
         super.viewDidLoad()

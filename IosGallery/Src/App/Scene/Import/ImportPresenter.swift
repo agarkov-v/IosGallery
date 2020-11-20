@@ -13,11 +13,11 @@ protocol ImportView: BaseView {
     
 }
 
-protocol ImportPresenterProtocol {
+protocol ImportPresenter {
     
 }
 
-class ImportPresenter: ImportPresenterProtocol {
+class ImportPresenterImp: ImportPresenter {
     
     private weak var view: ImportView!
     private let router: ImportRouter

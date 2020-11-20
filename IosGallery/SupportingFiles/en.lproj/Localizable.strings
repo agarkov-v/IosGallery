@@ -56,3 +56,10 @@
 "Nothing found." = "Nothing found.";
 "Loading..." = "Loading...";
 
+"Invalid username or password" = "Invalid username or password";
+"Authorization error, please try again" = "Authorization error, please try again";
+"User data error, please try again" = "User data error, please try again";
+"Image processing error" = "Image processing error";
+"Tap on screen to close" = "Tap on screen to close";
+
+"Fields must not be empty" = "Fields must not be empty";

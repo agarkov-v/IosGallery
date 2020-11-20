@@ -13,7 +13,7 @@ class AccountViewController: UIViewController {
     @IBOutlet weak var birthdayLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
     
-    var presenter: AccountPresenterProtocol!
+    var presenter: AccountPresenter!
     
     override func viewDidLoad() {
         super.viewDidLoad()

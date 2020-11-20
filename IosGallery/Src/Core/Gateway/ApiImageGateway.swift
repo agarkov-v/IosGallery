@@ -10,13 +10,13 @@ import Foundation
 import RxNetworkApiClient
 import RxSwift
 
-protocol ImageGatewayProtocol {
+protocol ImageGateway {
     
     func uploadFile(data: Data) -> Single<ImageEntity>
 }
 
 
-class ApiImageGateway: ApiBaseGateway, ImageGatewayProtocol {
+class ApiImageGateway: ApiBaseGateway, ImageGateway {
     
     func uploadFile(data: Data) -> Single<ImageEntity> {
         return .deferred {

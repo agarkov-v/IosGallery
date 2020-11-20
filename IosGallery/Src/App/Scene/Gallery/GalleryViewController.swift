@@ -12,7 +12,7 @@ class GalleryViewController: UIViewController {
     @IBOutlet weak var modeSegmentControl: UISegmentedControl!
     @IBOutlet weak var collectionView: UICollectionView!
     
-    var presenter: GalleryPresenterProtocol!
+    var presenter: GalleryPresenter!
     private var searchController = UISearchController(searchResultsController: nil)
     private var currentIndexPath: IndexPath?
     //second variant
@@ -90,8 +90,8 @@ class GalleryViewController: UIViewController {
 
 extension GalleryViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        self.showActivityIndicator()
-//        presenter.openTestDetail(image: R.image.testPlaceholderImage()!, label: "Test name", user: "User123", date: "01.01.2000", descr: "This is test description.")
+//        self.showActivityIndicator()
+        presenter.openTestDetail(image: R.image.testPlaceholderImage()!, label: "Test name", user: "User123", date: "01.01.2000", descr: "This is test description.")
     }
 }
 

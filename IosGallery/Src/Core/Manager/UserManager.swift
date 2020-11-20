@@ -29,7 +29,7 @@ class UserManager {
         }
     }
     
-    init(userDefaultsManager: UserDefaultsManager) {
+    init(userDefaultsManager: UserDefaultsManagerImp) {
         self.userDefaultsManager = userDefaultsManager
     }
 }

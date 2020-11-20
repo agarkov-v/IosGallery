@@ -13,11 +13,11 @@ protocol RootView: BaseView {
     
 }
 
-protocol RootPresenterProtocol {
+protocol RootPresenter {
     
 }
 
-class RootPresenter: RootPresenterProtocol {
+class RootPresenterImp: RootPresenter {
     
     private weak var view: RootView!
     private let router: RootRouter

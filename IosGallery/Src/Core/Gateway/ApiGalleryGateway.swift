@@ -7,19 +7,19 @@
 
 import RxSwift
 
-protocol GalleryGatewayProtocol {
+protocol GalleryGateway {
 
-    
     func getPhotos(page: Int, limit: Int, type: GalleryType, searchBy text: String?) -> Single<PaginationEntity<GalleryEntity>>
+    
     func createPost(gallery: UploadGalleryEntity) -> Single<ImageEntity>
     
-    func getPhotos(page: Int, limit: Int, userId: Int) -> Single<PaginationEntity<GalleryEntity>>
+    func getUserPhotos(page: Int, limit: Int, userId: Int) -> Single<PaginationEntity<GalleryEntity>>
     
 //    func editPhoto() -> Single<GalleryResponse>
 //    func deletePhoto() -> Completable
 }
 
-class ApiGalleryGateway: ApiBaseGateway, GalleryGatewayProtocol {
+class ApiGalleryGateway: ApiBaseGateway, GalleryGateway {
     
     func getPhotos(page: Int, limit: Int, type: GalleryType, searchBy text: String? = nil) -> Single<PaginationEntity<GalleryEntity>> {
         return self.apiClient.execute(request: .getPhotos(page: page, limit: limit, type: type, searchBy: text))
@@ -29,7 +29,7 @@ class ApiGalleryGateway: ApiBaseGateway, GalleryGatewayProtocol {
         return self.apiClient.execute(request: .uploadGallery(gallery: gallery))
     }
     
-    func getPhotos(page: Int, limit: Int, userId: Int) -> Single<PaginationEntity<GalleryEntity>> {
+    func getUserPhotos(page: Int, limit: Int, userId: Int) -> Single<PaginationEntity<GalleryEntity>> {
         return self.apiClient.execute(request: .getPhotos(page: page, limit: limit, userId: userId))
     }
     

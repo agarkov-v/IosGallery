@@ -12,7 +12,7 @@ class GalleryConfigurator {
     
     func configure(view: GalleryViewController) {
         let router = GalleryRouter(view)
-        let presenter = GalleryPresenter(view, router)
+        let presenter = GalleryPresenterImp(view, router)
         view.presenter = presenter
     }
     

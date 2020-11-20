@@ -7,15 +7,15 @@
 
 import RxSwift
 
-protocol UserUseCaseProtocol {
+protocol UserUseCase {
     
     func uploadGalleryItem(image: UIImage, name: String, description: String) -> Completable
 }
 
-class UserUseCase: UserUseCaseProtocol {
+class UserUseCaseImp: UserUseCase {
     
-    private let fileGateway: ImageGatewayProtocol
-    private let galleryGateway: GalleryGatewayProtocol
+    private let fileGateway: ImageGateway
+    private let galleryGateway: GalleryGateway
     
     private var dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
@@ -23,7 +23,7 @@ class UserUseCase: UserUseCaseProtocol {
         return formatter
     }()
     
-    init(fileGateway: ImageGatewayProtocol, galleryGateway: GalleryGatewayProtocol) {
+    init(fileGateway: ImageGateway, galleryGateway: GalleryGateway) {
         self.fileGateway = fileGateway
         self.galleryGateway = galleryGateway
     }

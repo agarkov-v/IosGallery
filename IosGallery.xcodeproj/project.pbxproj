@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		14F5D9D965B094D6F657E3E1 /* Pods_IosGallery.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7069CCA179E351F270D654F4 /* Pods_IosGallery.framework */; };
+		2373ABC5255353DA000C2EF6 /* UIView+animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2373ABC4255353DA000C2EF6 /* UIView+animation.swift */; };
 		23775F412535ED38004C530F /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23775F402535ED38004C530F /* R.generated.swift */; };
 		23775F802535F521004C530F /* GalleryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23775F7F2535F521004C530F /* GalleryViewController.swift */; };
 		23775F852535F535004C530F /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23775F842535F535004C530F /* DetailViewController.swift */; };
@@ -92,7 +93,7 @@
 		23FB801D2541CB270089D9E7 /* UploadImageEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23FB80142541CB270089D9E7 /* UploadImageEntity.swift */; };
 		23FB801E2541CB270089D9E7 /* ChangePasswordEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23FB80152541CB270089D9E7 /* ChangePasswordEntity.swift */; };
 		23FB801F2541CB270089D9E7 /* UpdateUserEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23FB80162541CB270089D9E7 /* UpdateUserEntity.swift */; };
-		23FB802A2541E4B10089D9E7 /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23FB80292541E4B10089D9E7 /* UserDefaultsManager.swift */; };
+		23FB802A2541E4B10089D9E7 /* UserDefaultsManagerImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23FB80292541E4B10089D9E7 /* UserDefaultsManagerImp.swift */; };
 		23FB80302541E4D70089D9E7 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23FB802F2541E4D70089D9E7 /* UserManager.swift */; };
 		23FB80382541E6940089D9E7 /* AuthUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23FB80372541E6940089D9E7 /* AuthUseCase.swift */; };
 		23FB803E2541E75D0089D9E7 /* Requests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23FB803D2541E75D0089D9E7 /* Requests.swift */; };
@@ -130,6 +131,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2373ABC4255353DA000C2EF6 /* UIView+animation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+animation.swift"; sourceTree = "<group>"; };
 		23775F402535ED38004C530F /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
 		23775F7F2535F521004C530F /* GalleryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryViewController.swift; sourceTree = "<group>"; };
 		23775F842535F535004C530F /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
@@ -223,7 +225,7 @@
 		23FB80142541CB270089D9E7 /* UploadImageEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadImageEntity.swift; sourceTree = "<group>"; };
 		23FB80152541CB270089D9E7 /* ChangePasswordEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangePasswordEntity.swift; sourceTree = "<group>"; };
 		23FB80162541CB270089D9E7 /* UpdateUserEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateUserEntity.swift; sourceTree = "<group>"; };
-		23FB80292541E4B10089D9E7 /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
+		23FB80292541E4B10089D9E7 /* UserDefaultsManagerImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManagerImp.swift; sourceTree = "<group>"; };
 		23FB802F2541E4D70089D9E7 /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
 		23FB80372541E6940089D9E7 /* AuthUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthUseCase.swift; sourceTree = "<group>"; };
 		23FB803D2541E75D0089D9E7 /* Requests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Requests.swift; sourceTree = "<group>"; };
@@ -452,6 +454,7 @@
 				23A623F12538540B00F6F7DF /* NavigationCustomizationUtil.swift */,
 				23A624372539DD0800F6F7DF /* UIViewControllerAllerts.swift */,
 				23B26BB125406C23003AAED1 /* ScrollViewUtil.swift */,
+				2373ABC4255353DA000C2EF6 /* UIView+animation.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -459,9 +462,9 @@
 		239448CB2535A85B0083878A /* Gateway */ = {
 			isa = PBXGroup;
 			children = (
-				23FB805D2541EDEA0089D9E7 /* ApiGalleryGateway.swift */,
 				23FB80652541EE860089D9E7 /* ApiAuthGateway.swift */,
 				23FB806A2541EE9F0089D9E7 /* ApiUserGateway.swift */,
+				23FB805D2541EDEA0089D9E7 /* ApiGalleryGateway.swift */,
 				23FB806F2541EEAE0089D9E7 /* ApiImageGateway.swift */,
 			);
 			path = Gateway;
@@ -499,10 +502,10 @@
 		239448D02535AB4C0083878A /* Core */ = {
 			isa = PBXGroup;
 			children = (
-				23FB802E2541E4C20089D9E7 /* xz */,
 				239448CD2535A8C10083878A /* ApiClient */,
-				239448D12535AB980083878A /* UseCases */,
+				23FB802E2541E4C20089D9E7 /* Manager */,
 				239448CB2535A85B0083878A /* Gateway */,
+				239448D12535AB980083878A /* UseCases */,
 				239448CF2535AB190083878A /* Entity */,
 			);
 			path = Core;
@@ -630,14 +633,14 @@
 			path = LoadView;
 			sourceTree = "<group>";
 		};
-		23FB802E2541E4C20089D9E7 /* xz */ = {
+		23FB802E2541E4C20089D9E7 /* Manager */ = {
 			isa = PBXGroup;
 			children = (
-				23FB80292541E4B10089D9E7 /* UserDefaultsManager.swift */,
+				23FB80292541E4B10089D9E7 /* UserDefaultsManagerImp.swift */,
 				23FB802F2541E4D70089D9E7 /* UserManager.swift */,
 				23FB80862541F2EC0089D9E7 /* AppError.swift */,
 			);
-			path = xz;
+			path = Manager;
 			sourceTree = "<group>";
 		};
 		23FB80472541E8A90089D9E7 /* ResponseHandler */ = {
@@ -962,6 +965,7 @@
 				23A623C1253729B400F6F7DF /* AccountRouter.swift in Sources */,
 				23FB80492541E8BD0089D9E7 /* AuthResponseHandler.swift in Sources */,
 				23FB80192541CB270089D9E7 /* PaginationEntity.swift in Sources */,
+				2373ABC5255353DA000C2EF6 /* UIView+animation.swift in Sources */,
 				23775F802535F521004C530F /* GalleryViewController.swift in Sources */,
 				23FB80382541E6940089D9E7 /* AuthUseCase.swift in Sources */,
 				23A623DA2537317300F6F7DF /* BaseView.swift in Sources */,
@@ -1020,7 +1024,7 @@
 				23775F412535ED38004C530F /* R.generated.swift in Sources */,
 				23FB807F2541F22B0089D9E7 /* AccountUseCase.swift in Sources */,
 				23A623642537049500F6F7DF /* DateFormatUtil.swift in Sources */,
-				23FB802A2541E4B10089D9E7 /* UserDefaultsManager.swift in Sources */,
+				23FB802A2541E4B10089D9E7 /* UserDefaultsManagerImp.swift in Sources */,
 				239448FB2535C5800083878A /* LoginConfigurator.swift in Sources */,
 				239448D32535AC250083878A /* ApiEndpoint.swift in Sources */,
 				23B26BD125409AE5003AAED1 /* StubLoad.swift in Sources */,

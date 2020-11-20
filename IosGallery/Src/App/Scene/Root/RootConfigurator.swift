@@ -12,7 +12,7 @@ class RootConfigurator {
     
     func configure(view: RootViewController) {
         let router = RootRouter(view)
-        let presenter = RootPresenter(view, router)
+        let presenter = RootPresenterImp(view, router)
         view.presenter = presenter
     }
     

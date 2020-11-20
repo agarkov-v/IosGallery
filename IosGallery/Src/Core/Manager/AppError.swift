@@ -20,15 +20,15 @@ enum AppError: LocalizedError {
     var localizedDescription: String? {
         switch self {
         case .loginPasswordError:
-            return "Неправильная пара логин пароль"
+            return "Invalid username or password".localization()
         case .tokenExpiredError:
-            return "Ошибка авторизации, попробуйте повторить действие"
+            return "Authorization error, please try again".localization()
         case .tokenRefreshingError:
             return nil
         case .userDataError:
-            return "Ошибка данных пользователя, попробуйте повторить действие"
+            return "User data error, please try again".localization()
         case .imageToPngError:
-            return "Ошибка обработки изображения"
+            return "Image processing error".localization()
         }
     }
 }

@@ -9,7 +9,7 @@ import UIKit
 
 class RootViewController: UITabBarController {
 
-    var presenter: RootPresenterProtocol!
+    var presenter: RootPresenter!
     
     override func viewDidLoad() {
         super.viewDidLoad()

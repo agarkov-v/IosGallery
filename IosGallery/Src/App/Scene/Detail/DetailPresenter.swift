@@ -13,11 +13,11 @@ protocol DetailView: BaseView {
     
 }
 
-protocol DetailPresenterProtocol {
+protocol DetailPresenter {
     
 }
 
-class DetailPresenter: DetailPresenterProtocol {
+class DetailPresenterImp: DetailPresenter {
     
     private weak var view: DetailView!
     private let router: DetailRouter

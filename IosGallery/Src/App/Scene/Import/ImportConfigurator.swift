@@ -12,7 +12,7 @@ class ImportConfigurator {
     
     func configure(view: ImportViewController) {
         let router = ImportRouter(view)
-        let presenter = ImportPresenter(view, router)
+        let presenter = ImportPresenterImp(view, router)
         view.presenter = presenter
     }
     

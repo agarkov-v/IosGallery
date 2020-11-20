@@ -7,7 +7,14 @@
 
 import UIKit
 
+enum SignInError: String {
+    case empty = "Fields must not be empty"
+    case notMatch = "Invalid username or password"
+}
+
 class LoginViewController: UIViewController {
+    
+    
 
     @IBOutlet weak var logoView: UIView!
     @IBOutlet weak var welcomeLabel: UILabel!
@@ -16,13 +23,9 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var signInButton: UIButton!
     @IBOutlet weak var errorView: UIView!
     @IBOutlet weak var errorLabel: UILabel!
-    
-    var presenter: LoginPresenterProtocol!
-    
+    var presenter: LoginPresenter!
     private var deviceOreintation: UIDeviceOrientation {
-        get {
-            return UIDevice.current.orientation
-        }
+        UIDevice.current.orientation
     }
     
     override func viewDidLoad() {
@@ -48,7 +51,16 @@ class LoginViewController: UIViewController {
     }
 
     @IBAction func onSignInButton(_ sender: UIButton) {
-        
+        guard let username = loginTextField.text?.trimmingCharacters(in: .whitespaces),
+              !username.isEmpty,
+              let password = passwordTextField.text?.trimmingCharacters(in: .whitespaces),
+              !password.isEmpty else  {
+            errorView.isHidden = false
+            errorLabel.text = SignInError.empty.rawValue.localization()
+            return
+        }
+        errorView.isHidden = true
+        presenter.signIn(username, password)
     }
     
     @objc func onViewTap() {
@@ -83,5 +95,12 @@ class LoginViewController: UIViewController {
 }
 
 extension LoginViewController: LoginView {
+    func showErrorView(_ error: SignInError) {
+        errorView.isHidden = false
+        errorLabel.text = error.rawValue.localization()
+    }
     
+    func hideErrorView() {
+        errorView.isHidden = true
+    }
 }

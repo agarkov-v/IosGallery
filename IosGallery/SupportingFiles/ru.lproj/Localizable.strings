@@ -56,4 +56,10 @@
 "Nothing found." = "Ничего не найдено.";
 "Loading..." = "Загрузка...";
 
+"Invalid username or password" = "Неверное имя пользователя или пароль";
+"Authorization error, please try again" = "Ошибка авторизации, попробуйте повторить действие";
+"User data error, please try again" = "Ошибка данных пользователя, попробуйте повторить действие";
+"Image processing error" = "Ошибка обработки изображения";
+"Tap on screen to close" = "Нажмите на экран, чтобы закрыть";
 
+"Fields must not be empty" = "Поля не должны быть пусты";

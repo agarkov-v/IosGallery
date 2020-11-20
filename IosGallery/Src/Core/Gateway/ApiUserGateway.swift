@@ -7,14 +7,14 @@
 
 import RxSwift
 
-protocol UserGatewayProtocol {
+protocol UserGateway {
     
     func getAccount() -> Single<UserEntity>
     func updateUser(user: UpdateUserEntity) -> Single<UserEntity>
     func changePassword(passwordEntity: ChangePasswordEntity) -> Single<UserEntity>
 }
 
-class ApiUserGateway: ApiBaseGateway, UserGatewayProtocol {
+class ApiUserGateway: ApiBaseGateway, UserGateway {
     
     func getAccount() -> Single<UserEntity> {
         return self.apiClient.execute(request: .getCurrentUser())

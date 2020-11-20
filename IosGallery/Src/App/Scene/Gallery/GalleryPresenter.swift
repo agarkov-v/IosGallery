@@ -18,11 +18,11 @@ protocol GalleryView: BaseView {
     
 }
 
-protocol GalleryPresenterProtocol {
+protocol GalleryPresenter {
     func openTestDetail(image: UIImage, label: String, user: String, date: String, descr: String)
 }
 
-class GalleryPresenter: GalleryPresenterProtocol {
+class GalleryPresenterImp: GalleryPresenter {
     
     private weak var view: GalleryView!
     private let router: GalleryRouter

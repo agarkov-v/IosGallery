@@ -7,24 +7,24 @@
 
 import RxSwift
 
-protocol AuthUseCaseProtocol {
+protocol AuthUseCase {
     
     func login(username: String, password: String) -> Completable
     func refreshToken() -> Completable
 }
 
-class AuthUseCase: AuthUseCaseProtocol {
+class AuthUseCaseImp: AuthUseCase {
 
-    private let authGateway: AuthGatewayProtocol
-    private let userGateway: UserGatewayProtocol
-    private let manager: UserManager
+    private let authGateway: AuthGateway
+    private let userGateway: UserGateway
+    private let userManager: UserManager
     
-    init(authGateway: AuthGatewayProtocol,
-         userGateway: UserGatewayProtocol,
-         manager: UserManager) {
+    init(authGateway: AuthGateway,
+         userGateway: UserGateway,
+         userManager: UserManager) {
         self.authGateway = authGateway
         self.userGateway = userGateway
-        self.manager = manager
+        self.userManager = userManager
     }
     
     func login(username: String, password: String) -> Completable {
@@ -35,7 +35,7 @@ class AuthUseCase: AuthUseCaseProtocol {
     }
     
     func refreshToken() -> Completable {
-        guard let refreshToken = self.manager.token?.refreshToken else {
+        guard let refreshToken = self.userManager.token?.refreshToken else {
             return .error(AppError.tokenRefreshingError)
         }
         return authGateway.refreshToken(refreshToken: refreshToken)

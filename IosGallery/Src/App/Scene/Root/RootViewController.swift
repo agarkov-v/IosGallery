@@ -34,7 +34,7 @@ extension RootViewController: UITabBarControllerDelegate {
             destinationViewController.scrollToTop()
             return false
             
-        } else if navigationController.viewControllers.count <= 1, let destinationViewController = navigationController.viewControllers.first?.children[0] as? ScrollableToTop  {
+        } else if navigationController.viewControllers.count <= 1, let destinationViewController = navigationController.viewControllers.first?.children[0] as? ScrollableToTop {
             //for VC in Containetr
             destinationViewController.scrollToTop()
             return false

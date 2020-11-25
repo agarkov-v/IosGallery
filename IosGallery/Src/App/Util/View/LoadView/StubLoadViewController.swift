@@ -90,9 +90,8 @@ class StubLoadViewController: UIViewController {
         closeImageView.translatesAutoresizingMaskIntoConstraints = false
         closeView.addSubview(closeImageView)
         
-        
         stubBackgroundView.heightAnchor.constraint(equalToConstant: 85).isActive = true
-        stubBackgroundView.widthAnchor.constraint(equalTo: stubBackgroundView.heightAnchor, multiplier: 1/1).isActive = true
+        stubBackgroundView.widthAnchor.constraint(equalTo: stubBackgroundView.heightAnchor, multiplier: 1 / 1).isActive = true
         stubBackgroundView.centerXAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.centerXAnchor).isActive = true
         stubBackgroundView.centerYAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.centerYAnchor).isActive = true
         stubBackgroundView.bottomAnchor.constraint(equalTo: messageLabel.bottomAnchor, constant: 11).isActive = true
@@ -104,7 +103,7 @@ class StubLoadViewController: UIViewController {
         messageLabel.centerXAnchor.constraint(equalTo: stubBackgroundView.centerXAnchor).isActive = true
 
         closeView.heightAnchor.constraint(equalToConstant: 100).isActive = true
-        closeView.widthAnchor.constraint(equalTo: closeView.heightAnchor, multiplier: 1/1).isActive = true
+        closeView.widthAnchor.constraint(equalTo: closeView.heightAnchor, multiplier: 1 / 1).isActive = true
         closeView.centerXAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.centerXAnchor).isActive = true
         closeView.centerYAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.centerYAnchor).isActive = true
         
@@ -115,7 +114,7 @@ class StubLoadViewController: UIViewController {
         
         closeImageView.centerXAnchor.constraint(equalTo: closeView.centerXAnchor).isActive = true
         closeImageView.centerYAnchor.constraint(equalTo: closeView.centerYAnchor).isActive = true
-        closeImageView.heightAnchor.constraint(equalTo: closeImageView.widthAnchor, multiplier: 1/1).isActive = true
+        closeImageView.heightAnchor.constraint(equalTo: closeImageView.widthAnchor, multiplier: 1 / 1).isActive = true
         closeImageView.heightAnchor.constraint(equalToConstant: 40).isActive = true
         
     }

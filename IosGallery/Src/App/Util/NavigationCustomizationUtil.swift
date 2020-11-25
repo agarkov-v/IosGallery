@@ -11,7 +11,6 @@ enum NavigationType {
     case gallery
     case uploadImage
     case accountGallery
-
     
     var title: String {
         switch self {
@@ -97,7 +96,6 @@ extension UIViewController {
         backBtn.setTitleTextAttributes([NSAttributedString.Key.font: UIFont.systemFont(ofSize: 18, weight: UIFont.Weight.semibold)], for: .normal)
         navigationItem.backBarButtonItem = backBtn
     }
- 
     
     func setupActionLeftButton(action: Selector) {
         let image = R.image.arrowLeft()

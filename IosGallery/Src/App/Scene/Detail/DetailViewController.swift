@@ -20,7 +20,6 @@ class DetailViewController: UIViewController {
     var testDate: String!
     var testDescr: String!
     
-    
     var presenter: DetailPresenter!
     
     override func viewDidLoad() {

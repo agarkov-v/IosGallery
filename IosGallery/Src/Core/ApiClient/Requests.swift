@@ -41,6 +41,7 @@ extension ApiRequest {
         case .new:
             new = ("new", "true")
             popular = ("popular", "false")
+
         case .popular:
             new = ("new", "false")
             popular = ("popular", "true")

@@ -21,12 +21,16 @@ enum AppError: LocalizedError {
         switch self {
         case .loginPasswordError:
             return "Invalid username or password".localization()
+
         case .tokenExpiredError:
             return "Authorization error, please try again".localization()
+
         case .tokenRefreshingError:
             return nil
+
         case .userDataError:
             return "User data error, please try again".localization()
+
         case .imageToPngError:
             return "Image processing error".localization()
         }

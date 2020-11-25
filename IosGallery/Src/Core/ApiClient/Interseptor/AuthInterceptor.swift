@@ -15,7 +15,7 @@ class AuthInterceptor: Interceptor {
         self.manager = manager
     }
     
-    func prepare<T>(request: ApiRequest<T>) where T : Decodable, T : Encodable {
+    func prepare<T>(request: ApiRequest<T>) where T: Decodable, T: Encodable {
         if request.path?.contains("oauth") != true {
             let authHeaderKey = "Authorization"
             let index = request.headers?.firstIndex(where: { $0.key == authHeaderKey })
@@ -34,7 +34,7 @@ class AuthInterceptor: Interceptor {
         }
     }
     
-    func handle<T>(request: ApiRequest<T>, response: NetworkResponse) where T : Decodable, T : Encodable {
+    func handle<T>(request: ApiRequest<T>, response: NetworkResponse) where T: Decodable, T: Encodable {
         //not implemented
     }
 }

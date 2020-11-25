@@ -55,8 +55,6 @@ class AccountViewController: UIViewController {
         let accountNib = R.nib.accountCell
         tableView.register(accountNib)
     }
-    
-    
 
 }
 
@@ -78,7 +76,6 @@ extension AccountViewController: UITableViewDataSource {
         cell.descriptionLabel.text = "This is test description text. This is test description text. This is test description text. This is test description text."
         return cell
     }
-    
     
 }
 

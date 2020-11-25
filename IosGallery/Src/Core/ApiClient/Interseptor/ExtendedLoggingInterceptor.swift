@@ -51,7 +51,6 @@ class ExtendedLoggingInterceptor: Interceptor {
             print("\(urlResponse.url!.relativeString)")
             print("Status code: (\(httpUrlResponse.statusCode)) \(statusEmoji)")
 
-
             if let responseStringBody = responseBody {
 
                 guard let responseData = response.data,

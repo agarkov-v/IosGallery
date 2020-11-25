@@ -8,7 +8,6 @@
 import Foundation
 import RxNetworkApiClient
 
-
 extension ApiEndpoint {
 
 //    static let base = ApiEndpoint("http://gallery.dev.webant.ru")
@@ -22,7 +21,7 @@ extension ApiEndpoint {
 //    }
     
     //------
-    static var endpoint =  "http://gallery.dev.webant.ru"
+    static var endpoint = "http://gallery.dev.webant.ru"
     
     static var id = "5793"
     static var randomId = "49b5fgezz0g00sg4wogosssgogwcckosc48sg8o84gkwk0088w"

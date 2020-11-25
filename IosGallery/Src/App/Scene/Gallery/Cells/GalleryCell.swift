@@ -36,6 +36,5 @@ class GalleryCell: UICollectionViewCell {
 
         galleryImageView.layer.cornerRadius = radius
     }
-    
 
 }

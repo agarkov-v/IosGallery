@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct AuthResponseEntity: Codable{
+struct AuthResponseEntity: Codable {
     
     let error: String
     let errorDescription: String

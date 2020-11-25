@@ -13,8 +13,6 @@ enum SignInError: String {
 }
 
 class LoginViewController: UIViewController {
-    
-    
 
     @IBOutlet weak var logoView: UIView!
     @IBOutlet weak var welcomeLabel: UILabel!
@@ -54,7 +52,7 @@ class LoginViewController: UIViewController {
         guard let username = loginTextField.text?.trimmingCharacters(in: .whitespaces),
               !username.isEmpty,
               let password = passwordTextField.text?.trimmingCharacters(in: .whitespaces),
-              !password.isEmpty else  {
+              !password.isEmpty else {
             errorView.isHidden = false
             errorLabel.text = SignInError.empty.rawValue.localization()
             return

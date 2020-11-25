@@ -20,8 +20,7 @@ class AuthResponseHandler: ResponseHandler {
     
     init(useCase: AuthUseCase,
          manager: UserManager,
-         apiClient: ApiClient)
-    {
+         apiClient: ApiClient) {
         self.useCase = useCase
         self.manager = manager
         self.apiClient = apiClient
@@ -44,6 +43,7 @@ class AuthResponseHandler: ResponseHandler {
                 self.refreshToken(observer: observer)
                 observer(.error(AppError.tokenExpiredError))
                 return true
+
             default:
                 break
             }

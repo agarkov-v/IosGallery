@@ -117,8 +117,8 @@ class AccountSettingsViewController: UIViewController {
     
     func configureBarButtonItem() {
         let rightBarButtonItem = UIBarButtonItem(title: "Save".localization(), style: .plain, target: self, action: #selector(onRightBarButtonItem))
-        let attributes = [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 15, weight: .bold),
-                          NSAttributedString.Key.foregroundColor : R.color.pink()!]
+        let attributes = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 15, weight: .bold),
+                          NSAttributedString.Key.foregroundColor: R.color.pink()!]
         rightBarButtonItem.setTitleTextAttributes(attributes, for: .normal)
         self.navigationItem.rightBarButtonItem = rightBarButtonItem
     }

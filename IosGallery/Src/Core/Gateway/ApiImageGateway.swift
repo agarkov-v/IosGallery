@@ -15,7 +15,6 @@ protocol ImageGateway {
     func uploadFile(data: Data) -> Single<ImageEntity>
 }
 
-
 class ApiImageGateway: ApiBaseGateway, ImageGateway {
     
     func uploadFile(data: Data) -> Single<ImageEntity> {

@@ -167,7 +167,6 @@ extension GalleryViewController: UISearchResultsUpdating {
         //
     }
     
-    
 }
 
 extension GalleryViewController: UISearchControllerDelegate {

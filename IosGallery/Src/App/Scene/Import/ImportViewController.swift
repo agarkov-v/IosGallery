@@ -8,7 +8,6 @@
 import UIKit
 
 class ImportViewController: UIViewController {
-
  
     @IBOutlet weak var importScrollView: UIScrollView!
     @IBOutlet weak var importImageView: UIImageView!
@@ -59,8 +58,8 @@ class ImportViewController: UIViewController {
     
     func configureBarButtonItem() {
         let rightBarButtonItem = UIBarButtonItem(title: "Add".localization(), style: .plain, target: self, action: #selector(onRightBarButtonItem))
-        let attributes = [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 15, weight: .bold),
-                          NSAttributedString.Key.foregroundColor : R.color.pink()!]
+        let attributes = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 15, weight: .bold),
+                          NSAttributedString.Key.foregroundColor: R.color.pink()!]
         rightBarButtonItem.setTitleTextAttributes(attributes, for: .normal)
         self.navigationItem.rightBarButtonItem = rightBarButtonItem
     }
@@ -122,7 +121,7 @@ extension ImportViewController: ImportView {
 }
 
 extension ImportViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
         if let editedImage = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
             importImageView.image = editedImage
         } else if let originalImage = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {

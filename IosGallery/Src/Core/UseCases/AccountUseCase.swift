@@ -76,7 +76,6 @@ class AccountUseCaseImp: AccountUseCase {
         }
     }
     
-    
     func reset() {
         self.items.removeAll()
         self.currentPage = 0

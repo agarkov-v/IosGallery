@@ -9,7 +9,6 @@ import UIKit
 
 class StubLoad: UIView {
     
-    
     @IBOutlet weak var backgroundView: UIView! {
         didSet {
             backgroundView.layer.cornerRadius = 8
@@ -25,6 +24,5 @@ class StubLoad: UIView {
     func show() {
         activityIndicator.startAnimating()
     }
-    
     
 }

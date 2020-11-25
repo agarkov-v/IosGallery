@@ -11,7 +11,7 @@ typealias ActionChoiceDialog = (title: String, action: () -> Void)
 
 protocol BaseView: class {
 }
-
+//swiftlint:disable vertical_parameter_alignment
 extension BaseView {
 
     // TODO: ActivityIndicators
@@ -48,7 +48,6 @@ extension BaseView {
             alert.addAction(cancelAction)
             cancelAction.setValue(#colorLiteral(red: 0, green: 0, blue: 0, alpha: 1), forKey: "titleTextColor")
         }
-        
         
         (self as? UIViewController)?.present(alert, animated: true)
     }
@@ -123,7 +122,6 @@ extension BaseView {
         (self as? UIViewController)?.present(sheet, animated: true)
     }
 
-
     func showErrorDialog(message: String,
                          action: ((UIAlertAction) -> Void)? = nil,
                          onShow: (() -> Void)? = nil) {
@@ -172,7 +170,6 @@ extension BaseView {
 
         (self as? UIViewController)?.present(alert, animated: true)
     }
-
     
     func showInputDialogOnlyMainAction(title: String? = nil,
                          text: String? = nil,
@@ -232,7 +229,7 @@ extension BaseView {
         alert.addAction(mainAction)
         actionsChoice.forEach { (title, action) in
 
-            let button = UIAlertAction(title: title, style: .default,  handler: { _ in action() })
+            let button = UIAlertAction(title: title, style: .default, handler: { _ in action() })
             button.setValue(#colorLiteral(red: 0, green: 0, blue: 0, alpha: 1), forKey: "titleTextColor")
             alert.addAction(button)
         }

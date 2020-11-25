@@ -36,8 +36,22 @@ class DI {
             .lifetime(.single)
         
         // MARK: - ApiClient
+//        self.container.register { () -> ApiClientImp in
+//            let client = ApiClientImp.defaultInstance(host: ApiEndpoint.base.host)
+//            client.interceptors.removeAll()
+//            return client
+//        }
+//            .as(ApiClient.self)
+//            .injection(cycle: true) {
+//                $0.interceptors.insert($1 as AuthInterceptor, at: 0)
+//            }
+//            .injection(cycle: true) {
+//                $0.responseHandlersQueue.insert($1 as AuthResponseHandler, at: 0)
+//            }
+//            .lifetime(.single)
+        
         self.container.register { () -> ApiClientImp in
-            let client = ApiClientImp.defaultInstance(host: ApiEndpoint.base.host)
+            let client = ApiClientImp.defaultInstance(host: ApiEndpoint.endpoint)
             client.interceptors.removeAll()
             return client
         }

@@ -37,4 +37,5 @@ class GalleryPresenterImp: GalleryPresenter {
     func openTestDetail(image: UIImage, label: String, user: String, date: String, descr: String) {
         router.openTestDetail(image: image, label: label, user: user, date: date, descr: descr)
     }
+        
 }

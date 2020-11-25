@@ -24,6 +24,12 @@ class GalleryViewController: UIViewController {
 //        return searchController
 //    }
     
+    private var refreshControl: UIRefreshControl {
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(reloadData), for: .valueChanged)
+        return refreshControl
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         GalleryConfigurator().configure(view: self)
@@ -85,6 +91,10 @@ class GalleryViewController: UIViewController {
         let cellSize = (Int(collectionView.bounds.width) - Int(totalSpace)) / noOfCellsInRow
         return cellSize
     }
+    
+    @objc func reloadData() {
+        
+    }
 
 }
 
@@ -142,6 +152,13 @@ extension GalleryViewController: UICollectionViewDelegateFlowLayout {
 
 extension GalleryViewController: GalleryView {
     
+    func reloadTable() {
+        self.collectionView.reloadData()
+    }
+    
+    func endRefreshing() {
+        self.collectionView.refreshControl?.endRefreshing()
+    }
 }
 
 extension GalleryViewController: UISearchResultsUpdating {

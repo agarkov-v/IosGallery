@@ -687,6 +687,7 @@
 				2394480525359DBE0083878A /* Frameworks */,
 				2394480625359DBE0083878A /* Resources */,
 				7CC0945C2766AC46ADB3775E /* [CP] Embed Pods Frameworks */,
+				23A39FF9256F012C0034FB68 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -864,6 +865,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"$PODS_ROOT/R.swift/rswift\" generate \"$SRCROOT/IosGallery/R.generated.swift\"\n";
+		};
+		23A39FF9256F012C0034FB68 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"error: SwiftLint does not exist, install it by 'brew install swiftlint'. More: https://github.com/realm/SwiftLint\"\n  exit 1\nfi\n";
 		};
 		24854E3072E1E46FA282F921 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;

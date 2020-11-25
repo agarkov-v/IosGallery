@@ -100,6 +100,11 @@ extension LoginViewController: LoginView {
         errorLabel.text = error.rawValue.localization()
     }
     
+    func showErrorView(message: String) {
+        errorView.isHidden = false
+        errorLabel.text = message.localization()
+    }
+    
     func hideErrorView() {
         errorView.isHidden = true
     }

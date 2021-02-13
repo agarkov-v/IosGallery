@@ -8,6 +8,7 @@
 import UIKit
 
 extension UIViewController {
+    
     func showAlert(title: String, message: String? = nil, firstActionTitle: String? = nil, secondActionTitle: String? = nil, firstCompletion: (() -> Void)? = nil, secondCompletion: (() -> Void)? = nil) {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         if let secondActionTitle = secondActionTitle {

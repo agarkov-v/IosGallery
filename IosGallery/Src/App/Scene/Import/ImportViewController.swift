@@ -66,6 +66,19 @@ class ImportViewController: UIViewController {
     
     @objc func onRightBarButtonItem() {
         print("onRightBarButtonItem click")
+        guard let image = importImageView.image else {
+            self.showAlert(title: "The image is not selected".localization())
+            return
+        }
+        guard let name = nameTextField.text?.trimmingCharacters(in: .whitespaces), !name.isEmpty else {
+            self.showAlert(title: "Enter image name".localization())
+            return
+        }
+        guard let description = descriptionTextView.text?.trimmingCharacters(in: .whitespaces), !description.isEmpty else {
+            self.showAlert(title: "Enter image name".localization())
+            return
+        }
+//        presenter.importImage(image: image, name: name, description: description)
     }
     
     func showImagePickerController(sourceType: UIImagePickerController.SourceType) {
@@ -117,15 +130,20 @@ extension ImportViewController: UITextViewDelegate {
 }
 
 extension ImportViewController: ImportView {
-    
+
+    func cleanView() {
+        importImageView.image = nil
+        nameTextField.text = nil
+        descriptionTextView.text = nil
+    }
 }
 
 extension ImportViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
         if let editedImage = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
             importImageView.image = editedImage
-        } else if let originalImage = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
-            importImageView.image = originalImage
+        } else {
+            self.showAlert(title: "error with image picker".localization())
         }
         dismiss(animated: true, completion: nil)
     }

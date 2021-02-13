@@ -65,19 +65,20 @@ class LoginPresenterImp: LoginPresenter {
         self.authUseCase.login(username: username, password: password)
             .observeOn(MainScheduler.instance)
             .do(onSubscribed: {
-//                self.view.showActivityIndicator()
+                self.view.showActivityIndicator()
             }, onDispose: {
-//                self.view.hideActivityIndicator()
+                self.view.hideActivityIndicator()
             })
-            .subscribe(onCompleted: {
-                //OpenVC
-                //print("Open VC")
-            }, onError: { (error) in
+            .subscribe(onCompleted: { [weak self] in
+                guard let self = self else { return }
+                self.router.openRootScreen()
+            }, onError: { [weak self] (error) in
+                guard let self = self else { return }
                 var message = error.localizedDescription
                 if let authError = error as? AppError {
                     message = authError.localizedDescription
                 }
-                self.view.showErrorDialog(message: message)
+                self.view.showErrorView(message: message)
             })
         .disposed(by: disposeBag)
     }

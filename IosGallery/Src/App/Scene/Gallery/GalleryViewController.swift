@@ -15,14 +15,15 @@ class GalleryViewController: UIViewController {
     var presenter: GalleryPresenter!
     private var searchController = UISearchController(searchResultsController: nil)
     private var currentIndexPath: IndexPath?
+    private var searchText: String?
     //second variant
-//    private var searchController: UISearchController {
-//        let searchController = UISearchController()
-//        searchController.searchResultsUpdater = self
-//        searchController.delegate = self
-//        searchController.obscuresBackgroundDuringPresentation = false
-//        return searchController
-//    }
+    //    private var searchController: UISearchController {
+    //        let searchController = UISearchController()
+    //        searchController.searchResultsUpdater = self
+    //        searchController.delegate = self
+    //        searchController.obscuresBackgroundDuringPresentation = false
+    //        return searchController
+    //    }
     
     private var refreshControl: UIRefreshControl {
         let refreshControl = UIRefreshControl()
@@ -33,14 +34,16 @@ class GalleryViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         GalleryConfigurator().configure(view: self)
+        collectionView.refreshControl = refreshControl
         registerNib()
         createSearchBar()
+        presenter.viewDidLoad()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         prepareView()
-//        setupTitleNavigationBar(entity: .accountGallery)
+        //        setupTitleNavigationBar(entity: .accountGallery)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -61,6 +64,25 @@ class GalleryViewController: UIViewController {
         }
     }
     
+    @IBAction func changeType(_ sender: UISegmentedControl) {
+        switch sender.selectedSegmentIndex {
+        case 0:
+            presenter.changeSegmant(index: 0, searchText: searchText)
+
+        case 1:
+            presenter.changeSegmant(index: 1, searchText: searchText)
+            
+        default:
+            debugPrint("changeType segmentControl default case")
+        }
+
+//        if segment.selectedSegmentIndex == 0 {
+//             presenter.changeSegmant(index: 0, searchText: searchText)
+//        } else {
+//              presenter.changeSegmant(index: 1, searchText: searchText)
+//        }
+    }
+
     func prepareView() {
         modeSegmentControl.setTitle("New".localization(), forSegmentAt: 0)
         modeSegmentControl.setTitle("Popular".localization(), forSegmentAt: 1)
@@ -76,8 +98,8 @@ class GalleryViewController: UIViewController {
         searchController.hidesNavigationBarDuringPresentation = false
         
         //second variant
-//        self.navigationItem.hidesSearchBarWhenScrolling = false
-//        self.navigationItem.searchController = self.searchController
+        //        self.navigationItem.hidesSearchBarWhenScrolling = false
+        //        self.navigationItem.searchController = self.searchController
     }
     
     func registerNib() {
@@ -93,30 +115,35 @@ class GalleryViewController: UIViewController {
     }
     
     @objc func reloadData() {
-        
+        presenter.reloadData(searchBy: searchText)
     }
-
 }
 
 extension GalleryViewController: UICollectionViewDelegate {
+
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        self.showActivityIndicator()
-        presenter.openTestDetail(image: R.image.testPlaceholderImage()!, label: "Test name", user: "User123", date: "01.01.2000", descr: "This is test description.")
+        presenter.didSelectRow(at: indexPath.row)
     }
 }
 
 extension GalleryViewController: UICollectionViewDataSource {
+
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 60
+        return presenter.galleryItemsCount
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: R.nib.galleryCell.identifier, for: indexPath) as! GalleryCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: R.reuseIdentifier.galleryCell, for: indexPath)!
+
         let visibles = collectionView.indexPathsForVisibleItems.sorted()
         if !visibles.isEmpty {
             self.currentIndexPath = visibles[visibles.count / 2]
         }
-        cell.galleryImageView.image = R.image.testPlaceholderImage()
+
+        if indexPath.row > self.presenter.galleryItemsCount - 3 {
+            self.presenter.loadData(searchBy: searchText)
+        }
+        presenter.setupCell(cell: cell, index: indexPath.row)
         return cell
     }
 }
@@ -152,19 +179,49 @@ extension GalleryViewController: UICollectionViewDelegateFlowLayout {
 
 extension GalleryViewController: GalleryView {
     
-    func reloadTable() {
+    func reloadCollection() {
         self.collectionView.reloadData()
     }
     
     func endRefreshing() {
         self.collectionView.refreshControl?.endRefreshing()
     }
+
+    func showLoaderView() {
+        collectionView.stubLoading()
+    }
+
+    func showEmptyMessage(_ stubType: StubType) {
+        collectionView.stubView(stubType: stubType)
+    }
+
+    func clearBackgroundView() {
+        collectionView.hideEmptyMessage()
+    }
 }
 
 extension GalleryViewController: UISearchResultsUpdating {
     
     func updateSearchResults(for searchController: UISearchController) {
-        //
+        if let searchText = searchController.searchBar.text, !searchText.isEmpty {
+//            presenter.reset()
+//            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
+                self.presenter.loadData(searchBy: searchText.trimmingCharacters(in: .whitespaces))
+                self.searchText = searchText
+//            })
+//            self.presenter.loadData(searchBy: searchText.trimmingCharacters(in: .whitespaces))
+//            self.searchText = searchText
+        } else {
+            self.searchText = nil
+//            self.presenter.reset()
+            self.presenter.loadData(searchBy: nil)
+        }
+    }
+
+    func didDismissSearchController(_ searchController: UISearchController) {
+        self.searchText = nil
+//        self.presenter.reset()
+        self.presenter.loadData(searchBy: nil)
     }
     
 }

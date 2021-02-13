@@ -12,7 +12,7 @@ class AccountConfigurator {
     
     func configure(view: AccountViewController) {
         let router = AccountRouter(view)
-        let presenter = AccountPresenterImp(view, router)
+        let presenter = AccountPresenterImp(view, router, DI.resolve(), DI.resolve())
         view.presenter = presenter
     }
     

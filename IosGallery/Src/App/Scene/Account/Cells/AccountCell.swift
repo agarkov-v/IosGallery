@@ -6,8 +6,14 @@
 //
 
 import UIKit
+import Kingfisher
 
-class AccountCell: UITableViewCell {
+protocol AccountCellView {
+
+    func setupCell(item: GalleryEntity)
+}
+
+class AccountCell: UITableViewCell, AccountCellView {
 
     @IBOutlet weak var accountView: UIView!
     @IBOutlet weak var accountImageView: UIImageView!
@@ -18,6 +24,12 @@ class AccountCell: UITableViewCell {
         super.awakeFromNib()
         
     }
+
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        accountImageView.kf.cancelDownloadTask()
+        accountImageView.image = nil
+    }
     
     override func layoutSubviews() {
         super.layoutSubviews()
@@ -25,10 +37,12 @@ class AccountCell: UITableViewCell {
         accountImageView.layer.cornerRadius = 8
     }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    func setupCell(item: GalleryEntity) {
+        let url = URL(string: "http://gallery.dev.webant.ru/media/" + item.image.name)
+        accountImageView.kf.indicatorType = .activity
+        accountImageView.kf.setImage(with: url)
+        nameLabel.text = item.name
+        descriptionLabel.text = item.description
     }
     
 }

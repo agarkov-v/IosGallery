@@ -115,7 +115,7 @@
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="onSignInButton:" destination="uz2-W0-KeP" eventType="touchUpInside" id="6oK-11-B8X"/>
+                                                    <action selector="onSignInButton:" destination="uz2-W0-KeP" eventType="touchUpInside" id="lmG-Yy-V7N"/>
                                                 </connections>
                                             </button>
                                         </subviews>

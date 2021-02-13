@@ -16,8 +16,16 @@ class LoginViewController: UIViewController {
 
     @IBOutlet weak var logoView: UIView!
     @IBOutlet weak var welcomeLabel: UILabel!
-    @IBOutlet weak var loginTextField: UITextField!
-    @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var loginTextField: UITextField! {
+        didSet {
+            loginTextField.text = "daem0n61"
+        }
+    }
+    @IBOutlet weak var passwordTextField: UITextField! {
+        didSet {
+            passwordTextField.text = "QMqa8DAD"
+        }
+    }
     @IBOutlet weak var signInButton: UIButton!
     @IBOutlet weak var errorView: UIView!
     @IBOutlet weak var errorLabel: UILabel!

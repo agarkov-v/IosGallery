@@ -34,7 +34,7 @@ class AccountSettingsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureBarButtonItem()
-
+        presenter.viewDidLoad()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -63,11 +63,11 @@ class AccountSettingsViewController: UIViewController {
     }
     
     @IBAction func onSignOut(_ sender: UIButton) {
-//        if self.presenter.hasChanged  {
-//            self.onTryToClose()
-//        } else {
-//            self.presenter.close()
-//        }
+        showChoiceDialog(message: "Вы точно хотите выйти?".localization(), positiveMessage: "Yes".localization(), negativeMessage: "No".localization(), onChoice: { [weak self] isPositive in
+            if isPositive {
+                self?.presenter.signOut()
+            }
+        })
     }
     
     @IBAction func onIconModeSwitch(_ sender: UISwitch) {
@@ -84,6 +84,11 @@ class AccountSettingsViewController: UIViewController {
     
     @objc func onBackButtonTap() {
         presenter.onBackBarButtonItem()
+        //        if self.presenter.hasChanged  {
+        //            self.onTryToClose()
+        //        } else {
+        //            self.presenter.close()
+        //        }
     }
     
     func prepateView() {
@@ -130,5 +135,17 @@ class AccountSettingsViewController: UIViewController {
 }
 
 extension AccountSettingsViewController: AccountSettingsView {
-    
+
+    func updateView(user: UserEntity) {
+        userNameTextField.text = user.username
+        birthdayTextField.text = DateFormatUtil.standartDateFormat(dateString: user.birthday)
+        emailTextField.text = user.email
+//
+//        if let date = isoDateFormatter.date(from: user.birthday) {
+//            self.datePicker.setDate(date, animated: false)
+//            self.textFields[1].text = dateFormatter.string(from: date)
+//        } else {
+//            fatalError("Date parse error")
+//        }
+    }
 }

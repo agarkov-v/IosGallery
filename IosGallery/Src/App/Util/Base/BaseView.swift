@@ -22,7 +22,7 @@ extension BaseView {
     }
 
     func hideActivityIndicator() {
-        (self as? StubLoadViewController)?.dismiss(animated: true, completion: nil)
+        (self as? UIViewController)?.dismiss(animated: true, completion: nil)
 //        ProgressHudControl.dismiss()
     }
     
@@ -65,15 +65,15 @@ extension BaseView {
                                            handler: { _ in
                                                onChoice(true)
                                            })
-        positiveAction.setValue(#colorLiteral(red: 0, green: 0, blue: 0, alpha: 1),
-                                forKey: "titleTextColor")
+//        positiveAction.setValue(#colorLiteral(red: 0, green: 0, blue: 0, alpha: 1),
+//                                forKey: "titleTextColor")
         let negativeAction = UIAlertAction(title: negativeMessage,
                                            style: .cancel,
                                            handler: { _ in
                                                onChoice(false)
                                            })
-        negativeAction.setValue(#colorLiteral(red: 0, green: 0, blue: 0, alpha: 1),
-                                forKey: "titleTextColor")
+//        negativeAction.setValue(#colorLiteral(red: 0, green: 0, blue: 0, alpha: 1),
+//                                forKey: "titleTextColor")
 
         alert.addAction(negativeAction)
         alert.addAction(positiveAction)

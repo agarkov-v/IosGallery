@@ -33,6 +33,13 @@ class DateFormatUtil {
             return customDateFormat(time: date.timeIntervalSince1970, format: format)
         } else { return nil }
     }
+
+    static func standartDateFormat(dateString: String) -> String? {
+        if let date = hardDateFormatter.date(from: dateString) {
+            let format = "dd.MM.yyyy"
+            return customDateFormat(time: date.timeIntervalSince1970, format: format)
+        } else { return nil }
+    }
     
     static func simpleDateFormat(time: TimeInterval) -> String {
         return dateFormatter.string(from: Date(timeIntervalSince1970: time))

@@ -5,14 +5,13 @@
 //  Created by Вячеслав Агарков on 14.10.2020.
 //
 
-import Foundation
 import UIKit
 
 class ImportConfigurator {
     
     func configure(view: ImportViewController) {
         let router = ImportRouter(view)
-        let presenter = ImportPresenterImp(view, router)
+        let presenter = ImportPresenterImp(view, router, DI.resolve())
         view.presenter = presenter
     }
     

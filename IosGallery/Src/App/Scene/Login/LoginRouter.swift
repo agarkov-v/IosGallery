@@ -20,5 +20,4 @@ class LoginRouter: BaseRouter {
         let window = UIApplication.shared.delegate!.window!!
         window.rootViewController = rootView
     }
-    
 }

@@ -18,8 +18,8 @@ class AccountRouter: BaseRouter {
     func openAccountSettings() {
         AccountSettingsConfigurator.open(navigationController: view.navigationController!)
     }
-
+    
     func openDetail(galleryItem: GalleryEntity) {
-        DetailConfigurator.open(navigationController: self.view.navigationController!, galleryItem: galleryItem)
+        DetailConfigurator.open(navigationController: view.navigationController!, galleryItem: galleryItem)
     }
 }

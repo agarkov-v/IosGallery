@@ -9,7 +9,7 @@ import Foundation
 import RxSwift
 
 protocol AccountView: BaseView {
-
+    
     func reloadTable()
     func endRefreshing()
     func showLoaderView()
@@ -20,12 +20,13 @@ protocol AccountView: BaseView {
 
 protocol AccountPresenter {
 
+    func viewDidLoad()
+    func viewWillAppear()
+    func reloadData()
     var galleryItemsCount: Int { get }
     func openAccountSettings()
     func selectImage(index: Int)
     func setupCell(cell: AccountCellView, index: Int)
-    func viewDidLoad()
-    func reloadData()
 }
 
 class AccountPresenterImp: AccountPresenter {
@@ -36,7 +37,7 @@ class AccountPresenterImp: AccountPresenter {
     private let accountUseCase: AccountUseCase
     private var galleryItems = [GalleryEntity]()
     private let userManager: UserManager
-
+    
     var galleryItemsCount: Int {
         galleryItems.count
     }
@@ -51,71 +52,70 @@ class AccountPresenterImp: AccountPresenter {
         self.userManager = userManager
         subscribe()
     }
+    
+    func openAccountSettings() {
+        router.openAccountSettings()
+    }
+    
+    func selectImage(index: Int) {
+        router.openDetail(galleryItem: galleryItems[index])
+    }
+    
+    func setupCell(cell: AccountCellView, index: Int) {
+        cell.setupCell(item: galleryItems[index])
+    }
+    
+    func viewDidLoad() {
+        loadData()
+    }
+
+    func viewWillAppear() {
+        getUser()
+    }
+    
+    func reloadData() {
+        accountUseCase.reset()
+        loadData()
+    }
 
     private func subscribe() {
-        self.accountUseCase.source
+        accountUseCase.source
             .observeOn(MainScheduler.instance)
             .subscribe(onNext: { [weak self] (items) in
                 guard let self = self else { return }
                 self.galleryItems = items
                 self.view.reloadTable()
             })
-            .disposed(by: self.disposeBag)
-    }
-    
-    func openAccountSettings() {
-        router.openAccountSettings()
+            .disposed(by: disposeBag)
     }
 
-    func selectImage(index: Int) {
-        router.openDetail(galleryItem: galleryItems[index])
+    private func loadData() {
+        if galleryItems.isEmpty {
+            view.showLoaderView()
+        }
+        guard accountUseCase.hasMorePage else { return }
+        accountUseCase.loadNewData()
+            .observeOn(MainScheduler.instance)
+            .subscribe(onCompleted: { [weak self] in
+                guard let self = self else { return }
+                self.view.endRefreshing()
+                if self.galleryItems.isEmpty {
+                    self.view.showEmptyMessage(.noData)
+                } else {
+                    self.view.clearBackgroundView()
+                }
+            }, onError: { [weak self] error in
+                guard let self = self else { return }
+                self.view.showEmptyMessage(.badConnection)
+                self.view.showErrorDialog(message: error.localizedDescription)
+                self.view.endRefreshing()
+            })
+            .disposed(by: disposeBag)
     }
 
-    func setupCell(cell: AccountCellView, index: Int) {
-        cell.setupCell(item: galleryItems[index])
-    }
-
-    func viewDidLoad() {
-        loadData()
-        getUser()
-    }
-
-    func getUser() {
+    private func getUser() {
         if let user = userManager.user {
             view.setupProfile(user: user)
         }
     }
-
-    func loadData() {
-        if galleryItems.isEmpty {
-            view.showLoaderView()
-        }
-        if accountUseCase.hasMorePage {
-            accountUseCase.loadNewData()
-                .observeOn(MainScheduler.instance)
-                .subscribe(onCompleted: { [weak self] in
-                    guard let self = self else { return }
-                    self.view.endRefreshing()
-                    if self.galleryItems.isEmpty {
-                        self.view.showEmptyMessage(.noData)
-                    } else {
-                        self.view.clearBackgroundView()
-                    }
-                }, onError: { [weak self] error in
-                    guard let self = self else { return }
-                    self.view.showEmptyMessage(.badConnection)
-                    self.view.showErrorDialog(message: error.localizedDescription)
-                    self.view.endRefreshing()
-                })
-                .disposed(by: disposeBag)
-        }
-    }
-
-    func reloadData() {
-        self.accountUseCase.reset()
-        self.loadData()
-    }
-
-
 }
-

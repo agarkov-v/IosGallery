@@ -36,9 +36,10 @@ class AuthResponseHandler: ResponseHandler {
         if let errorEntity = try? JSONDecoder().decode(AuthResponseEntity.self, from: data) {
             let error = errorEntity.errorDescription.lowercased()
             switch error {
-            case let er where er.contains("invalid username and password combination"):
+            case let er where er.contains("invalid username and password combination") || er.contains("The operation couldn’t be completed. (IosGallery.AppError error 0.)"):
                 observer(.error(AppError.loginPasswordError))
                 return true
+
             case let er where er.contains("the access token provided has expired."):
                 self.refreshToken(observer: observer)
                 observer(.error(AppError.tokenExpiredError))

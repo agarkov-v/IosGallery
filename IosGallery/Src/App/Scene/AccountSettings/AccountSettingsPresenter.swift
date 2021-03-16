@@ -11,22 +11,26 @@ import RxSwift
 protocol AccountSettingsView: BaseView {
 
     func updateView(user: UserEntity)
-//    func showAlert(message: String, completion: (() -> Void)?)
-//    func clearPasswordFields()
+    func updateSegmentedControl(index: Int)
+    func clearPasswordFields()
+    func showPasswordError(with text: String)
+    func hidePasswordError()
+    func sctollToError()
 }
 
 protocol AccountSettingsPresenter {
 
-    func onBackBarButtonItem()
-// 
     func viewDidLoad()
-//    func updateUser(username: String, birthday: Date, email: String)
-//    func changePassword(oldPassword: String, newPassword: String)
+    func onBackBarButtonItem(username: String?, birthday: String?, email: String?, oldPassword: String, newPassword: String, confirmPassword: String)
+    func onSaveTap(username: String?, birthday: String?, email: String?, oldPassword: String, newPassword: String, confirmPassword: String)
+    func updateUser(username: String, birthday: String, email: String)
+    func changePassword(oldPassword: String, newPassword: String, confirmPassword: String)
     func signOut()
+    func changeTheme(index: Int)
 }
 
 class AccountSettingsPresenterImp: AccountSettingsPresenter {
-    
+
     private weak var view: AccountSettingsView!
     private let router: AccountSettingsRouter
     private var disposeBag = DisposeBag()
@@ -43,92 +47,132 @@ class AccountSettingsPresenterImp: AccountSettingsPresenter {
         self.userManager = userManager
     }
     
-    func onBackBarButtonItem() {
-        router.pop()
+    func onBackBarButtonItem(username: String?, birthday: String?, email: String?, oldPassword: String, newPassword: String, confirmPassword: String) {
+        guard let user = userManager.user else {
+            view.showDialog(message: "Информация о пользователе отсутсвует. Войдите снова.") { [weak self] _ in
+                self?.signOut()
+            }
+            return
+        }
+        guard let oldBirthdayDate = DateFormatUtil.convertStringToDate(stringDate: user.birthday, isSmpleFormat: false), let username = username, let birthday = birthday, let email = email else {
+            view.showDialog(message: "Ошибка обработки даты", action: { [weak self] _ in
+                self?.router.pop()
+            })
+            return
+        }
+        let newBirthdayDate = DateFormatUtil.convertStringToDate(stringDate: birthday)
+        if oldPassword != "" || newPassword != "" || confirmPassword != "" || user.username != username || oldBirthdayDate != newBirthdayDate || user.email != email {
+            view.showChoiceDialog(message: "У вас есть несохраненные изменения, все равно выйти?", positiveMessage: "Да", negativeMessage: "Нет") { [weak self] isPositive in
+                guard isPositive else { return }
+                self?.router.pop()
+            }
+        } else {
+            router.pop()
+        }
     }
 
     func viewDidLoad() {
         getUser()
+        view.updateSegmentedControl(index: Theme.current.rawValue)
+    }
+
+    func signOut() {
+        AppDelegate.shared.doLogOut()
+    }
+
+    func onSaveTap(username: String?, birthday: String?, email: String?, oldPassword: String, newPassword: String, confirmPassword: String) {
+        guard let username = username, let birthday = birthday, let email = email else { return }
+        updateUser(username: username, birthday: birthday, email: email)
+
+        changePassword(oldPassword: oldPassword, newPassword: newPassword, confirmPassword: confirmPassword)
+    }
+
+    func updateUser(username: String, birthday: String, email: String) {
+        guard let user = userManager.user else {
+            view.showDialog(message: "Информация о пользователе отсутсвует. Войдите снова.") { [weak self] _ in
+                self?.signOut()
+            }
+            return
+        }
+
+        guard let oldBirthdayDate = DateFormatUtil.convertStringToDate(stringDate: user.birthday, isSmpleFormat: false) else {
+            view.showDialog(message: "Ошибка обработки даты", action: nil)
+            return
+        }
+        let newBirthdayDate = DateFormatUtil.convertStringToDate(stringDate: birthday)
+
+        guard user.username != username || oldBirthdayDate != newBirthdayDate || user.email != email else { return }
+
+        let newUser = UpdateUserEntity(id: user.id, email: email, username: username, birthday: birthday)
+
+        userGateway.updateUser(user: newUser)
+            .observeOn(MainScheduler.instance)
+            .do(onSubscribed: { [weak self] in
+                self?.view.showActivityIndicator()
+            }, onDispose: { [weak self] in
+                self?.view.hideActivityIndicator()
+            })
+            .subscribe(onSuccess: { [weak self] user in
+                guard let self = self else { return }
+                self.userManager.user = user
+                self.view.updateView(user: user)
+            }, onError: { [weak self] error in
+                debugPrint("updateUser error: \(error) || \(error.localizedDescription)")
+                self?.view.showDialog(message: error.localizedDescription, action: nil)
+            })
+            .disposed(by: disposeBag)
+    }
+
+    func changePassword(oldPassword: String, newPassword: String, confirmPassword: String) {
+        guard let user = userManager.user else {
+            view.showDialog(message: "Информация о пользователе отсутсвует. Войдите снова.") { [weak self] _ in
+                self?.signOut()
+            }
+            return
+        }
+        view.hidePasswordError()
+
+        if oldPassword == "", newPassword == "", confirmPassword == "" { return }
+
+        if oldPassword == "" || newPassword == "" || confirmPassword == "" {
+            view.showPasswordError(with: "Не все поля заполнены")
+            view.sctollToError()
+            return
+        }
+        guard newPassword == confirmPassword else {
+            view.showPasswordError(with: "Пароли не совпадают")
+            view.sctollToError()
+            return
+        }
+        guard oldPassword != newPassword else {
+            view.showPasswordError(with: "Новый пароль должен отличаться от старого")
+            view.sctollToError()
+            return
+        }
+        let passwordEntity = ChangePasswordEntity(id: user.id, oldPassword: oldPassword, newPassword: newPassword)
+        userGateway.changePassword(passwordEntity: passwordEntity)
+            .observeOn(MainScheduler.instance)
+            .subscribe(onSuccess: { [weak self] _ in
+                guard let self = self else { return }
+                self.view.showDialog(message: "Пароль успешно обновлен", action: nil)
+                self.view.clearPasswordFields()
+            }, onError: { [weak self] error in
+                debugPrint("changePassword error: \(error) || \(error.localizedDescription)")
+                self?.view.showDialog(message: error.localizedDescription, action: nil)
+                self?.view.sctollToError()
+            })
+            .disposed(by: disposeBag)
+    }
+
+    func changeTheme(index: Int) {
+        guard let theme = Theme(rawValue: index) else { return }
+        theme.setActive()
     }
 
     private func getUser() {
         if let user = userManager.user {
-            self.view.updateView(user: user)
+            view.updateView(user: user)
         }
     }
-
-    func signOut() {
-//        userManager.token = nil
-//        userManager.user = nil
-//        LoginConfigurator.open()
-        AppDelegate.shared.doLogOut()
-    }
-
-//    func updateUser(username: String, birthday: Date, email: String) {
-//        guard let user = userManager.user else {
-//            self.view.showAlert(message: "Информация пользователя отсутсвует") {
-//                LoginConfigurator.open()
-//            }
-//            return
-//        }
-//
-//        //print(user.birthday, birthday, user.birthday == birthday)
-//        //TODO
-//
-//        guard let date = self.isoDateFormatter.date(from: user.birthday) else {
-//            self.view.showAlert(message: "Ошибка обработки даты",
-//                                completion: nil)
-//            return
-//        }
-//
-//        if user.username == username, date == birthday, user.email == email {
-//            return
-//        }
-//
-//        let newUser = UpdateUserEntity(id: user.id, email: email, username: username, birthday: self.isoDateFormatter.string(from: birthday))
-//
-//        EZLoadingActivity.show("Wait please...", disableUI: true)
-//
-//        self.gateway.updateUser(user: newUser)
-//            .subscribe(onSuccess: { (user) in
-//                self.manager.user = user
-//                DispatchQueue.main.async {
-//                    EZLoadingActivity.hide()
-//                    self.view.updateView(user: user)
-//                }
-//            }, onError: { (error) in
-//                DispatchQueue.main.async {
-//                    EZLoadingActivity.hide()
-//                    self.view.showAlert(message: error.localizedDescription,
-//                                        completion: nil)
-//                }
-//            })
-//            .disposed(by: self.bag)
-//    }
-//
-//    func changePassword(oldPassword: String, newPassword: String) {
-//        guard let user = self.manager.user else {
-//            self.view.showAlert(message: "Информация пользователя отсутсвует") {
-//                LoginConfigurator.open()
-//            }
-//            return
-//        }
-//        let passwordEntity = ChangePasswordEntity(id: user.id, oldPassword: oldPassword, newPassword: newPassword)
-//        self.gateway.changePassword(passwordEntity: passwordEntity)
-//            .subscribe(onSuccess: { (user) in
-//                DispatchQueue.main.async {
-//                    self.view.showAlert(message: "Пароль обновлен",
-//                                        completion: nil)
-//                    self.view.clearPasswordFields()
-//                }
-//            }, onError: { (error) in
-//                print(error)
-//                DispatchQueue.main.async {
-//                    self.view.showAlert(message: error.localizedDescription,
-//                                        completion: nil)
-//                }
-//            })
-//            .disposed(by: self.bag)
-//    }
 }
 

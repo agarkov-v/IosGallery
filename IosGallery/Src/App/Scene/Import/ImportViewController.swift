@@ -8,15 +8,17 @@
 import UIKit
 
 class ImportViewController: UIViewController {
- 
-    @IBOutlet weak var importScrollView: UIScrollView!
-    @IBOutlet weak var importImageView: UIImageView!
-    @IBOutlet weak var nameTextField: UITextField!
-    @IBOutlet weak var descriptionTextView: UITextView!
+
+    @IBOutlet private weak var importScrollView: UIScrollView!
+    @IBOutlet private weak var importImageView: UIImageView!
+    @IBOutlet private weak var nameTextField: UITextField!
+    @IBOutlet private weak var descriptionTextView: UITextView!
     
     var presenter: ImportPresenter!
-//    private let pickerController = UIImagePickerController()
-    
+    //    private let pickerController = UIImagePickerController()
+
+    // MARK: LifeCycle
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -44,7 +46,8 @@ class ImportViewController: UIViewController {
         descriptionTextView.layer.borderColor = R.color.gray()!.cgColor
     }
     
-    func prepateView() {
+    private func prepateView() {
+        importImageView.image = R.image.photoPlaceholder()
         nameTextField.placeholder = "Name".localization()
         
         nameTextField.layer.cornerRadius = 4
@@ -56,7 +59,7 @@ class ImportViewController: UIViewController {
         descriptionTextView.delegate = self
     }
     
-    func configureBarButtonItem() {
+    private func configureBarButtonItem() {
         let rightBarButtonItem = UIBarButtonItem(title: "Add".localization(), style: .plain, target: self, action: #selector(onRightBarButtonItem))
         let attributes = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 15, weight: .bold),
                           NSAttributedString.Key.foregroundColor: R.color.pink()!]
@@ -64,24 +67,7 @@ class ImportViewController: UIViewController {
         self.navigationItem.rightBarButtonItem = rightBarButtonItem
     }
     
-    @objc func onRightBarButtonItem() {
-        print("onRightBarButtonItem click")
-        guard let image = importImageView.image else {
-            self.showAlert(title: "The image is not selected".localization())
-            return
-        }
-        guard let name = nameTextField.text?.trimmingCharacters(in: .whitespaces), !name.isEmpty else {
-            self.showAlert(title: "Enter image name".localization())
-            return
-        }
-        guard let description = descriptionTextView.text?.trimmingCharacters(in: .whitespaces), !description.isEmpty else {
-            self.showAlert(title: "Enter image name".localization())
-            return
-        }
-//        presenter.importImage(image: image, name: name, description: description)
-    }
-    
-    func showImagePickerController(sourceType: UIImagePickerController.SourceType) {
+    private func showImagePickerController(sourceType: UIImagePickerController.SourceType) {
         let imagePickerController = UIImagePickerController()
         imagePickerController.sourceType = sourceType
         imagePickerController.delegate = self
@@ -89,13 +75,30 @@ class ImportViewController: UIViewController {
         present(imagePickerController, animated: true, completion: nil)
     }
     
-    func configureImageGesture() {
+    private func configureImageGesture() {
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(showImagePickerControllerActionSheet))
         importImageView.addGestureRecognizer(tapGestureRecognizer)
         importImageView.isUserInteractionEnabled = true
     }
+
+    @objc private func onRightBarButtonItem() {
+        print("onRightBarButtonItem click")
+        guard let image = importImageView.image, image != R.image.photoPlaceholder() else {
+            self.showAlert(title: "The image is not selected".localization())
+            return
+        }
+        guard let name = nameTextField.text?.trimmingCharacters(in: .whitespaces), !name.isEmpty else {
+            self.showAlert(title: "Enter image name".localization())
+            return
+        }
+        guard let description = descriptionTextView.text?.trimmingCharacters(in: .whitespaces), !description.isEmpty, description != "Description" else {
+            self.showAlert(title: "Enter image description".localization())
+            return
+        }
+        //        presenter.importImage(image: image, name: name, description: description)
+    }
     
-    @objc func showImagePickerControllerActionSheet() {
+    @objc private func showImagePickerControllerActionSheet() {
         self.showActionSheetAlert(title: "",
                                   message: "Choose image from:".localization(),
                                   firstActionTitle: "Photo library".localization(),
@@ -104,6 +107,8 @@ class ImportViewController: UIViewController {
                                   secondCompletion: { [weak self] in self?.showImagePickerController(sourceType: .camera) })
     }
 }
+
+// MARK: UITextViewDelegate
 
 extension ImportViewController: UITextViewDelegate {
     
@@ -129,6 +134,8 @@ extension ImportViewController: UITextViewDelegate {
     }
 }
 
+// MARK: ImportView
+
 extension ImportViewController: ImportView {
 
     func cleanView() {
@@ -137,6 +144,8 @@ extension ImportViewController: ImportView {
         descriptionTextView.text = nil
     }
 }
+
+// MARK: UIImagePickerControllerDelegate
 
 extension ImportViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {

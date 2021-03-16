@@ -14,5 +14,4 @@ class DetailRouter: BaseRouter {
     init(_ view: DetailViewController) {
         self.view = view
     }
-    
 }

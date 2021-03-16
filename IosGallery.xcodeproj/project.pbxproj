@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		14F5D9D965B094D6F657E3E1 /* Pods_IosGallery.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7069CCA179E351F270D654F4 /* Pods_IosGallery.framework */; };
+		2338780126013DB300DC3336 /* ThemeUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2338780026013DB300DC3336 /* ThemeUtil.swift */; };
 		2373ABC5255353DA000C2EF6 /* UIView+animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2373ABC4255353DA000C2EF6 /* UIView+animation.swift */; };
 		23775F412535ED38004C530F /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23775F402535ED38004C530F /* R.generated.swift */; };
 		23775F802535F521004C530F /* GalleryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23775F7F2535F521004C530F /* GalleryViewController.swift */; };
@@ -131,6 +132,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2338780026013DB300DC3336 /* ThemeUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeUtil.swift; sourceTree = "<group>"; };
 		2373ABC4255353DA000C2EF6 /* UIView+animation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+animation.swift"; sourceTree = "<group>"; };
 		23775F402535ED38004C530F /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
 		23775F7F2535F521004C530F /* GalleryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryViewController.swift; sourceTree = "<group>"; };
@@ -445,6 +447,7 @@
 				239449042535C6030083878A /* Base */,
 				23B26BC525407ABA003AAED1 /* View */,
 				23A6234A2536F0EC00F6F7DF /* StringUtil.swift */,
+				2338780026013DB300DC3336 /* ThemeUtil.swift */,
 				23A623632537049300F6F7DF /* DateFormatUtil.swift */,
 				23A623682537178200F6F7DF /* TableViewUtil.swift */,
 				23B26BBD25407A4E003AAED1 /* CollectionViewUtil.swift */,
@@ -995,6 +998,7 @@
 				23A623B22537298400F6F7DF /* ImportRouter.swift in Sources */,
 				23A623BC2537299C00F6F7DF /* AccountConfigurator.swift in Sources */,
 				23FB80052541B7900089D9E7 /* DI.swift in Sources */,
+				2338780126013DB300DC3336 /* ThemeUtil.swift in Sources */,
 				23FB801E2541CB270089D9E7 /* ChangePasswordEntity.swift in Sources */,
 				23A6239E2537295C00F6F7DF /* DetailConfigurator.swift in Sources */,
 				23A623AD2537297D00F6F7DF /* ImportConfigurator.swift in Sources */,

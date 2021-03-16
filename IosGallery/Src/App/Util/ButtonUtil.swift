@@ -10,17 +10,17 @@ import UIKit
 extension UIButton {
 
     func setIcon(_ icon: UIImage?) {
-        self.imageView?.contentMode = .scaleAspectFit
-        self.setImage(nil, for: UIControl.State())
+        imageView?.contentMode = .scaleAspectFit
+        setImage(nil, for: UIControl.State())
 
-        guard let imageView = self.imageView else {
-            return
-        }
+        guard let imageView = imageView else { return }
 
         UIView.transition(with: imageView,
                           duration: 0.2,
                           options: .transitionCrossDissolve,
-                          animations: { self.setImage(icon, for: .normal) },
+                          animations: { [weak self] in
+                            self?.setImage(icon, for: .normal)
+                          },
                           completion: nil)
     }
 }

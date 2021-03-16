@@ -14,5 +14,4 @@ class ImportRouter: BaseRouter {
     init(_ view: ImportViewController) {
         self.view = view
     }
-    
 }

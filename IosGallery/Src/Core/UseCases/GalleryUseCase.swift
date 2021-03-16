@@ -11,8 +11,6 @@ import RxSwift
 protocol GalleryUseCase {
     
     var source: PublishSubject<[GalleryEntity]> { get }
-    //var limit: Int { get set }
-    //var isLoadingInProcess: Bool { get }
     
     var hasMorePage: Bool { get }
     
@@ -47,7 +45,7 @@ class GalleryUseCaseImp: GalleryUseCase {
     }
     
     func getCurrentPage() -> Int {
-        return self.currentPage
+        return currentPage
     }
     
     func loadNewData(type: GalleryType, searchBy text: String? = nil) -> Completable {
@@ -70,10 +68,10 @@ class GalleryUseCaseImp: GalleryUseCase {
     }
     
     func reset() {
-        self.items.removeAll()
-        self.currentPage = 0
-        self.countOfPages = nil
-        self.isLoadingInProcess = false
+        items.removeAll()
+        currentPage = 0
+        countOfPages = nil
+        isLoadingInProcess = false
     }
 }
 

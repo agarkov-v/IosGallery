@@ -78,15 +78,20 @@ extension ApiRequest {
     
     static func updateUser(user: UpdateUserEntity) -> ApiRequest {
         return request(path: "/api/users/\(user.id)",
-            method: .put,
-            headers: [.contentJson],
-            body: user)
+                       method: .put,
+                       headers: [.contentJson],
+                       body: user)
+    }
+
+    static func getUser(id: String) -> ApiRequest {
+        return request(path: "/api/users/\(id)",
+                       method: .get)
     }
     
     static func changePassword(password: ChangePasswordEntity) -> ApiRequest {
         return request(path: "/api/users/update_password/\(password.id)",
-            method: .put,
-            headers: [.contentJson],
-            body: password)
+                       method: .put,
+                       headers: [.contentJson],
+                       body: password)
     }
 }

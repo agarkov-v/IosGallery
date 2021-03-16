@@ -9,28 +9,43 @@ import UIKit
 
 class AccountSettingsViewController: UIViewController {
 
-    @IBOutlet weak var modeView: UIView!
-    @IBOutlet weak var colorModeLabel: UILabel!
-    @IBOutlet weak var colorModeSegmentControl: UISegmentedControl!
-    @IBOutlet weak var iconModeLabel: UILabel!
-    @IBOutlet weak var iconModeSwitch: UISwitch!
-    @IBOutlet weak var personalDataLabel: UILabel!
-    @IBOutlet weak var userNameTextField: UITextField!
-    @IBOutlet weak var birthdayTextField: UITextField!
-    @IBOutlet weak var emailLabel: UILabel!
-    @IBOutlet weak var emailTextField: UITextField!
-    @IBOutlet weak var passwordLabel: UILabel!
-    @IBOutlet weak var oldPasswordTextField: UITextField!
-    @IBOutlet weak var newPasswordTextField: UITextField!
-    @IBOutlet weak var confirmPasswordTextField: UITextField!
-    @IBOutlet weak var signOutButton: UIButton!
-    @IBOutlet weak var errorView: UIView!
-    @IBOutlet weak var errorLabel: UILabel!
-    
+    @IBOutlet private weak var scrollView: UIScrollView!
+    @IBOutlet private weak var modeView: UIView!
+    @IBOutlet private weak var colorModeLabel: UILabel!
+    @IBOutlet private weak var colorModeSegmentControl: UISegmentedControl!
+    @IBOutlet private weak var iconModeLabel: UILabel!
+    @IBOutlet private weak var iconModeSwitch: UISwitch!
+    @IBOutlet private weak var personalDataLabel: UILabel!
+    @IBOutlet private weak var userNameTextField: UITextField!
+    @IBOutlet private weak var birthdayTextField: UITextField!
+    @IBOutlet private weak var emailLabel: UILabel!
+    @IBOutlet private weak var emailTextField: UITextField!
+    @IBOutlet private weak var passwordLabel: UILabel!
+    @IBOutlet private weak var oldPasswordTextField: UITextField!
+    @IBOutlet private weak var newPasswordTextField: UITextField!
+    @IBOutlet private weak var confirmPasswordTextField: UITextField!
+    @IBOutlet private weak var signOutButton: UIButton!
+    @IBOutlet private weak var errorView: UIView!
+    @IBOutlet private weak var errorLabel: UILabel!
+
+    var presenter: AccountSettingsPresenter!
+
     private let appIconService = AppIconService()
     private let userDefaults = UserDefaults.standard
-    var presenter: AccountSettingsPresenter!
-    
+
+    private var birthdayDatePicker: UIDatePicker = {
+        let datePicker = UIDatePicker()
+        datePicker.datePickerMode = .date
+        datePicker.maximumDate = Date()
+        datePicker.addTarget(self, action: #selector(dateChanged(datePicker:)), for: .valueChanged)
+//        if #available(iOS 13.0, *) {
+//            datePicker.preferredDatePickerStyle = .wheels
+//        }
+        return datePicker
+    }()
+
+    // MARK: LifeCycle
+
     override func viewDidLoad() {
         super.viewDidLoad()
         configureBarButtonItem()
@@ -47,30 +62,30 @@ class AccountSettingsViewController: UIViewController {
             modeView.isHidden = true
         }
         prepateView()
-        addBackBarButtonOnNavigationBar(action: #selector(onBackButtonTap), "Settings")
+        setupTitleNavigationBar("Settings")
+        setupActionLeftButton(action: #selector(onBackButtonTap))
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
-//        if isDarkModeIcon
-//
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
     }
+    @IBAction func onChangeTheme(_ sender: UISegmentedControl) {
+        presenter.changeTheme(index: sender.selectedSegmentIndex)
+    }
     
-    @IBAction func onSignOut(_ sender: UIButton) {
+    @IBAction private func onSignOut(_ sender: UIButton) {
         showChoiceDialog(message: "Вы точно хотите выйти?".localization(), positiveMessage: "Yes".localization(), negativeMessage: "No".localization(), onChoice: { [weak self] isPositive in
-            if isPositive {
+            guard isPositive else { return }
                 self?.presenter.signOut()
-            }
         })
     }
     
-    @IBAction func onIconModeSwitch(_ sender: UISwitch) {
+    @IBAction private func onIconModeSwitch(_ sender: UISwitch) {
         if sender.isOn {
             appIconService.changeAppIcon(to: .iconDark)
             userDefaults.set(true, forKey: "isDarkModeIcon")
@@ -82,19 +97,10 @@ class AccountSettingsViewController: UIViewController {
 //        sender.isOn ? appIconService.changeAppIcon(to: .iconDark) : appIconService.changeAppIcon(to: .iconPrimary)
     }
     
-    @objc func onBackButtonTap() {
-        presenter.onBackBarButtonItem()
-        //        if self.presenter.hasChanged  {
-        //            self.onTryToClose()
-        //        } else {
-        //            self.presenter.close()
-        //        }
-    }
-    
-    func prepateView() {
+    private func prepateView() {
         colorModeLabel.text = "Color mode:".localization()
-        colorModeSegmentControl.setTitle("System".localization(), forSegmentAt: 0)
         iconModeLabel.text = "Dark app icon:".localization()
+        colorModeSegmentControl.setTitle("System".localization(), forSegmentAt: 0)
         colorModeSegmentControl.setTitle("Light".localization(), forSegmentAt: 1)
         colorModeSegmentControl.setTitle("Dark".localization(), forSegmentAt: 2)
         personalDataLabel.text = "Personal data".localization()
@@ -117,22 +123,45 @@ class AccountSettingsViewController: UIViewController {
         confirmPasswordTextField.setRightViewIcon(icon: R.image.eyeIcon_second()!)
         signOutButton.titleLabel?.text = "Sign Out".localization()
         signOutButton.layer.cornerRadius = 4
-        
+        birthdayTextField.inputView = birthdayDatePicker
     }
     
-    func configureBarButtonItem() {
+    private func configureBarButtonItem() {
         let rightBarButtonItem = UIBarButtonItem(title: "Save".localization(), style: .plain, target: self, action: #selector(onRightBarButtonItem))
         let attributes = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 15, weight: .bold),
                           NSAttributedString.Key.foregroundColor: R.color.pink()!]
         rightBarButtonItem.setTitleTextAttributes(attributes, for: .normal)
-        self.navigationItem.rightBarButtonItem = rightBarButtonItem
-    }
-    
-    @objc func onRightBarButtonItem() {
-        print("onRightBarButtonItem click")
+        navigationItem.rightBarButtonItem = rightBarButtonItem
     }
 
+    @objc private func onBackButtonTap() {
+        let username = userNameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines)
+        let birthday = birthdayTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines)
+        let email = emailTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines)
+        let oldPassword = oldPasswordTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
+        let newPassword = newPasswordTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
+        let confirmPassword = confirmPasswordTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
+        presenter.onBackBarButtonItem(username: username, birthday: birthday, email: email, oldPassword: oldPassword, newPassword: newPassword, confirmPassword: confirmPassword)
+    }
+
+    @objc private func dateChanged(datePicker: UIDatePicker) {
+        birthdayTextField.text = DateFormatUtil.convertDateToStandartString(date: datePicker.date)
+    }
+    
+    @objc private func onRightBarButtonItem() {
+        print("onRightBarButtonItem click")
+        let username = userNameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines)
+        let birthday = birthdayTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines)
+        let email = emailTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines)
+        let oldPassword = oldPasswordTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
+        let newPassword = newPasswordTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
+        let confirmPassword = confirmPasswordTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
+
+        presenter.onSaveTap(username: username, birthday: birthday, email: email, oldPassword: oldPassword, newPassword: newPassword, confirmPassword: confirmPassword)
+    }
 }
+
+// MARK: AccountSettingsView
 
 extension AccountSettingsViewController: AccountSettingsView {
 
@@ -140,12 +169,44 @@ extension AccountSettingsViewController: AccountSettingsView {
         userNameTextField.text = user.username
         birthdayTextField.text = DateFormatUtil.standartDateFormat(dateString: user.birthday)
         emailTextField.text = user.email
-//
-//        if let date = isoDateFormatter.date(from: user.birthday) {
-//            self.datePicker.setDate(date, animated: false)
-//            self.textFields[1].text = dateFormatter.string(from: date)
-//        } else {
-//            fatalError("Date parse error")
-//        }
+
+        if let date = DateFormatUtil.convertStringToDate(stringDate: user.birthday, isSmpleFormat: false) {
+            birthdayDatePicker.setDate(date, animated: false)
+            birthdayTextField.text = DateFormatUtil.convertDateToStandartString(date: date)
+        }
+    }
+
+    func updateSegmentedControl(index: Int) {
+        colorModeSegmentControl.selectedSegmentIndex = index
+    }
+
+    func clearPasswordFields() {
+        oldPasswordTextField.text = nil
+        newPasswordTextField.text = nil
+        confirmPasswordTextField.text = nil
+    }
+
+    func showPasswordError(with text: String) {
+        errorView.isHidden = false
+        errorLabel.text = text
+        oldPasswordTextField.backgroundColor = .systemRed
+        newPasswordTextField.backgroundColor = .systemRed
+        confirmPasswordTextField.backgroundColor = .systemRed
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3) { [weak self] in
+            guard let self = self else { return }
+            self.oldPasswordTextField.backgroundColor = R.color.whiteBlack()
+            self.newPasswordTextField.backgroundColor = R.color.whiteBlack()
+            self.confirmPasswordTextField.backgroundColor = R.color.whiteBlack()
+        }
+    }
+
+    func hidePasswordError() {
+        errorView.isHidden = true
+    }
+
+    func sctollToError() {
+        if scrollView.contentSize.height < scrollView.bounds.size.height { return }
+        let bottomOffset = CGPoint(x: 0, y: scrollView.contentSize.height - scrollView.bounds.size.height)
+        scrollView.setContentOffset(bottomOffset, animated: true)
     }
 }

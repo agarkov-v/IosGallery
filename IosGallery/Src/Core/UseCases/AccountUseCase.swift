@@ -11,8 +11,6 @@ import RxSwift
 protocol AccountUseCase {
     
     var source: PublishSubject<[GalleryEntity]> { get }
-    //var limit: Int { get set }
-    //var isLoadingInProcess: Bool { get }
     
     var hasMorePage: Bool { get }
     
@@ -34,13 +32,13 @@ class AccountUseCaseImp: AccountUseCase {
     private var items = [GalleryEntity]()
     
     var hasMorePage: Bool {
-        if self.isLoadingInProcess {
+        if isLoadingInProcess {
             return false
         }
-        guard let countOfPages = self.countOfPages else {
+        guard let countOfPages = countOfPages else {
             return true
         }
-        return self.currentPage < countOfPages
+        return currentPage < countOfPages
     }
     
     init (manager: UserManager, gateway: GalleryGateway) {
@@ -49,7 +47,7 @@ class AccountUseCaseImp: AccountUseCase {
     }
     
     func getCurrentPage() -> Int {
-        return self.currentPage
+        return currentPage
     }
     
     func loadNewData() -> Completable {
@@ -77,10 +75,10 @@ class AccountUseCaseImp: AccountUseCase {
     }
     
     func reset() {
-        self.items.removeAll()
-        self.currentPage = 0
-        self.countOfPages = nil
-        self.isLoadingInProcess = false
+        items.removeAll()
+        currentPage = 0
+        countOfPages = nil
+        isLoadingInProcess = false
     }
 }
 

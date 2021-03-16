@@ -17,12 +17,6 @@ class UserUseCaseImp: UserUseCase {
     private let fileGateway: ImageGateway
     private let galleryGateway: GalleryGateway
     
-    private var dateFormatter: DateFormatter = {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
-        return formatter
-    }()
-    
     init(fileGateway: ImageGateway, galleryGateway: GalleryGateway) {
         self.fileGateway = fileGateway
         self.galleryGateway = galleryGateway
@@ -39,7 +33,7 @@ class UserUseCaseImp: UserUseCase {
                     return Completable.empty()
                 }
                 
-                let date = self.dateFormatter.string(from: Date())
+                let date = DateFormatUtil.convertDateToStandartString(date: Date())
                 
                 let imageIri = "http://gallery.dev.webant.ru/api/media_objects/\(file.id)"
                 

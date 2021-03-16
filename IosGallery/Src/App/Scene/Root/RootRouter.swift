@@ -14,5 +14,4 @@ class RootRouter: BaseRouter {
     init(_ view: RootViewController) {
         self.view = view
     }
-    
 }

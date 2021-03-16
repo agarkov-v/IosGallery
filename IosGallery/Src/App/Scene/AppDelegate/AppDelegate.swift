@@ -24,6 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         CocoaDebug.enable()
         //            DBDebugToolkit.setup()
         #endif
+        themeWindow.makeKey()
         IQKeyboardManager.shared().isEnabled = true
         DI.initDependencies()
         openStartScreen(window: window)
@@ -35,16 +36,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     @available(iOS 13.0, *)
     func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {
-        // Called when a new scene session is being created.
-        // Use this method to select a configuration to create the new scene with.
         return UISceneConfiguration(name: "Default Configuration", sessionRole: connectingSceneSession.role)
-    }
-    
-    @available(iOS 13.0, *)
-    func application(_ application: UIApplication, didDiscardSceneSessions sceneSessions: Set<UISceneSession>) {
-        // Called when the user discards a scene session.
-        // If any sessions were discarded while the application was not running, this will be called shortly after application:didFinishLaunchingWithOptions.
-        // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
     }
     
     @available(iOS 13.0, *)
@@ -53,7 +45,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if let windowScene = scene as? UIWindowScene {
             self.window = UIWindow(windowScene: windowScene)
         }
-        
     }
     
     func openStartScreen(window: UIWindow?) {
@@ -66,6 +57,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         } else {
             window.rootViewController = loginVC
         }
+        Theme.current.setActive()
         window.makeKeyAndVisible()
     }
 
@@ -73,7 +65,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         guard let userManager = userManager else { return }
         userManager.token = nil
         userManager.user = nil
-        guard let window = self.window else { return }
+        guard let window = window else { return }
         let loginVC = R.storyboard.login.loginVC()!
         window.rootViewController = loginVC
     }

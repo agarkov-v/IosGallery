@@ -52,8 +52,8 @@ class StubView: UIView {
         stubTitle.textColor = textColor
         stubMessage.textColor = textColor
         
-        self.setNeedsDisplay()
-        self.setNeedsLayout()
+        setNeedsDisplay()
+        setNeedsLayout()
     }
     
     func setup(_ type: StubType) {
@@ -65,7 +65,7 @@ class StubView: UIView {
         stubTitle.textColor = textColor
         stubMessage.textColor = textColor
         
-        self.setNeedsDisplay()
-        self.setNeedsLayout()
+        setNeedsDisplay()
+        setNeedsLayout()
     }
 }

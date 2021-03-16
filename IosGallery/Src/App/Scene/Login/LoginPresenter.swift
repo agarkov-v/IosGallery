@@ -10,7 +10,6 @@ import RxSwift
 import RxNetworkApiClient
 
 protocol LoginView: BaseView {
-    func showErrorView(_ error: SignInError)
     func showErrorView(message: String)
     func hideErrorView()
 }
@@ -34,40 +33,13 @@ class LoginPresenterImp: LoginPresenter {
         self.authUseCase = authUseCase
     }
     
-//    func signIn(_ username: String, _ password: String) {
-//        authUseCase.login(username: username, password: password)
-//            .observeOn(MainScheduler.instance)
-//            .do(onSubscribed: { [weak self] in
-//                self?.view.showActivityIndicator()
-//            }, onDispose: { [weak self] in
-//                self?.view.hideActivityIndicator()
-//            })
-//            .subscribe(onCompleted: {
-//                //OpenVC
-//                print("Open VC")
-//            }, onError: { [weak self] (error) in
-//                guard let self = self else { return }
-//                var message = error.localizedDescription
-////                print("signIn error: \(message), || \(error)")
-////                self.view.showErrorView(.notMatch)
-//
-//                if let authError = error as? AppError {
-//                    message = authError.localizedDescription
-//                }
-//
-//                self.view.showErrorView(message: message)
-//
-//            })
-//            .disposed(by: disposeBag)
-//    }
-    
     func signIn(_ username: String, _ password: String) {
-        self.authUseCase.login(username: username, password: password)
+        authUseCase.login(username: username, password: password)
             .observeOn(MainScheduler.instance)
-            .do(onSubscribed: {
-                self.view.showActivityIndicator()
-            }, onDispose: {
-                self.view.hideActivityIndicator()
+            .do(onSubscribed: { [weak self] in
+                self?.view.showActivityIndicator()
+            }, onDispose: { [weak self] in
+                self?.view.hideActivityIndicator()
             })
             .subscribe(onCompleted: { [weak self] in
                 guard let self = self else { return }
@@ -75,11 +47,11 @@ class LoginPresenterImp: LoginPresenter {
             }, onError: { [weak self] (error) in
                 guard let self = self else { return }
                 var message = error.localizedDescription
-                if let authError = error as? AppError {
-                    message = authError.localizedDescription
+                if message == "The operation couldn’t be completed. (IosGallery.AppError error 0.)" {
+                    message = "Invalid username or password".localization()
                 }
                 self.view.showErrorView(message: message)
             })
-        .disposed(by: disposeBag)
+            .disposed(by: disposeBag)
     }
 }

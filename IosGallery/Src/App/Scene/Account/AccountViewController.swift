@@ -8,13 +8,16 @@
 import UIKit
 
 class AccountViewController: UIViewController {
+    
+    @IBOutlet private weak var userNameLabel: UILabel!
+    @IBOutlet private weak var birthdayLabel: UILabel!
+    @IBOutlet private weak var tableView: UITableView!
 
-    @IBOutlet weak var userNameLabel: UILabel!
-    @IBOutlet weak var birthdayLabel: UILabel!
-    @IBOutlet weak var tableView: UITableView!
-
-    lazy private var refreshControl = UIRefreshControl()
     var presenter: AccountPresenter!
+    
+    lazy private var refreshControl = UIRefreshControl()
+
+    // MARK: LifeCycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,6 +35,7 @@ class AccountViewController: UIViewController {
         super.viewWillAppear(animated)
         setupTitleNavigationBar(entity: .accountGallery)
         tableView.removeSeparatorsOfEmptyCells()
+        presenter.viewWillAppear()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -44,42 +48,45 @@ class AccountViewController: UIViewController {
         setupTitleNavigationBar("")
     }
     
-    func configureBarButtonItem() {
+    private func configureBarButtonItem() {
         let rightBarButtonItem = UIBarButtonItem(image: R.image.settingsGear(), style: .plain, target: self, action: #selector(onRightBarButtonItem))
         rightBarButtonItem.tintColor = R.color.pink()
-        self.navigationItem.rightBarButtonItem = rightBarButtonItem
+        navigationItem.rightBarButtonItem = rightBarButtonItem
     }
 
+    private func registerNib() {
+        let accountNib = R.nib.accountCell
+        tableView.register(accountNib)
+    }
+    
     @objc private func reloadData() {
         presenter.reloadData()
     }
     
-    @objc func onRightBarButtonItem() {
+    @objc private func onRightBarButtonItem() {
         print("onRightBarButtonItem click")
         presenter.openAccountSettings()
     }
-    
-    func registerNib() {
-        let accountNib = R.nib.accountCell
-        tableView.register(accountNib)
-    }
-
 }
 
-extension AccountViewController: UITableViewDelegate {
+// MARK: UITableViewDelegate
 
+extension AccountViewController: UITableViewDelegate {
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
     }
-
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         presenter.selectImage(index: indexPath.row)
         tableView.deselectRow(at: indexPath, animated: false)
     }
 }
 
-extension AccountViewController: UITableViewDataSource {
+// MARK: UITableViewDataSource
 
+extension AccountViewController: UITableViewDataSource {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return presenter.galleryItemsCount
     }
@@ -92,28 +99,30 @@ extension AccountViewController: UITableViewDataSource {
     
 }
 
-extension AccountViewController: AccountView {
+// MARK: AccountView
 
+extension AccountViewController: AccountView {
+    
     func reloadTable() {
         tableView.reloadData()
     }
-
+    
     func endRefreshing() {
         tableView.refreshControl?.endRefreshing()
     }
-
+    
     func showLoaderView() {
         tableView.stubLoading()
     }
-
+    
     func showEmptyMessage(_ stubType: StubType) {
         tableView.stubView(stubType: stubType)
     }
-
+    
     func clearBackgroundView() {
         tableView.hideEmptyMessage()
     }
-
+    
     func setupProfile(user: UserEntity) {
         userNameLabel.text = user.username
         birthdayLabel.text = DateFormatUtil.standartDateFormat(dateString: user.birthday)
@@ -122,6 +131,6 @@ extension AccountViewController: AccountView {
 
 extension AccountViewController: ScrollableToTop {
     func scrollToTop() {
-        self.tableView.scrollToTop(true)
+        tableView.scrollToTop(true)
     }
 }

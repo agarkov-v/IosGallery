@@ -10,13 +10,15 @@ import Kingfisher
 
 class DetailViewController: UIViewController {
 
-    @IBOutlet weak var detailImageView: UIImageView!
-    @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var userNameLabel: UILabel!
-    @IBOutlet weak var dateLabel: UILabel!
-    @IBOutlet weak var descriptionTextView: UITextView!
+    @IBOutlet private weak var detailImageView: UIImageView!
+    @IBOutlet private weak var nameLabel: UILabel!
+    @IBOutlet private weak var userNameLabel: UILabel!
+    @IBOutlet private weak var dateLabel: UILabel!
+    @IBOutlet private weak var descriptionTextView: UITextView!
     
     var presenter: DetailPresenter!
+
+    // MARK: LifeCycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,6 +29,7 @@ class DetailViewController: UIViewController {
         super.viewWillAppear(animated)
         setupTitleNavigationBar("Image Detail")
         prepateView()
+        presenter.viewWillAppear()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -34,21 +37,24 @@ class DetailViewController: UIViewController {
         setupTitleNavigationBar("")
     }
     
-    func prepateView() {
+    private func prepateView() {
         descriptionTextView.textContainer.lineFragmentPadding = 0
     }
     
 }
 
+// MARK: DetailView
 extension DetailViewController: DetailView {
 
-    func setipView(galleryItem: GalleryEntity) {
+    func setupView(galleryItem: GalleryEntity) {
         let url = URL(string: "http://gallery.dev.webant.ru/media/" + galleryItem.image.name)
         detailImageView.kf.setImage(with: url)
         nameLabel.text = galleryItem.name
-        userNameLabel.text = galleryItem.user ?? "User unknown"
         descriptionTextView.text = galleryItem.description
         dateLabel.text = DateFormatUtil.standartDateFormat(dateString: galleryItem.dateCreate)
-//        "-yyyy-MM-dd'T'HH:mm:ssZ"
+    }
+
+    func updateUser(user: String) {
+        userNameLabel.text = user
     }
 }

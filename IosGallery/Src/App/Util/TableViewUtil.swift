@@ -15,7 +15,7 @@ extension UITableView {
         let view = UIView(frame: frame)
         view.backgroundColor = color
 
-        self.addSubview(view)
+        addSubview(view)
     }
     
     func removeSeparatorsOfEmptyCells() {
@@ -54,7 +54,7 @@ extension UITableView {
         }
         self.backgroundView = container
 
-        self.separatorStyle = .none
+        separatorStyle = .none
     }
     
     func stubLoading(take header: CGRect? = nil) {
@@ -75,10 +75,10 @@ extension UITableView {
         container.addSubview(backgroundView)
         self.backgroundView = container
 
-        self.separatorStyle = .none
+        separatorStyle = .none
     }
 
     func hideEmptyMessage() {
-        self.backgroundView = nil
+        backgroundView = nil
     }
 }

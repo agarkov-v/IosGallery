@@ -19,11 +19,6 @@ class AccountCell: UITableViewCell, AccountCellView {
     @IBOutlet weak var accountImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        
-    }
 
     override func prepareForReuse() {
         super.prepareForReuse()

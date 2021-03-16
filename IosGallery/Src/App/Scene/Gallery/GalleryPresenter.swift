@@ -7,7 +7,6 @@
 
 import Foundation
 import RxSwift
-//import RxNetworkApiClient
 
 enum GalleryType {
     case new
@@ -31,10 +30,15 @@ protocol GalleryPresenter {
     func setupCell(cell: GalleryCellView, index: Int)
     func didSelectRow(at index: Int)
     func reloadData(searchBy text: String?)
-    func changeSegmant(index: Int, searchText: String?)
+    func reset()
+    func changeSegment(index: Int, searchText: String?)
 }
 
 class GalleryPresenterImp: GalleryPresenter {
+
+    var galleryItemsCount: Int {
+        return galleryItems.count
+    }
     
     private weak var view: GalleryView!
     private let router: GalleryRouter
@@ -42,10 +46,6 @@ class GalleryPresenterImp: GalleryPresenter {
     private var galleryItems = [GalleryEntity]()
     private let galleryUseCase: GalleryUseCase
     private var galletyType: GalleryType = .new
-    
-    var galleryItemsCount: Int {
-        galleryItems.count
-    }
     
     init(_ view: GalleryView,
          _ router: GalleryRouter,
@@ -56,6 +56,75 @@ class GalleryPresenterImp: GalleryPresenter {
         subscribe()
     }
     
+    func viewDidLoad() {
+        loadData()
+    }
+
+    func setupCell(cell: GalleryCellView, index: Int) {
+        cell.setupCell(item: galleryItems[index])
+    }
+
+    func didSelectRow(at index: Int) {
+        router.openDetail(galleryItem: galleryItems[index])
+    }
+    
+    func loadData(searchBy text: String? = nil) {
+        if galleryItems.isEmpty {
+            view.showLoaderView()
+        }
+        guard galleryUseCase.hasMorePage else { return }
+        galleryUseCase.loadNewData(type: galletyType, searchBy: text)
+            .observeOn(MainScheduler.instance)
+            .subscribe(onCompleted: { [weak self] in
+                guard let self = self else { return }
+                self.view.endRefreshing()
+                if text != nil {
+                    if self.galleryItems.isEmpty {
+                        self.view.showEmptyMessage(.notingFound)
+                    } else {
+                        self.view.clearBackgroundView()
+                    }
+                } else {
+                    if self.galleryItems.isEmpty {
+                        self.view.showEmptyMessage(.noData)
+                    } else {
+                        self.view.clearBackgroundView()
+                    }
+                }
+            }, onError: { [weak self] error in
+                guard let self = self else { return }
+                self.view.showEmptyMessage(.badConnection)
+                self.view.showErrorDialog(message: error.localizedDescription)
+                self.view.endRefreshing()
+            })
+            .disposed(by: disposeBag)
+    }
+    
+    func reloadData(searchBy text: String?) {
+        reset()
+        loadData(searchBy: text)
+    }
+    
+    func reset() {
+        galleryUseCase.reset()
+        galleryItems.removeAll()
+        view.reloadCollection()
+    }
+
+    func changeSegment(index: Int, searchText: String?) {
+        if index == 0 {
+            galletyType = .new
+        } else if index == 1 {
+            galletyType = .popular
+        } else if index == 2 {
+            // TODO: test images
+        } else {
+            debugPrint("GalletyPresenter changeSegmant invalid index")
+        }
+        reset()
+        loadData(searchBy: searchText)
+    }
+
     private func subscribe() {
         _ = self.galleryUseCase.source
             .observeOn(MainScheduler.instance)
@@ -64,69 +133,6 @@ class GalleryPresenterImp: GalleryPresenter {
                 self.galleryItems = galleryItems
                 self.view.reloadCollection()
             })
-    }
-    
-    func viewDidLoad() {
-        loadData()
-    }
-    
-    func loadData(searchBy text: String? = nil) {
-        if galleryItems.isEmpty {
-            view.showLoaderView()
-        }
-        if galleryUseCase.hasMorePage {
-            galleryUseCase.loadNewData(type: galletyType, searchBy: text)
-                .observeOn(MainScheduler.instance)
-                .subscribe(onCompleted: { [weak self] in
-                    guard let self = self else { return }
-                    self.view.endRefreshing()
-                    if text != nil {
-                        if self.galleryItems.isEmpty {
-                            self.view.showEmptyMessage(.notingFound)
-                        } else {
-                            self.view.clearBackgroundView()
-                        }
-                    } else {
-                        if self.galleryItems.isEmpty {
-                            self.view.showEmptyMessage(.noData)
-                        } else {
-                            self.view.clearBackgroundView()
-                        }
-                    }
-                }, onError: { [weak self] error in
-                    guard let self = self else { return }
-                    self.view.showEmptyMessage(.badConnection)
-                    self.view.showErrorDialog(message: error.localizedDescription)
-                    self.view.endRefreshing()
-                })
-                .disposed(by: disposeBag)
-        }
-    }
-    
-    func reloadData(searchBy text: String?) {
-        galleryUseCase.reset()
-        loadData(searchBy: text)
-    }
-    
-    func reset() {
-        galleryUseCase.reset()
-//        disposeBag = DisposeBag()
-        view.reloadCollection()
-                galleryItems.removeAll()
-    }
-
-    func changeSegmant(index: Int, searchText: String?) {
-        index == 0 ? (galletyType = .new) : (galletyType = .popular)
-        galleryItems.removeAll()
-        loadData(searchBy: searchText)
-        view.reloadCollection()
-    }
-    
-    func setupCell(cell: GalleryCellView, index: Int) {
-        cell.setupCell(item: galleryItems[index])
-    }
-    
-    func didSelectRow(at index: Int) {
-        router.openDetail(galleryItem: galleryItems[index])
+            .disposed(by: disposeBag)
     }
 }

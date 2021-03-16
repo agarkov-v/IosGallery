@@ -9,9 +9,9 @@ import Foundation
 import UIKit
 
 extension UINavigationController {
-
+    
     func popViewController(animated: Bool, completion: @escaping () -> Void) {
-
+        
         self.popViewController(animated: animated)
         self.transitionCoordinator?.animate(alongsideTransition: nil) { _ in
             completion()
@@ -22,7 +22,7 @@ extension UINavigationController {
 // MARK: - Hiding Back Button
 
 extension UINavigationItem {
-
+    
     /// A Boolean value that determines whether the back button is hidden.
     ///
     /// When set to `true`, the back button is hidden when this navigation item

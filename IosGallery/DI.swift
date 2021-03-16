@@ -39,6 +39,7 @@ class DI {
         self.container.register { () -> ApiClientImp in
             let client = ApiClientImp.defaultInstance(host: ApiEndpoint.endpoint)
             client.interceptors.removeAll()
+            client.interceptors.append(ExtendedLoggingInterceptor())
             return client
         }
             .as(ApiClient.self)

@@ -14,5 +14,5 @@ struct UploadGalleryEntity: JsonBodyConvertible {
     let description: String
     let new: Bool
     let popular: Bool
-    let image: String // imageEntity
+    let image: String
 }

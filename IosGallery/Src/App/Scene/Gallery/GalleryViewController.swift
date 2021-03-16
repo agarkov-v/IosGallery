@@ -8,11 +8,12 @@
 import UIKit
 
 class GalleryViewController: UIViewController {
-
-    @IBOutlet weak var modeSegmentControl: UISegmentedControl!
-    @IBOutlet weak var collectionView: UICollectionView!
+    
+    @IBOutlet private weak var modeSegmentControl: UISegmentedControl!
+    @IBOutlet private weak var collectionView: UICollectionView!
     
     var presenter: GalleryPresenter!
+    
     private var searchController = UISearchController(searchResultsController: nil)
     private var currentIndexPath: IndexPath?
     private var searchText: String?
@@ -31,12 +32,15 @@ class GalleryViewController: UIViewController {
         return refreshControl
     }
     
+    // MARK: LifeCycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         GalleryConfigurator().configure(view: self)
         collectionView.refreshControl = refreshControl
         registerNib()
         createSearchBar()
+        collectionView?.isPrefetchingEnabled = true
         presenter.viewDidLoad()
     }
     
@@ -44,6 +48,7 @@ class GalleryViewController: UIViewController {
         super.viewWillAppear(animated)
         prepareView()
         //        setupTitleNavigationBar(entity: .accountGallery)
+        invalidateCollectionLayout()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -52,48 +57,31 @@ class GalleryViewController: UIViewController {
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-        if self.view.window != nil {
-            self.collectionView.collectionViewLayout.invalidateLayout()
-            if let indexPath = self.currentIndexPath {
-                DispatchQueue.main.async {
-                    self.collectionView.scrollToItem(at: indexPath,
-                                                     at: .centeredVertically,
-                                                     animated: false)
-                }
-            }
+        guard view.window != nil else { return }
+        collectionView.collectionViewLayout.invalidateLayout()
+        guard let indexPath = currentIndexPath else { return }
+        DispatchQueue.main.async { [weak self] in
+            self?.collectionView.scrollToItem(at: indexPath,
+                                             at: .centeredVertically,
+                                             animated: false)
         }
     }
     
     @IBAction func changeType(_ sender: UISegmentedControl) {
-        switch sender.selectedSegmentIndex {
-        case 0:
-            presenter.changeSegmant(index: 0, searchText: searchText)
-
-        case 1:
-            presenter.changeSegmant(index: 1, searchText: searchText)
-            
-        default:
-            debugPrint("changeType segmentControl default case")
-        }
-
-//        if segment.selectedSegmentIndex == 0 {
-//             presenter.changeSegmant(index: 0, searchText: searchText)
-//        } else {
-//              presenter.changeSegmant(index: 1, searchText: searchText)
-//        }
+        presenter.changeSegment(index: sender.selectedSegmentIndex, searchText: searchText)
     }
-
-    func prepareView() {
+    
+    private func prepareView() {
         modeSegmentControl.setTitle("New".localization(), forSegmentAt: 0)
         modeSegmentControl.setTitle("Popular".localization(), forSegmentAt: 1)
     }
     
-    func createSearchBar() {
+    private func createSearchBar() {
         searchController = UISearchController(searchResultsController: nil)
         searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchBar.placeholder = "Search".localization()
-        self.navigationItem.titleView = searchController.searchBar
+        navigationItem.titleView = searchController.searchBar
         definesPresentationContext = true
         searchController.hidesNavigationBarDuringPresentation = false
         
@@ -102,51 +90,62 @@ class GalleryViewController: UIViewController {
         //        self.navigationItem.searchController = self.searchController
     }
     
-    func registerNib() {
+    private func registerNib() {
         let galletyNib = R.nib.galleryCell
         collectionView.register(galletyNib)
     }
     
-    func collectionCellSize(noOfCellsInRow: Int, leftSectionInset: CGFloat, rightSectionInset: CGFloat, minInteritemSpacing: CGFloat) -> Int {
+    private func collectionCellSize(noOfCellsInRow: Int, leftSectionInset: CGFloat, rightSectionInset: CGFloat, minInteritemSpacing: CGFloat) -> Int {
         let minInteritemSpacing = minInteritemSpacing * CGFloat((noOfCellsInRow - 1))
         let totalSpace = (leftSectionInset + rightSectionInset + minInteritemSpacing)
         let cellSize = (Int(collectionView.bounds.width) - Int(totalSpace)) / noOfCellsInRow
         return cellSize
     }
+
+    private func invalidateCollectionLayout() {
+        guard let flowLayout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout else { return }
+        flowLayout.invalidateLayout()
+    }
     
-    @objc func reloadData() {
+    @objc private func reloadData() {
         presenter.reloadData(searchBy: searchText)
     }
 }
 
-extension GalleryViewController: UICollectionViewDelegate {
+// MARK: UICollectionViewDelegate
 
+extension GalleryViewController: UICollectionViewDelegate {
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         presenter.didSelectRow(at: indexPath.row)
     }
 }
 
-extension GalleryViewController: UICollectionViewDataSource {
+// MARK: UICollectionViewDataSource
 
+extension GalleryViewController: UICollectionViewDataSource {
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return presenter.galleryItemsCount
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: R.reuseIdentifier.galleryCell, for: indexPath)!
-
+        
         let visibles = collectionView.indexPathsForVisibleItems.sorted()
         if !visibles.isEmpty {
             self.currentIndexPath = visibles[visibles.count / 2]
         }
-
-        if indexPath.row > self.presenter.galleryItemsCount - 3 {
-            self.presenter.loadData(searchBy: searchText)
+        
+        if indexPath.row > presenter.galleryItemsCount - 3 {
+            presenter.loadData(searchBy: searchText)
         }
         presenter.setupCell(cell: cell, index: indexPath.row)
         return cell
     }
 }
+
+// MARK: UICollectionViewDelegateFlowLayout
 
 extension GalleryViewController: UICollectionViewDelegateFlowLayout {
     
@@ -172,10 +171,12 @@ extension GalleryViewController: UICollectionViewDelegateFlowLayout {
         }
         let cellSize = collectionCellSize(noOfCellsInRow: 2, leftSectionInset: leftInset, rightSectionInset: rightSectionInset, minInteritemSpacing: minInteritemSpacing)
         return CGSize(width: cellSize, height: cellSize)
-
+        
     }
     
 }
+
+// MARK: GalleryView
 
 extension GalleryViewController: GalleryView {
     
@@ -186,52 +187,53 @@ extension GalleryViewController: GalleryView {
     func endRefreshing() {
         self.collectionView.refreshControl?.endRefreshing()
     }
-
+    
     func showLoaderView() {
         collectionView.stubLoading()
     }
-
+    
     func showEmptyMessage(_ stubType: StubType) {
         collectionView.stubView(stubType: stubType)
     }
-
+    
     func clearBackgroundView() {
         collectionView.hideEmptyMessage()
     }
 }
 
+// MARK: UISearchResultsUpdating
+
 extension GalleryViewController: UISearchResultsUpdating {
     
     func updateSearchResults(for searchController: UISearchController) {
-        if let searchText = searchController.searchBar.text, !searchText.isEmpty {
-//            presenter.reset()
-//            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
-                self.presenter.loadData(searchBy: searchText.trimmingCharacters(in: .whitespaces))
-                self.searchText = searchText
-//            })
-//            self.presenter.loadData(searchBy: searchText.trimmingCharacters(in: .whitespaces))
-//            self.searchText = searchText
+        var searchTask: DispatchWorkItem?
+        searchTask?.cancel()
+        if let searchText = searchController.searchBar.text, !searchText.isEmpty, searchText != "" {
+            presenter.reset()
+            let task = DispatchWorkItem { [weak self] in
+                self?.presenter.loadData(searchBy: searchText.trimmingCharacters(in: .whitespaces))
+            }
+            searchTask = task
+            guard let searchTask = searchTask else { return }
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1, execute: searchTask)
+            self.searchText = searchText
         } else {
-            self.searchText = nil
-//            self.presenter.reset()
-            self.presenter.loadData(searchBy: nil)
+            searchText = nil
+            presenter.reset()
+            presenter.loadData(searchBy: nil)
         }
     }
-
-    func didDismissSearchController(_ searchController: UISearchController) {
-        self.searchText = nil
-//        self.presenter.reset()
-        self.presenter.loadData(searchBy: nil)
-    }
     
-}
-
-extension GalleryViewController: UISearchControllerDelegate {
+    func didDismissSearchController(_ searchController: UISearchController) {
+        searchText = nil
+        presenter.reset()
+        presenter.loadData(searchBy: nil)
+    }
     
 }
 
 extension GalleryViewController: ScrollableToTop {
     func scrollToTop() {
-        self.collectionView.scrollToTop(true)
+        collectionView.scrollToTop(true)
     }
 }

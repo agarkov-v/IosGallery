@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -43,6 +43,9 @@
                                                                     <segment title="Light"/>
                                                                     <segment title="Dark"/>
                                                                 </segments>
+                                                                <connections>
+                                                                    <action selector="onChangeTheme:" destination="JLe-Xa-iuW" eventType="valueChanged" id="tKt-za-PNf"/>
+                                                                </connections>
                                                             </segmentedControl>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dark app icon:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a7i-tH-kAe">
                                                                 <rect key="frame" x="0.0" y="85" width="93.333333333333329" height="17"/>
@@ -319,6 +322,7 @@
                         <outlet property="oldPasswordTextField" destination="bEA-d1-p9f" id="XG8-hU-NsY"/>
                         <outlet property="passwordLabel" destination="4hm-TS-del" id="8PP-LZ-EjL"/>
                         <outlet property="personalDataLabel" destination="0CW-Zr-cWg" id="a0u-sg-lzx"/>
+                        <outlet property="scrollView" destination="jDH-fp-dIK" id="0Z3-BW-lKa"/>
                         <outlet property="signOutButton" destination="K07-Uc-ZP8" id="esh-Qy-QcS"/>
                         <outlet property="userNameTextField" destination="vGG-zX-hFN" id="zO0-Ar-rGb"/>
                     </connections>

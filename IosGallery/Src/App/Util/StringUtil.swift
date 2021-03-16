@@ -8,8 +8,17 @@
 import Foundation
 
 extension String {
-    //Localization
+    
     func localization() -> String {
         return NSLocalizedString(self, comment: "")
+    }
+
+    func trimming(characterSet: CharacterSet = .whitespacesAndNewlines) -> String? {
+        let trimText = trimmingCharacters(in: characterSet)
+        if trimText == "" {
+            return nil
+        } else {
+            return trimText
+        }
     }
 }

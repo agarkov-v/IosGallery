@@ -14,8 +14,8 @@ class ExtendedLoggingInterceptor: Interceptor {
         var parameters = ""
         if let params = urlRequest.httpBody {
             let body = String(data: params, encoding: .utf8)
-                       ?? String(data: params, encoding: .ascii)
-                          ?? "\(params)"
+                ?? String(data: params, encoding: .ascii)
+                ?? "\(params)"
             parameters = String(body.prefix(150))
         }
 

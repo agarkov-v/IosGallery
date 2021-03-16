@@ -8,7 +8,7 @@
 import UIKit
 
 class RootViewController: UITabBarController {
-
+    
     var presenter: RootPresenter!
     
     override func viewDidLoad() {
@@ -35,7 +35,7 @@ extension RootViewController: UITabBarControllerDelegate {
             return false
             
         } else if navigationController.viewControllers.count <= 1, let destinationViewController = navigationController.viewControllers.first?.children[0] as? ScrollableToTop {
-            //for VC in Containetr
+            // for VC in Containetr
             destinationViewController.scrollToTop()
             return false
         }

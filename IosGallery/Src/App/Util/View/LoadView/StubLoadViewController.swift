@@ -43,9 +43,9 @@ class StubLoadViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(3)) {
-            self.closeView.fadeIn(1) {
-                self.addGesture()
+        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(3)) { [weak self] in
+            self?.closeView.fadeIn(1) { [weak self] in
+                self?.addGesture()
             }
 //            self.closeView.fadeIn(1)
 //            self.addGesture()
@@ -53,7 +53,7 @@ class StubLoadViewController: UIViewController {
     }
     
     private func prepareView() {
-        self.view.backgroundColor = backgroundColor
+        view.backgroundColor = backgroundColor
         stubBackgroundView.layer.cornerRadius = 8
         stubBackgroundView.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.7)
         stubBackgroundView.isUserInteractionEnabled = false
@@ -77,14 +77,14 @@ class StubLoadViewController: UIViewController {
     
     private func configureConstraints() {
         stubBackgroundView.translatesAutoresizingMaskIntoConstraints = false
-        self.view.addSubview(stubBackgroundView)
+        view.addSubview(stubBackgroundView)
         activityIndicator.translatesAutoresizingMaskIntoConstraints = false
         messageLabel.translatesAutoresizingMaskIntoConstraints = false
         stubBackgroundView.addSubview(activityIndicator)
         stubBackgroundView.addSubview(messageLabel)
         
         closeView.translatesAutoresizingMaskIntoConstraints = false
-        self.view.addSubview(closeView)
+        view.addSubview(closeView)
         closeLabel.translatesAutoresizingMaskIntoConstraints = false
         closeView.addSubview(closeLabel)
         closeImageView.translatesAutoresizingMaskIntoConstraints = false
@@ -121,11 +121,11 @@ class StubLoadViewController: UIViewController {
 
     func addGesture() {
         let closeTap = UITapGestureRecognizer(target: self, action: #selector(onViewTap))
-        self.view.addGestureRecognizer(closeTap)
+        view.addGestureRecognizer(closeTap)
     }
     
     @objc func onViewTap() {
-        self.dismiss(animated: false)
+        dismiss(animated: false)
     }
 
 }

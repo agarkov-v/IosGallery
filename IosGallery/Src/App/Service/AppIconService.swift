@@ -19,9 +19,8 @@ class AppIconService {
     func changeAppIcon(to appIcon: AppIcon) {
         let appIconValue: String? = appIcon == .iconPrimary ? nil : appIcon.rawValue
         application.setAlternateIconName(appIconValue) { (error) in
-            if error != nil {
-                print("Error localized is: \(error?.localizedDescription) \nand error: \(error)")
-            }
+            guard error != nil else { return }
+            print("Error localized is: \(String(describing: error?.localizedDescription)) | and error: \(String(describing: error))")
         }
     }
 }

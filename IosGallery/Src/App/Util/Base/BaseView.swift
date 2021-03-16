@@ -22,8 +22,9 @@ extension BaseView {
     }
 
     func hideActivityIndicator() {
-        (self as? UIViewController)?.dismiss(animated: true, completion: nil)
-//        ProgressHudControl.dismiss()
+//        guard let viewController = self as? UIViewController, let stubVC = viewController as? StubLoadViewController else { return }
+        guard let viewController = self as? UIViewController else { return }
+        viewController.dismiss(animated: true, completion: nil)
     }
     
     func showDialog(message: String, action: ((UIAlertAction) -> Void)? = nil) {
@@ -63,17 +64,17 @@ extension BaseView {
         let positiveAction = UIAlertAction(title: positiveMessage,
                                            style: .default,
                                            handler: { _ in
-                                               onChoice(true)
+                                            onChoice(true)
                                            })
-//        positiveAction.setValue(#colorLiteral(red: 0, green: 0, blue: 0, alpha: 1),
-//                                forKey: "titleTextColor")
+        //        positiveAction.setValue(#colorLiteral(red: 0, green: 0, blue: 0, alpha: 1),
+        //                                forKey: "titleTextColor")
         let negativeAction = UIAlertAction(title: negativeMessage,
                                            style: .cancel,
                                            handler: { _ in
-                                               onChoice(false)
+                                            onChoice(false)
                                            })
-//        negativeAction.setValue(#colorLiteral(red: 0, green: 0, blue: 0, alpha: 1),
-//                                forKey: "titleTextColor")
+        //        negativeAction.setValue(#colorLiteral(red: 0, green: 0, blue: 0, alpha: 1),
+        //                                forKey: "titleTextColor")
 
         alert.addAction(negativeAction)
         alert.addAction(positiveAction)
@@ -110,12 +111,12 @@ extension BaseView {
         }
         if preferredStyle == .actionSheet {
 
-//         адаптация для планшетов
+            //         адаптация для планшетов
             if let sender = sender, let alert = sheet.popoverPresentationController {
                 alert.sourceView = sender
                 alert.sourceRect = CGRect(x: sender.bounds.midX, y: sender.bounds.midY, width: 0, height: 0)
-//            раскомментировать при необходимости удаления стрелочки на sender
-//            alert.permittedArrowDirections = []
+                //            раскомментировать при необходимости удаления стрелочки на sender
+                //            alert.permittedArrowDirections = []
             }
         }
 
@@ -172,12 +173,12 @@ extension BaseView {
     }
     
     func showInputDialogOnlyMainAction(title: String? = nil,
-                         text: String? = nil,
-                         subtitle: String? = nil,
-                         actionTitle: String? = "Ok".localization(),
-                         inputPlaceholder: String? = nil,
-                         inputKeyboardType: UIKeyboardType = UIKeyboardType.default,
-                         actionHandler: ((_ text: String?) -> Void)? = nil) {
+                                       text: String? = nil,
+                                       subtitle: String? = nil,
+                                       actionTitle: String? = "Ok".localization(),
+                                       inputPlaceholder: String? = nil,
+                                       inputKeyboardType: UIKeyboardType = UIKeyboardType.default,
+                                       actionHandler: ((_ text: String?) -> Void)? = nil) {
 
         let alert = UIAlertController(title: title, message: subtitle, preferredStyle: .alert)
         alert.addTextField { (textField: UITextField) in
@@ -192,7 +193,7 @@ extension BaseView {
             }
             actionHandler?(textField.text)
         })
-    
+
         mainAction.setValue(#colorLiteral(red: 0, green: 0, blue: 0, alpha: 1), forKey: "titleTextColor")
         alert.addAction(mainAction)
 
@@ -200,13 +201,13 @@ extension BaseView {
     }
     
     func showMultiplyInputDialog(title: String? = nil,
-                         subtitle: String? = nil,
-                         actionsChoice: [ActionChoiceDialog],
-                         mainActionTitle: String? = "Ok".localization(),
-                         mainActionHandler: ((_ text: String?) -> Void)? = nil,
-                         inputPlaceholder: String? = nil,
-                         inputKeyboardType: UIKeyboardType = UIKeyboardType.default,
-                         cancelHandler: ((UIAlertAction) -> Void)? = nil) {
+                                 subtitle: String? = nil,
+                                 actionsChoice: [ActionChoiceDialog],
+                                 mainActionTitle: String? = "Ok".localization(),
+                                 mainActionHandler: ((_ text: String?) -> Void)? = nil,
+                                 inputPlaceholder: String? = nil,
+                                 inputKeyboardType: UIKeyboardType = UIKeyboardType.default,
+                                 cancelHandler: ((UIAlertAction) -> Void)? = nil) {
 
         let alert = UIAlertController(title: title, message: subtitle, preferredStyle: .alert)
         alert.addTextField { (textField: UITextField) in
@@ -240,7 +241,7 @@ extension BaseView {
 
     func iosShare(text: String, sourceVC: UIViewController? = nil) {
         let activityViewController = UIActivityViewController(activityItems: [text], applicationActivities: nil)
-//      адаптация для планшетов
+        //      адаптация для планшетов
         if let alert = activityViewController.popoverPresentationController {
             alert.sourceView = sourceVC?.view
             alert.sourceRect = CGRect(x: UIScreen.main.bounds.minX,

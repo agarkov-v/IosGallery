@@ -7,33 +7,32 @@
 
 import UIKit
 
-enum SignInError: String {
-    case empty = "Fields must not be empty"
-    case notMatch = "Invalid username or password"
-}
-
 class LoginViewController: UIViewController {
 
-    @IBOutlet weak var logoView: UIView!
-    @IBOutlet weak var welcomeLabel: UILabel!
-    @IBOutlet weak var loginTextField: UITextField! {
+    @IBOutlet private weak var logoView: UIView!
+    @IBOutlet private weak var welcomeLabel: UILabel!
+    @IBOutlet private weak var loginTextField: UITextField! {
         didSet {
             loginTextField.text = "daem0n61"
         }
     }
-    @IBOutlet weak var passwordTextField: UITextField! {
+    @IBOutlet private weak var passwordTextField: UITextField! {
         didSet {
             passwordTextField.text = "QMqa8DAD"
         }
     }
-    @IBOutlet weak var signInButton: UIButton!
-    @IBOutlet weak var errorView: UIView!
-    @IBOutlet weak var errorLabel: UILabel!
+    @IBOutlet private weak var signInButton: UIButton!
+    @IBOutlet private weak var errorView: UIView!
+    @IBOutlet private weak var errorLabel: UILabel!
+
     var presenter: LoginPresenter!
+
     private var deviceOreintation: UIDeviceOrientation {
         UIDevice.current.orientation
     }
-    
+
+    // MARK: LifeCycle
+
     override func viewDidLoad() {
         super.viewDidLoad()
         LoginConfigurator().configure(view: self)
@@ -62,18 +61,18 @@ class LoginViewController: UIViewController {
               let password = passwordTextField.text?.trimmingCharacters(in: .whitespaces),
               !password.isEmpty else {
             errorView.isHidden = false
-            errorLabel.text = SignInError.empty.rawValue.localization()
+            errorLabel.text = "Fields must not be empty"
             return
         }
         errorView.isHidden = true
         presenter.signIn(username, password)
     }
     
-    @objc func onViewTap() {
-        self.view.endEditing(true)
+    @objc private func onViewTap() {
+        view.endEditing(true)
     }
     
-    func prepareView() {
+    private func prepareView() {
         welcomeLabel.text = "Welcome!".localization()
         loginTextField.placeholder = "login".localization()
         passwordTextField.placeholder = "password".localization()
@@ -84,14 +83,13 @@ class LoginViewController: UIViewController {
         passwordTextField.setRightViewIcon(icon: R.image.eyeIcon()!)
     }
     
-    func loadInLanscape() {
-        if UIApplication.shared.statusBarOrientation.isLandscape {
-            print("loadInLandscape isLandscape")
-            logoView.isHidden = true
-        }
+    private func loadInLanscape() {
+        guard UIApplication.shared.statusBarOrientation.isLandscape else { return }
+        print("loadInLandscape isLandscape")
+        logoView.isHidden = true
     }
     
-    func updateViewVisability() {
+    private func updateViewVisability() {
         if deviceOreintation.isLandscape {
             logoView.isHidden = true
         } else if deviceOreintation.isPortrait {
@@ -100,11 +98,9 @@ class LoginViewController: UIViewController {
     }
 }
 
+// MARK: LoginView
+
 extension LoginViewController: LoginView {
-    func showErrorView(_ error: SignInError) {
-        errorView.isHidden = false
-        errorLabel.text = error.rawValue.localization()
-    }
     
     func showErrorView(message: String) {
         errorView.isHidden = false

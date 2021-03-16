@@ -11,6 +11,7 @@ protocol UserGateway {
     
     func getAccount() -> Single<UserEntity>
     func updateUser(user: UpdateUserEntity) -> Single<UserEntity>
+    func getUser(id: String) -> Single<UserEntity>
     func changePassword(passwordEntity: ChangePasswordEntity) -> Single<UserEntity>
 }
 
@@ -22,6 +23,10 @@ class ApiUserGateway: ApiBaseGateway, UserGateway {
     
     func updateUser(user: UpdateUserEntity) -> Single<UserEntity> {
         return self.apiClient.execute(request: .updateUser(user: user))
+    }
+
+    func getUser(id: String) -> Single<UserEntity> {
+        return apiClient.execute(request: .getUser(id: id))
     }
     
     func changePassword(passwordEntity: ChangePasswordEntity) -> Single<UserEntity> {

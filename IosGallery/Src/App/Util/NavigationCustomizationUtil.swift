@@ -35,7 +35,7 @@ extension UIViewController {
         var title: String
         let image = R.image.arrowLeft()
         let tintColor = R.color.whiteDark()
-
+        
         if let entity = entity {
             title = entity.title
         } else {
@@ -48,7 +48,7 @@ extension UIViewController {
         navVC?.navigationBar.titleTextAttributes = [
             NSAttributedString.Key.font: UIFont.systemFont(ofSize: 18, weight: UIFont.Weight.semibold)
         ]
-
+        
         if #available(iOS 13.0, *) {
             let barAppearance = UINavigationBarAppearance()
             barAppearance.setBackIndicatorImage(image, transitionMaskImage: image)
@@ -61,7 +61,7 @@ extension UIViewController {
         if #available(iOS 14.0, *) {
             self.addBackBarButtonOnNavigationBar()
         }
-
+        
     }
     
     func addBackBarButtonOnNavigationBar() {
@@ -70,7 +70,7 @@ extension UIViewController {
         backBtn.tintColor = R.color.whiteDark()
         backBtn.setTitleTextAttributes([NSAttributedString.Key.font: UIFont.systemFont(ofSize: 18, weight: UIFont.Weight.semibold)], for: .normal)
         navigationItem.backBarButtonItem = backBtn
-
+        
     }
     
     @objc func backButtonAction() {

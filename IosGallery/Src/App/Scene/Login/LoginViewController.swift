@@ -13,18 +13,22 @@ class LoginViewController: UIViewController {
     @IBOutlet private weak var welcomeLabel: UILabel!
     @IBOutlet private weak var loginTextField: UITextField! {
         didSet {
-            loginTextField.text = "daem0n61"
+            loginTextField.text = "testGalleryUser"
         }
     }
     @IBOutlet private weak var passwordTextField: UITextField! {
         didSet {
-            passwordTextField.text = "QMqa8DAD"
+            passwordTextField.text = "test123"
         }
     }
     @IBOutlet private weak var signInButton: UIButton!
+    @IBOutlet private weak var signUpButton: UIButton!
     @IBOutlet private weak var errorView: UIView!
     @IBOutlet private weak var errorLabel: UILabel!
-
+    @IBOutlet weak var testSignInView: UIView!
+    @IBOutlet weak var testSignInLabel: UILabel!
+    @IBOutlet weak var testSignInButton: UIButton!
+    
     var presenter: LoginPresenter!
 
     private var deviceOreintation: UIDeviceOrientation {
@@ -38,6 +42,10 @@ class LoginViewController: UIViewController {
         LoginConfigurator().configure(view: self)
         let viewGesture = UITapGestureRecognizer(target: self, action: #selector(onViewTap))
         view.addGestureRecognizer(viewGesture)
+
+        #if DEBUG
+        testSignInView.isHidden = false
+        #endif
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -55,17 +63,26 @@ class LoginViewController: UIViewController {
         updateViewVisability()
     }
 
-    @IBAction func onSignInButton(_ sender: UIButton) {
+    @IBAction private func onSignInButton(_ sender: UIButton) {
         guard let username = loginTextField.text?.trimmingCharacters(in: .whitespaces),
               !username.isEmpty,
               let password = passwordTextField.text?.trimmingCharacters(in: .whitespaces),
               !password.isEmpty else {
             errorView.isHidden = false
-            errorLabel.text = "Fields must not be empty"
+            errorLabel.text = "Fields must not be empty".localization()
             return
         }
         errorView.isHidden = true
         presenter.signIn(username, password)
+    }
+
+    @IBAction private func onSignUpButton(_ sender: UIButton) {
+        presenter.onSignUpButton()
+
+    }
+
+    @IBAction private func onTestSignInButton(_ sender: UIButton) {
+        presenter.onTestSignInButton()
     }
     
     @objc private func onViewTap() {
@@ -73,14 +90,21 @@ class LoginViewController: UIViewController {
     }
     
     private func prepareView() {
+        let cornerRadius: CGFloat = 4
+
         welcomeLabel.text = "Welcome!".localization()
         loginTextField.placeholder = "login".localization()
         passwordTextField.placeholder = "password".localization()
-        signInButton.titleLabel?.text = "Sign In".localization()
-        loginTextField.layer.cornerRadius = 4
-        passwordTextField.layer.cornerRadius = 4
-        signInButton.layer.cornerRadius = 4
+        signInButton.setTitle("Sign In".localization(), for: .normal)
+        signUpButton.setTitle("Sign Up".localization(), for: .normal)
+        loginTextField.layer.cornerRadius = cornerRadius
+        passwordTextField.layer.cornerRadius = cornerRadius
+        signInButton.layer.cornerRadius = cornerRadius
         passwordTextField.setRightViewIcon(icon: R.image.eyeIcon()!)
+
+        testSignInButton.layer.cornerRadius = cornerRadius
+        testSignInButton.setTitle("Sign in as Test user".localization(), for: .normal)
+        testSignInLabel.text = "Use it in case the Api is not available".localization()
     }
     
     private func loadInLanscape() {
@@ -109,5 +133,6 @@ extension LoginViewController: LoginView {
     
     func hideErrorView() {
         errorView.isHidden = true
+        testSignInView.isHidden = true
     }
 }

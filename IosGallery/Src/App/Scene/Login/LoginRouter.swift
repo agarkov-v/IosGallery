@@ -17,7 +17,11 @@ class LoginRouter: BaseRouter {
 
     func openRootScreen() {
         let rootView = R.storyboard.root.rootVC()!
-        let window = UIApplication.shared.delegate!.window!!
+        guard let optWindow = UIApplication.shared.delegate?.window, let window = optWindow else { return }
         window.rootViewController = rootView
+    }
+
+    func openRegistrationScreen() {
+        RegistrationConfigurator.openModal(viewController: view)
     }
 }

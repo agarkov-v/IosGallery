@@ -94,4 +94,11 @@ extension ApiRequest {
                        headers: [.contentJson],
                        body: password)
     }
+
+    static func registerUser(registrationData: RegistrationEntity) -> ApiRequest {
+        return request(path: "/api/users",
+                       method: .post,
+                       headers: [.contentJson],
+                       body: registrationData)
+    }
 }

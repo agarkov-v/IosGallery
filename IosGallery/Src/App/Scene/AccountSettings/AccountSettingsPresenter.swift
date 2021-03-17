@@ -49,7 +49,7 @@ class AccountSettingsPresenterImp: AccountSettingsPresenter {
     
     func onBackBarButtonItem(username: String?, birthday: String?, email: String?, oldPassword: String, newPassword: String, confirmPassword: String) {
         guard let user = userManager.user else {
-            view.showDialog(message: "Информация о пользователе отсутсвует. Войдите снова.") { [weak self] _ in
+            view.showDialog(message: "The data about user is missing. Log in again.".localization()) { [weak self] _ in
                 self?.signOut()
             }
             return
@@ -62,7 +62,7 @@ class AccountSettingsPresenterImp: AccountSettingsPresenter {
         }
         let newBirthdayDate = DateFormatUtil.convertStringToDate(stringDate: birthday)
         if oldPassword != "" || newPassword != "" || confirmPassword != "" || user.username != username || oldBirthdayDate != newBirthdayDate || user.email != email {
-            view.showChoiceDialog(message: "У вас есть несохраненные изменения, все равно выйти?", positiveMessage: "Да", negativeMessage: "Нет") { [weak self] isPositive in
+            view.showChoiceDialog(message: "You have unsaved changes. Do you still want to leave?".localization(), positiveMessage: "Да", negativeMessage: "Нет") { [weak self] isPositive in
                 guard isPositive else { return }
                 self?.router.pop()
             }
@@ -89,7 +89,7 @@ class AccountSettingsPresenterImp: AccountSettingsPresenter {
 
     func updateUser(username: String, birthday: String, email: String) {
         guard let user = userManager.user else {
-            view.showDialog(message: "Информация о пользователе отсутсвует. Войдите снова.") { [weak self] _ in
+            view.showDialog(message: "The data about user is missing. Log in again.".localization()) { [weak self] _ in
                 self?.signOut()
             }
             return
@@ -125,7 +125,7 @@ class AccountSettingsPresenterImp: AccountSettingsPresenter {
 
     func changePassword(oldPassword: String, newPassword: String, confirmPassword: String) {
         guard let user = userManager.user else {
-            view.showDialog(message: "Информация о пользователе отсутсвует. Войдите снова.") { [weak self] _ in
+            view.showDialog(message: "The data about user is missing. Log in again.".localization()) { [weak self] _ in
                 self?.signOut()
             }
             return
@@ -135,17 +135,17 @@ class AccountSettingsPresenterImp: AccountSettingsPresenter {
         if oldPassword == "", newPassword == "", confirmPassword == "" { return }
 
         if oldPassword == "" || newPassword == "" || confirmPassword == "" {
-            view.showPasswordError(with: "Не все поля заполнены")
+            view.showPasswordError(with: "Not all fields are filled in".localization())
             view.sctollToError()
             return
         }
         guard newPassword == confirmPassword else {
-            view.showPasswordError(with: "Пароли не совпадают")
+            view.showPasswordError(with: "Passwords don't match".localization())
             view.sctollToError()
             return
         }
         guard oldPassword != newPassword else {
-            view.showPasswordError(with: "Новый пароль должен отличаться от старого")
+            view.showPasswordError(with: "The new password must be different from the old one".localization())
             view.sctollToError()
             return
         }
@@ -154,7 +154,7 @@ class AccountSettingsPresenterImp: AccountSettingsPresenter {
             .observeOn(MainScheduler.instance)
             .subscribe(onSuccess: { [weak self] _ in
                 guard let self = self else { return }
-                self.view.showDialog(message: "Пароль успешно обновлен", action: nil)
+                self.view.showDialog(message: "Password successfully updated".localization(), action: nil)
                 self.view.clearPasswordFields()
             }, onError: { [weak self] error in
                 debugPrint("changePassword error: \(error) || \(error.localizedDescription)")

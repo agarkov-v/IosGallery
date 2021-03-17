@@ -45,7 +45,7 @@ class ImportPresenterImp: ImportPresenter {
             })
             .subscribe(onCompleted: { [weak self] in
                 guard let self = self else { return }
-                self.view.showDialog(message: "Image is successfully loaded ")
+                self.view.showDialog(message: "The image is successfully loaded.".localization())
                 self.view.cleanView()
             }, onError: { [weak self] error in
                 guard let self = self else { return }

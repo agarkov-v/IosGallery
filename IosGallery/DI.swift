@@ -67,6 +67,10 @@ class DI {
         self.container.register(ApiImageGateway.init)
             .as(ImageGateway.self)
             .lifetime(.single)
+
+        self.container.register(ApiRegistrationGateway.init)
+            .as(RegistrationGateway.self)
+            .lifetime(.single)
         
         // MARK: - UseCases
         self.container.register(AuthUseCaseImp.init)
@@ -80,6 +84,9 @@ class DI {
         
         self.container.register(AccountUseCaseImp.init)
             .as(AccountUseCase.self)
+
+        self.container.register(RegistrationUseCaseImp.init)
+            .as(RegistrationUseCase.self)
     }
     
     static func resolve<T>() -> T {

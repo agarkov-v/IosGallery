@@ -14,8 +14,6 @@ enum Theme: Int, CaseIterable {
     case dark
 }
 
-let themeWindow = ThemeWindow()
-
 extension Theme {
 
     // Обертка для UserDefaults
@@ -39,7 +37,7 @@ extension Theme {
         switch self {
         case .light: return .light
         case .dark: return .dark
-        case .system: return themeWindow.traitCollection.userInterfaceStyle
+        case .system: return .unspecified
         }
     }
 
@@ -48,7 +46,6 @@ extension Theme {
 
         guard #available(iOS 13.0, *) else { return }
         UIApplication.shared.windows
-            .filter { $0 != themeWindow }
             .forEach { $0.overrideUserInterfaceStyle = userInterfaceStyle }
     }
 }
@@ -68,20 +65,3 @@ struct Persist<T> {
         self.defaultValue = defaultValue
     }
 }
-
-extension UIWindow {
-    func initTheme() {
-        guard #available(iOS 13.0, *) else { return }
-        overrideUserInterfaceStyle = Theme.current.userInterfaceStyle
-    }
-}
-
-
-final class ThemeWindow: UIWindow {
-    override public func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
-        if Theme.current == .system {
-            Theme.system.setActive()
-        }
-    }
-}
-

@@ -18,11 +18,11 @@ protocol UserGateway {
 class ApiUserGateway: ApiBaseGateway, UserGateway {
     
     func getAccount() -> Single<UserEntity> {
-        return self.apiClient.execute(request: .getCurrentUser())
+        return apiClient.execute(request: .getCurrentUser())
     }
     
     func updateUser(user: UpdateUserEntity) -> Single<UserEntity> {
-        return self.apiClient.execute(request: .updateUser(user: user))
+        return apiClient.execute(request: .updateUser(user: user))
     }
 
     func getUser(id: String) -> Single<UserEntity> {
@@ -30,6 +30,6 @@ class ApiUserGateway: ApiBaseGateway, UserGateway {
     }
     
     func changePassword(passwordEntity: ChangePasswordEntity) -> Single<UserEntity> {
-        return self.apiClient.execute(request: .changePassword(password: passwordEntity))
+        return apiClient.execute(request: .changePassword(password: passwordEntity))
     }
 }

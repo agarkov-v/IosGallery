@@ -16,6 +16,8 @@ protocol LoginView: BaseView {
 
 protocol LoginPresenter {
     func signIn(_ username: String, _ password: String)
+    func onSignUpButton()
+    func onTestSignInButton()
 }
 
 class LoginPresenterImp: LoginPresenter {
@@ -24,13 +26,16 @@ class LoginPresenterImp: LoginPresenter {
     private let router: LoginRouter
     private let authUseCase: AuthUseCase
     private var disposeBag = DisposeBag()
+    private let userManager: UserManager
     
     init(_ view: LoginView,
          _ router: LoginRouter,
-         _ authUseCase: AuthUseCase) {
+         _ authUseCase: AuthUseCase,
+         _ userManager: UserManager) {
         self.view = view
         self.router = router
         self.authUseCase = authUseCase
+        self.userManager = userManager
     }
     
     func signIn(_ username: String, _ password: String) {
@@ -53,5 +58,15 @@ class LoginPresenterImp: LoginPresenter {
                 self.view.showErrorView(message: message)
             })
             .disposed(by: disposeBag)
+    }
+
+    func onSignUpButton() {
+        router.openRegistrationScreen()
+    }
+
+    func onTestSignInButton() {
+        let user = UserEntity(id: 200, email: "testUser@test.com", enabled: true, phone: "+79001001111", fullName: "Test User", username: "testUser", birthday: "2000-01-01T00:00:00+00:00", roles: [""])
+        userManager.user = user
+        router.openRootScreen()
     }
 }

@@ -38,9 +38,6 @@ class AccountSettingsViewController: UIViewController {
         datePicker.datePickerMode = .date
         datePicker.maximumDate = Date()
         datePicker.addTarget(self, action: #selector(dateChanged(datePicker:)), for: .valueChanged)
-//        if #available(iOS 13.0, *) {
-//            datePicker.preferredDatePickerStyle = .wheels
-//        }
         return datePicker
     }()
 
@@ -62,7 +59,7 @@ class AccountSettingsViewController: UIViewController {
             modeView.isHidden = true
         }
         prepateView()
-        setupTitleNavigationBar("Settings")
+        setupTitleNavigationBar("Settings".localization())
         setupActionLeftButton(action: #selector(onBackButtonTap))
     }
     
@@ -74,7 +71,7 @@ class AccountSettingsViewController: UIViewController {
         super.viewWillDisappear(animated)
         
     }
-    @IBAction func onChangeTheme(_ sender: UISegmentedControl) {
+    @IBAction private func onChangeTheme(_ sender: UISegmentedControl) {
         presenter.changeTheme(index: sender.selectedSegmentIndex)
     }
     
@@ -108,6 +105,7 @@ class AccountSettingsViewController: UIViewController {
         userNameTextField.placeholder = "User name".localization()
         birthdayTextField.layer.cornerRadius = 4
         birthdayTextField.placeholder = "Date of birth".localization()
+        birthdayTextField.inputView = birthdayDatePicker
         emailLabel.text = "E-mail adress".localization()
         emailTextField.layer.cornerRadius = 4
         emailTextField.placeholder = "E-mail"
@@ -121,9 +119,8 @@ class AccountSettingsViewController: UIViewController {
         confirmPasswordTextField.layer.cornerRadius = 4
         confirmPasswordTextField.placeholder = "Confirm password".localization()
         confirmPasswordTextField.setRightViewIcon(icon: R.image.eyeIcon_second()!)
-        signOutButton.titleLabel?.text = "Sign Out".localization()
+        signOutButton.setTitle("Sign Out".localization(), for: .normal)
         signOutButton.layer.cornerRadius = 4
-        birthdayTextField.inputView = birthdayDatePicker
     }
     
     private func configureBarButtonItem() {

@@ -14,7 +14,7 @@
 "Gallery" = "Gallery";
 "Upload Image" = "Upload Image";
 "Account Gallery" = "Account Gallery";
-"Welcome" = "Welcome";
+"Welcome!" = "Welcome!";
 "login" = "login";
 "password" = "password";
 "Sign In" = "Sign In";
@@ -51,7 +51,7 @@
 "Wow!" = "Wow!";
 "Oops!" = "Oops!";
 "Sorry!" = "Sorry!";
-"There is no pictures yet" = "There is no pictures yet";
+"There is no pictures yet." = "There is no pictures yet.";
 "Bad connection. Please check your connection and reload the page." = "Bad connection. Please check your connection and reload the page.";
 "Nothing found." = "Nothing found.";
 "Loading..." = "Loading...";
@@ -63,3 +63,31 @@
 "Tap on screen to close" = "Tap on screen to close";
 
 "Fields must not be empty" = "Fields must not be empty";
+
+"Unknown user" = "Unknown user";
+"Error with image picker" = "error with image picker";
+"The image is not selected" = "The image is not selected";
+"Enter image name" = "Enter image name";
+"The image is successfully loaded." = "The image is successfully loaded.";
+"Registration" = "Registration";
+"Phone number" = "Phone number";
+"Phone" = "Phone";
+"Full name" = "Full name";
+"User Name" = "User Name";
+"Birthday" = "Birthday";
+"Sign Up" = "Sign Up";
+
+"Password successfully updated" = "Password successfully updated";
+"The data about user is missing. Log in again." = "The data about user is missing. Log in again.";
+"The new password must be different from the old one" = "The new password must be different from the old one";
+"Passwords don't match" = "Passwords don't match";
+"You have unsaved changes. Do you still want to leave?" = "You have unsaved changes. Do you still want to leave?";
+"Not all fields are filled in" = "Not all fields are filled in";
+"You have successfully sign up" = "You have successfully sign up";
+"Setting" = "Settings";
+"Yes" = "Yes";
+"No" = "No";
+
+"Sign in as Test user" = "Sign in as Test user";
+"Use it in case the Api is not available" = "Use it in case the Api is not available";
+"Test" = "Test";

@@ -42,6 +42,11 @@ class GalleryViewController: UIViewController {
         createSearchBar()
         collectionView?.isPrefetchingEnabled = true
         presenter.viewDidLoad()
+
+        #if DEBUG
+
+        modeSegmentControl.insertSegment(with: nil, at: 2, animated: false)
+        #endif
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -67,13 +72,14 @@ class GalleryViewController: UIViewController {
         }
     }
     
-    @IBAction func changeType(_ sender: UISegmentedControl) {
+    @IBAction private func changeType(_ sender: UISegmentedControl) {
         presenter.changeSegment(index: sender.selectedSegmentIndex, searchText: searchText)
     }
     
     private func prepareView() {
         modeSegmentControl.setTitle("New".localization(), forSegmentAt: 0)
         modeSegmentControl.setTitle("Popular".localization(), forSegmentAt: 1)
+        modeSegmentControl.setTitle("Test".localization(), forSegmentAt: 2)
     }
     
     private func createSearchBar() {
@@ -138,7 +144,9 @@ extension GalleryViewController: UICollectionViewDataSource {
         }
         
         if indexPath.row > presenter.galleryItemsCount - 3 {
-            presenter.loadData(searchBy: searchText)
+            if !presenter.isTest {
+                presenter.loadData(searchBy: searchText)
+            }
         }
         presenter.setupCell(cell: cell, index: indexPath.row)
         return cell

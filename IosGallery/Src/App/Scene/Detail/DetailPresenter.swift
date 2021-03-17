@@ -57,7 +57,6 @@ class DetailPresenterImp: DetailPresenter {
             return
         }
         let userId = user.replacingOccurrences(of: "/api/users/", with: "")
-        print("|| userId \(userId)")
         userGateway.getUser(id: userId)
             .observeOn(MainScheduler.instance)
             .subscribe(onSuccess: { [weak self] user in

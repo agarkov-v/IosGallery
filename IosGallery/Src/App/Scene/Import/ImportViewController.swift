@@ -21,7 +21,7 @@ class ImportViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        ImportConfigurator().configure(view: self)
         configureBarButtonItem()
         configureImageGesture()
     }
@@ -87,15 +87,15 @@ class ImportViewController: UIViewController {
             self.showAlert(title: "The image is not selected".localization())
             return
         }
-        guard let name = nameTextField.text?.trimmingCharacters(in: .whitespaces), !name.isEmpty else {
+        guard let name = nameTextField.text?.trimming(), !name.isEmpty else {
             self.showAlert(title: "Enter image name".localization())
             return
         }
-        guard let description = descriptionTextView.text?.trimmingCharacters(in: .whitespaces), !description.isEmpty, description != "Description" else {
+        guard let description = descriptionTextView.text?.trimming(), !description.isEmpty, description != "Description", description != "Описание" else {
             self.showAlert(title: "Enter image description".localization())
             return
         }
-        //        presenter.importImage(image: image, name: name, description: description)
+        presenter.importImage(image: image, name: name, description: description)
     }
     
     @objc private func showImagePickerControllerActionSheet() {
@@ -113,7 +113,7 @@ class ImportViewController: UIViewController {
 extension ImportViewController: UITextViewDelegate {
     
     func textViewDidBeginEditing(_ textView: UITextView) {
-        if textView.text == "Description" {
+        if textView.text == "Description" || textView.text == "Описание" {
             textView.text = ""
             textView.textColor = R.color.blackWhite()
         }
@@ -152,7 +152,7 @@ extension ImportViewController: UIImagePickerControllerDelegate, UINavigationCon
         if let editedImage = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
             importImageView.image = editedImage
         } else {
-            self.showAlert(title: "error with image picker".localization())
+            self.showAlert(title: "Error with image picker".localization())
         }
         dismiss(animated: true, completion: nil)
     }

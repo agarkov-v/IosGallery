@@ -14,7 +14,7 @@
 "Gallery" = "Галерея";
 "Upload Image" = "Загрузить изображение";
 "Account Gallery" = "Галерея Аккаунта";
-"Welcome" = "Добро пожаловать";
+"Welcome!" = "Добро пожаловать!";
 "login" = "Логин";
 "password" = "Пароль";
 "Sign In" = "Войти";
@@ -63,3 +63,31 @@
 "Tap on screen to close" = "Нажмите на экран, чтобы закрыть";
 
 "Fields must not be empty" = "Поля не должны быть пусты";
+
+"Unknown user" = "Неизвестный пользователь";
+"Error with image picker" = "Ошибка выбора изображения";
+"The image is not selected" = "Изображение не выбрано";
+"Enter image name" = "Введите название изображения";
+"The image is successfully loaded." = "Изображение успешно загружено.";
+"Registration" = "Регистрация";
+"Phone number" = "Номер телефона";
+"Phone" = "Телефон";
+"Full name" = "ФИО";
+"User Name" = "Имя пользователя";
+"Birthday" = "День рождения";
+"Sign Up" = "Зарегестрироваться";
+
+"Password successfully updated" = "Пароль успешно обновлен";
+"The data about user is missing. Log in again." = "Информация о пользователе отсутствует. Войдите снова.";
+"The new password must be different from the old one" = "Новый пароль должен отличаться от старого";
+"Passwords don't match" = "Пароли не совпадают";
+"You have unsaved changes. Do you still want to leave?" = "У вас есть несохраненные изменения, все равно выйти?";
+"Not all fields are filled in" = "Не все поля заполнены";
+"You have successfully sign up" = "Вы успешно зарегестрировались";
+"Settings" = "Настройки";
+"Yes" = "Да";
+"No" = "Нет";
+
+"Sign in as Test user" = "Войти как Тестовый пользователь";
+"Use it in case the Api is not available" = "Используйте в случае, если Api недоступно";
+"Test" = "Тест";

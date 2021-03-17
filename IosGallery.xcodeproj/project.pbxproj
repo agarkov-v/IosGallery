@@ -9,6 +9,14 @@
 /* Begin PBXBuildFile section */
 		14F5D9D965B094D6F657E3E1 /* Pods_IosGallery.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7069CCA179E351F270D654F4 /* Pods_IosGallery.framework */; };
 		2338780126013DB300DC3336 /* ThemeUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2338780026013DB300DC3336 /* ThemeUtil.swift */; };
+		2338780C2602046A00DC3336 /* Registration.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 233878072602046A00DC3336 /* Registration.storyboard */; };
+		2338780D2602046A00DC3336 /* RegistrationPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 233878082602046A00DC3336 /* RegistrationPresenter.swift */; };
+		2338780E2602046A00DC3336 /* RegistrationRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 233878092602046A00DC3336 /* RegistrationRouter.swift */; };
+		2338780F2602046A00DC3336 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2338780A2602046A00DC3336 /* RegistrationViewController.swift */; };
+		233878102602046A00DC3336 /* RegistrationConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2338780B2602046A00DC3336 /* RegistrationConfigurator.swift */; };
+		2338781E2602391E00DC3336 /* ApiRegistrationGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2338781D2602391E00DC3336 /* ApiRegistrationGateway.swift */; };
+		233878232602398A00DC3336 /* RegistrationUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 233878222602398A00DC3336 /* RegistrationUseCase.swift */; };
+		2338782826023AB800DC3336 /* RegistrationEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2338782726023AB800DC3336 /* RegistrationEntity.swift */; };
 		2373ABC5255353DA000C2EF6 /* UIView+animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2373ABC4255353DA000C2EF6 /* UIView+animation.swift */; };
 		23775F412535ED38004C530F /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23775F402535ED38004C530F /* R.generated.swift */; };
 		23775F802535F521004C530F /* GalleryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23775F7F2535F521004C530F /* GalleryViewController.swift */; };
@@ -133,6 +141,14 @@
 
 /* Begin PBXFileReference section */
 		2338780026013DB300DC3336 /* ThemeUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeUtil.swift; sourceTree = "<group>"; };
+		233878072602046A00DC3336 /* Registration.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Registration.storyboard; sourceTree = "<group>"; };
+		233878082602046A00DC3336 /* RegistrationPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationPresenter.swift; sourceTree = "<group>"; };
+		233878092602046A00DC3336 /* RegistrationRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationRouter.swift; sourceTree = "<group>"; };
+		2338780A2602046A00DC3336 /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
+		2338780B2602046A00DC3336 /* RegistrationConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationConfigurator.swift; sourceTree = "<group>"; };
+		2338781D2602391E00DC3336 /* ApiRegistrationGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiRegistrationGateway.swift; sourceTree = "<group>"; };
+		233878222602398A00DC3336 /* RegistrationUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationUseCase.swift; sourceTree = "<group>"; };
+		2338782726023AB800DC3336 /* RegistrationEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationEntity.swift; sourceTree = "<group>"; };
 		2373ABC4255353DA000C2EF6 /* UIView+animation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+animation.swift"; sourceTree = "<group>"; };
 		23775F402535ED38004C530F /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
 		23775F7F2535F521004C530F /* GalleryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryViewController.swift; sourceTree = "<group>"; };
@@ -282,6 +298,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		233878062602043A00DC3336 /* Registration */ = {
+			isa = PBXGroup;
+			children = (
+				233878072602046A00DC3336 /* Registration.storyboard */,
+				2338780A2602046A00DC3336 /* RegistrationViewController.swift */,
+				233878082602046A00DC3336 /* RegistrationPresenter.swift */,
+				2338780B2602046A00DC3336 /* RegistrationConfigurator.swift */,
+				233878092602046A00DC3336 /* RegistrationRouter.swift */,
+			);
+			path = Registration;
+			sourceTree = "<group>";
+		};
 		23775F7A2535F4AF004C530F /* Gallery */ = {
 			isa = PBXGroup;
 			children = (
@@ -431,6 +459,7 @@
 			children = (
 				239449AA2535E23A0083878A /* AppDelegate */,
 				239448DC2535ADF80083878A /* Login */,
+				233878062602043A00DC3336 /* Registration */,
 				239448DD2535ADFF0083878A /* Root */,
 				23775F7A2535F4AF004C530F /* Gallery */,
 				23775F7E2535F4E6004C530F /* Detail */,
@@ -467,6 +496,7 @@
 			children = (
 				23FB80652541EE860089D9E7 /* ApiAuthGateway.swift */,
 				23FB806A2541EE9F0089D9E7 /* ApiUserGateway.swift */,
+				2338781D2602391E00DC3336 /* ApiRegistrationGateway.swift */,
 				23FB805D2541EDEA0089D9E7 /* ApiGalleryGateway.swift */,
 				23FB806F2541EEAE0089D9E7 /* ApiImageGateway.swift */,
 			);
@@ -491,6 +521,7 @@
 				23FB80092541C9F50089D9E7 /* TokenEntity.swift */,
 				23FB80112541CB270089D9E7 /* AuthResponseEntity.swift */,
 				23FB800E2541CB270089D9E7 /* UserEntity.swift */,
+				2338782726023AB800DC3336 /* RegistrationEntity.swift */,
 				23FB80162541CB270089D9E7 /* UpdateUserEntity.swift */,
 				23FB80152541CB270089D9E7 /* ChangePasswordEntity.swift */,
 				23FB800F2541CB270089D9E7 /* GalleryEntity.swift */,
@@ -519,6 +550,7 @@
 			children = (
 				23FB80372541E6940089D9E7 /* AuthUseCase.swift */,
 				23FB80742541F1BB0089D9E7 /* UserUseCase.swift */,
+				233878222602398A00DC3336 /* RegistrationUseCase.swift */,
 				23FB80792541F20E0089D9E7 /* GalleryUseCase.swift */,
 				23FB807E2541F22B0089D9E7 /* AccountUseCase.swift */,
 			);
@@ -788,6 +820,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2338780C2602046A00DC3336 /* Registration.storyboard in Resources */,
 				23775FA32535F57B004C530F /* Import.storyboard in Resources */,
 				23A624282538942000F6F7DF /* Localizable.strings in Resources */,
 				23B26B4125405318003AAED1 /* iconDarkIpad@2x.png in Resources */,
@@ -972,6 +1005,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				23A623802537291300F6F7DF /* RootConfigurator.swift in Sources */,
+				2338780D2602046A00DC3336 /* RegistrationPresenter.swift in Sources */,
 				23B26C172541A10A003AAED1 /* StubLoadViewController.swift in Sources */,
 				23A6238A2537292A00F6F7DF /* GalleryPresenter.swift in Sources */,
 				23A623992537295300F6F7DF /* DetailPresenter.swift in Sources */,
@@ -991,6 +1025,7 @@
 				23FB80382541E6940089D9E7 /* AuthUseCase.swift in Sources */,
 				23A623DA2537317300F6F7DF /* BaseView.swift in Sources */,
 				239448F12535C2860083878A /* LoginViewController.swift in Sources */,
+				2338780F2602046A00DC3336 /* RegistrationViewController.swift in Sources */,
 				23A6238F2537293500F6F7DF /* GalleryConfigurator.swift in Sources */,
 				23775F942535F559004C530F /* AccountSettingsViewController.swift in Sources */,
 				23FB80662541EE870089D9E7 /* ApiAuthGateway.swift in Sources */,
@@ -1003,6 +1038,7 @@
 				23A6239E2537295C00F6F7DF /* DetailConfigurator.swift in Sources */,
 				23A623AD2537297D00F6F7DF /* ImportConfigurator.swift in Sources */,
 				23A623CB25372A4300F6F7DF /* AccountSettingsConfigurator.swift in Sources */,
+				2338780E2602046A00DC3336 /* RegistrationRouter.swift in Sources */,
 				23775F8F2535F54D004C530F /* AccountViewController.swift in Sources */,
 				23A623C625372A3B00F6F7DF /* AccountSettingsPresenter.swift in Sources */,
 				23FB806B2541EE9F0089D9E7 /* ApiUserGateway.swift in Sources */,
@@ -1010,11 +1046,13 @@
 				239448EC2535C2360083878A /* RootViewController.swift in Sources */,
 				23A6237B2537290900F6F7DF /* RootPresenter.swift in Sources */,
 				23775F8A2535F541004C530F /* ImportViewController.swift in Sources */,
+				233878232602398A00DC3336 /* RegistrationUseCase.swift in Sources */,
 				23B26BBE25407A4E003AAED1 /* CollectionViewUtil.swift in Sources */,
 				23B26AC3253AE9A6003AAED1 /* AppIconService.swift in Sources */,
 				23FB80182541CB270089D9E7 /* GalleryEntity.swift in Sources */,
 				23FB801D2541CB270089D9E7 /* UploadImageEntity.swift in Sources */,
 				23B26BC725407ACA003AAED1 /* StubView.swift in Sources */,
+				2338782826023AB800DC3336 /* RegistrationEntity.swift in Sources */,
 				23FB805E2541EDEA0089D9E7 /* ApiGalleryGateway.swift in Sources */,
 				23775F852535F535004C530F /* DetailViewController.swift in Sources */,
 				23A624382539DD0A00F6F7DF /* UIViewControllerAllerts.swift in Sources */,
@@ -1024,6 +1062,7 @@
 				239448F62535C5760083878A /* LoginPresenter.swift in Sources */,
 				23A62373253718CE00F6F7DF /* TextFieldUtil.swift in Sources */,
 				23A623692537178200F6F7DF /* TableViewUtil.swift in Sources */,
+				2338781E2602391E00DC3336 /* ApiRegistrationGateway.swift in Sources */,
 				2394480C25359DBE0083878A /* AppDelegate.swift in Sources */,
 				23FB807A2541F20E0089D9E7 /* GalleryUseCase.swift in Sources */,
 				23A6236E253717E600F6F7DF /* ButtonUtil.swift in Sources */,
@@ -1035,6 +1074,7 @@
 				23FB801B2541CB270089D9E7 /* UploadGalleryEntity.swift in Sources */,
 				23FB80432541E7CA0089D9E7 /* AuthInterceptor.swift in Sources */,
 				23A623A32537296300F6F7DF /* DetailRouter.swift in Sources */,
+				233878102602046A00DC3336 /* RegistrationConfigurator.swift in Sources */,
 				23B26BB225406C23003AAED1 /* ScrollViewUtil.swift in Sources */,
 				23A623F22538540B00F6F7DF /* NavigationCustomizationUtil.swift in Sources */,
 				239449062535C60E0083878A /* BaseRouter.swift in Sources */,

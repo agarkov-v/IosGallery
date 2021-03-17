@@ -30,7 +30,7 @@ enum StubType {
     
     static func getMessage(_ type: StubType) -> String {
         switch type {
-        case .noData: return "There is no pictures yet".localization()
+        case .noData: return "There is no pictures yet.".localization()
         case .badConnection: return "Bad connection. Please check your connection and reload the page.".localization()
         case .notingFound: return "Nothing found.".localization()
         }

@@ -47,11 +47,19 @@ class DetailViewController: UIViewController {
 extension DetailViewController: DetailView {
 
     func setupView(galleryItem: GalleryEntity) {
-        let url = URL(string: "http://gallery.dev.webant.ru/media/" + galleryItem.image.name)
-        detailImageView.kf.setImage(with: url)
+        if galleryItem.image.name == "testPlaceholderImage" {
+            detailImageView.image = UIImage(named: galleryItem.image.name)
+        } else {
+            let url = URL(string: "http://gallery.dev.webant.ru/media/" + galleryItem.image.name)
+            detailImageView.kf.setImage(with: url)
+        }
         nameLabel.text = galleryItem.name
         descriptionTextView.text = galleryItem.description
-        dateLabel.text = DateFormatUtil.standartDateFormat(dateString: galleryItem.dateCreate)
+        var dateCreate = galleryItem.dateCreate
+        if galleryItem.dateCreate.contains("-0001") {
+            dateCreate = galleryItem.dateCreate.replacingOccurrences(of: "-0001", with: "2020", options: .literal, range: nil)
+        }
+        dateLabel.text = DateFormatUtil.standartDateFormat(dateString: dateCreate)
     }
 
     func updateUser(user: String) {

@@ -24,7 +24,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         CocoaDebug.enable()
         //            DBDebugToolkit.setup()
         #endif
-        themeWindow.makeKey()
         IQKeyboardManager.shared().isEnabled = true
         DI.initDependencies()
         openStartScreen(window: window)

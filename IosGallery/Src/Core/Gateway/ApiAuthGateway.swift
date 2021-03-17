@@ -16,10 +16,10 @@ protocol AuthGateway {
 class ApiAuthGateway: ApiBaseGateway, AuthGateway {
     
     func auth(username: String, password: String) -> Single<TokenEntity> {
-        return self.apiClient.execute(request: .login(username: username, password: password))
+        return apiClient.execute(request: .login(username: username, password: password))
     }
     
     func refreshToken(refreshToken: String) -> Single<TokenEntity> {
-        return self.apiClient.execute(request: .refreshToken(refreshToken: refreshToken))
+        return apiClient.execute(request: .refreshToken(refreshToken: refreshToken))
     }
 }

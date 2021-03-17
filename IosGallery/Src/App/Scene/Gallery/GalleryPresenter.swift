@@ -25,6 +25,7 @@ protocol GalleryView: BaseView {
 protocol GalleryPresenter {
     
     var galleryItemsCount: Int { get }
+    var isTest: Bool { get }
     func viewDidLoad()
     func loadData(searchBy text: String?)
     func setupCell(cell: GalleryCellView, index: Int)
@@ -39,6 +40,8 @@ class GalleryPresenterImp: GalleryPresenter {
     var galleryItemsCount: Int {
         return galleryItems.count
     }
+
+    var isTest = false
     
     private weak var view: GalleryView!
     private let router: GalleryRouter
@@ -93,9 +96,16 @@ class GalleryPresenterImp: GalleryPresenter {
                 }
             }, onError: { [weak self] error in
                 guard let self = self else { return }
-                self.view.showEmptyMessage(.badConnection)
-                self.view.showErrorDialog(message: error.localizedDescription)
-                self.view.endRefreshing()
+                print("loadData error: \(error) || \(error.localizedDescription)")
+                if error.localizedDescription.contains("error 1") || error.localizedDescription.contains("ошибка 1") {
+                    AppDelegate.shared.doLogOut()
+                } else if error.localizedDescription.contains("error 6") || error.localizedDescription.contains("ошибка 6") {
+                    self.loadData()
+                } else {
+                    self.view.showEmptyMessage(.badConnection)
+                    self.view.showErrorDialog(message: error.localizedDescription)
+                    self.view.endRefreshing()
+                }
             })
             .disposed(by: disposeBag)
     }
@@ -113,16 +123,32 @@ class GalleryPresenterImp: GalleryPresenter {
 
     func changeSegment(index: Int, searchText: String?) {
         if index == 0 {
+            isTest = false
             galletyType = .new
+            reset()
+            loadData(searchBy: searchText)
         } else if index == 1 {
+            isTest = false
             galletyType = .popular
+            reset()
+            loadData(searchBy: searchText)
         } else if index == 2 {
-            // TODO: test images
+            isTest = true
+            loadTestData()
         } else {
             debugPrint("GalletyPresenter changeSegmant invalid index")
         }
-        reset()
-        loadData(searchBy: searchText)
+    }
+
+    private func loadTestData() {
+        galleryItems.removeAll()
+        view.reloadCollection()
+        let testImageItem = ImageEntity(id: 100, name: "testPlaceholderImage")
+        let testItem = GalleryEntity(name: "Test name", dateCreate: "2021-03-17T00:00:00+03:00", description: "Test description", new: true, popular: true, image: testImageItem, user: nil)
+
+        for _ in 1...12 {
+            galleryItems.append(testItem)
+        }
     }
 
     private func subscribe() {

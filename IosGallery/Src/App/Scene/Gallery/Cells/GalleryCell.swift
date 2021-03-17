@@ -40,14 +40,20 @@ class GalleryCell: UICollectionViewCell, GalleryCellView {
         layer.cornerRadius = radius
         layer.shouldRasterize = true
         layer.rasterizationScale = UIScreen.main.scale
+        layer.borderWidth = 1
+        layer.borderColor = R.color.blackWhite()?.cgColor
 
         galleryImageView.layer.cornerRadius = radius
     }
 
     func setupCell(item: GalleryEntity) {
-        let url = URL(string: "http://gallery.dev.webant.ru/media/" + item.image.name)
         galleryImageView.kf.indicatorType = .activity
-        galleryImageView.kf.setImage(with: url)
+        if item.image.name == "testPlaceholderImage" {
+            galleryImageView.image = UIImage(named: item.image.name)
+        } else {
+            let url = URL(string: "http://gallery.dev.webant.ru/media/" + item.image.name)
+            galleryImageView.kf.setImage(with: url)
+        }
     }
 
 }

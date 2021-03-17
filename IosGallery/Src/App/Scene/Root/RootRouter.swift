@@ -1,0 +1,17 @@
+//
+//  RootRouter.swift
+//  IosGallery
+//
+//  Created by Вячеслав Агарков on 14.10.2020.
+//
+
+import UIKit
+
+class RootRouter: BaseRouter {
+    
+    weak var view: UIViewController!
+    
+    init(_ view: RootViewController) {
+        self.view = view
+    }
+}

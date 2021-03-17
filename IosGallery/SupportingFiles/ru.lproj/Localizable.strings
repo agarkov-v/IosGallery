@@ -1,0 +1,93 @@
+/* 
+  Localizable.strings
+  IosGallery
+
+  Created by Вячеслав Агарков on 15.10.2020.
+  
+*/
+
+"Ok" = "Ок";
+"Warning" = "Внимание";
+"Cancel" = "Отменить";
+"Error" = "Ошибка";
+"Continue" = "Продолжить";
+"Gallery" = "Галерея";
+"Upload Image" = "Загрузить изображение";
+"Account Gallery" = "Галерея Аккаунта";
+"Welcome!" = "Добро пожаловать!";
+"login" = "Логин";
+"password" = "Пароль";
+"Sign In" = "Войти";
+"New" = "Новые";
+"Popular" = "Популярные";
+"Search" = "Поиск";
+"Image Detail" = "Подробнее";
+"Name" = "Название";
+"Description" = "Описание";
+"Add" = "Добавить";
+"Color mode:" = "Цветовой режим:";
+"System" = "Системный";
+"Light" = "Светлый";
+"Dark" = "Темный";
+"Personal data" = "Персональные данные";
+"User name" = "Имя пользователя";
+"Date of birth" = "Дата рождения";
+"E-mail adress" = "E-mail адрес";
+"E-mail" = "E-mail";
+"Password" = "Пароль";
+"Old password" = "Старый пароль";
+"New password" = "Новый пароль";
+"Confirm password" = "Подтвердите пароль";
+"Sign Out" = "Выйти";
+"Save" = "Сохранить";
+"Choose image from" = "Выбрать изображение из:";
+"Photo library" = "Библиотеки фото";
+"Camera" = "Камеры";
+
+"This app wants to use your photo libraru" = "Приложение хочет использовать вашу библиотеку фотографий";
+"This app wants to use your camera" = "Приложение хочет использовать вашу камеру";
+
+"Dark app icon:" = "Темная иконка приложения:";
+"Wow!" = "Ого!";
+"Oops!" = "Упс!";
+"Sorry!" = "Извините!";
+"There is no pictures yet." = "Пока что здесь нет изображений.";
+"Bad connection. Please check your connection and reload the page." = "Плохое интернет соединение. Пожалуйста, проверьте свое соединение и перезагрузите страницу";
+"Nothing found." = "Ничего не найдено.";
+"Loading..." = "Загрузка...";
+
+"Invalid username or password" = "Неверное имя пользователя или пароль";
+"Authorization error, please try again" = "Ошибка авторизации, попробуйте повторить действие";
+"User data error, please try again" = "Ошибка данных пользователя, попробуйте повторить действие";
+"Image processing error" = "Ошибка обработки изображения";
+"Tap on screen to close" = "Нажмите на экран, чтобы закрыть";
+
+"Fields must not be empty" = "Поля не должны быть пусты";
+
+"Unknown user" = "Неизвестный пользователь";
+"Error with image picker" = "Ошибка выбора изображения";
+"The image is not selected" = "Изображение не выбрано";
+"Enter image name" = "Введите название изображения";
+"The image is successfully loaded." = "Изображение успешно загружено.";
+"Registration" = "Регистрация";
+"Phone number" = "Номер телефона";
+"Phone" = "Телефон";
+"Full name" = "ФИО";
+"User Name" = "Имя пользователя";
+"Birthday" = "День рождения";
+"Sign Up" = "Зарегестрироваться";
+
+"Password successfully updated" = "Пароль успешно обновлен";
+"The data about user is missing. Log in again." = "Информация о пользователе отсутствует. Войдите снова.";
+"The new password must be different from the old one" = "Новый пароль должен отличаться от старого";
+"Passwords don't match" = "Пароли не совпадают";
+"You have unsaved changes. Do you still want to leave?" = "У вас есть несохраненные изменения, все равно выйти?";
+"Not all fields are filled in" = "Не все поля заполнены";
+"You have successfully sign up" = "Вы успешно зарегестрировались";
+"Settings" = "Настройки";
+"Yes" = "Да";
+"No" = "Нет";
+
+"Sign in as Test user" = "Войти как Тестовый пользователь";
+"Use it in case the Api is not available" = "Используйте в случае, если Api недоступно";
+"Test" = "Тест";

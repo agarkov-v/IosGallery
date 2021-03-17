@@ -9,9 +9,10 @@ target 'IosGallery' do
   pod 'Kingfisher'
   pod 'RxNetworkApiClient'
   pod 'DITranquillity'
+  pod 'IQKeyboardManager'
   pod 'R.swift'
-  pod 'CocoaDebug', :configurations => ['debug']
-#DBDebugToolkit
+  pod 'CocoaDebug', :configurations => ['Debug']
+  pod "DBDebugToolkit", :configurations => ['Debug']
 
   target 'IosGalleryTests' do
     inherit! :search_paths

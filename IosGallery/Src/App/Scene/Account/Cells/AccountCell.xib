@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina5_9" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="accountCell" rowHeight="170" id="KGk-i7-Jjw" customClass="AccountCell" customModule="IosGallery" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="617" height="170"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="617" height="170"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UEQ-Tw-lK0">
+                        <rect key="frame" x="5" y="10" width="607" height="150"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jpf-K2-3BR">
+                                <rect key="frame" x="149" y="45.333333333333329" width="447" height="57.333333333333329"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="86" id="jWG-TE-TQN"/>
+                                </constraints>
+                                <string key="text">Description description description description description description description description description description description description description description description description description description description description description</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name name name name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3ec-0b-xJu">
+                                <rect key="frame" x="149" y="9.9999999999999982" width="447" height="20.333333333333329"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2TB-wi-Aa0">
+                                <rect key="frame" x="11" y="10" width="130" height="130"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="130" id="eMA-yW-60f"/>
+                                    <constraint firstAttribute="height" constant="130" id="n6w-6i-Jrg"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" name="tableBaseView"/>
+                        <constraints>
+                            <constraint firstItem="3ec-0b-xJu" firstAttribute="leading" secondItem="2TB-wi-Aa0" secondAttribute="trailing" constant="8" symbolic="YES" id="9Km-kh-OYc"/>
+                            <constraint firstAttribute="bottom" secondItem="2TB-wi-Aa0" secondAttribute="bottom" constant="10" id="E6r-XA-13m"/>
+                            <constraint firstItem="3ec-0b-xJu" firstAttribute="top" secondItem="UEQ-Tw-lK0" secondAttribute="top" constant="10" id="FAH-Kq-yfH"/>
+                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="Jpf-K2-3BR" secondAttribute="bottom" constant="10" id="Igz-0P-bKz"/>
+                            <constraint firstAttribute="trailing" secondItem="Jpf-K2-3BR" secondAttribute="trailing" constant="11" id="JeL-Gq-3MS"/>
+                            <constraint firstItem="Jpf-K2-3BR" firstAttribute="leading" secondItem="2TB-wi-Aa0" secondAttribute="trailing" constant="8" symbolic="YES" id="Xgo-sX-HGn"/>
+                            <constraint firstAttribute="trailing" secondItem="3ec-0b-xJu" secondAttribute="trailing" constant="11" id="Xqf-Wo-Xsm"/>
+                            <constraint firstItem="2TB-wi-Aa0" firstAttribute="leading" secondItem="UEQ-Tw-lK0" secondAttribute="leading" constant="11" id="gJf-GM-Atq"/>
+                            <constraint firstItem="Jpf-K2-3BR" firstAttribute="top" secondItem="3ec-0b-xJu" secondAttribute="bottom" constant="15" id="kM1-fc-pXp"/>
+                            <constraint firstItem="2TB-wi-Aa0" firstAttribute="top" secondItem="UEQ-Tw-lK0" secondAttribute="top" constant="10" id="sL0-vO-usM"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <color key="backgroundColor" name="darkDark"/>
+                <constraints>
+                    <constraint firstItem="UEQ-Tw-lK0" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="EQT-a3-zjm"/>
+                    <constraint firstAttribute="trailing" secondItem="UEQ-Tw-lK0" secondAttribute="trailing" constant="5" id="H0i-vD-5YN"/>
+                    <constraint firstItem="UEQ-Tw-lK0" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="5" id="RLl-2A-EUY"/>
+                    <constraint firstAttribute="bottom" secondItem="UEQ-Tw-lK0" secondAttribute="bottom" constant="10" id="ShG-uB-aWL"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="accountImageView" destination="2TB-wi-Aa0" id="1cI-yE-ERh"/>
+                <outlet property="accountView" destination="UEQ-Tw-lK0" id="7SP-XR-ibl"/>
+                <outlet property="descriptionLabel" destination="Jpf-K2-3BR" id="iqS-nb-077"/>
+                <outlet property="nameLabel" destination="3ec-0b-xJu" id="o8O-nj-vnS"/>
+            </connections>
+            <point key="canvasLocation" x="437.60000000000002" y="131.52709359605913"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <namedColor name="darkDark">
+            <color red="0.97254901960784312" green="0.97254901960784312" blue="0.97254901960784312" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
+        <namedColor name="tableBaseView">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.94901960784313721" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
+    </resources>
+</document>

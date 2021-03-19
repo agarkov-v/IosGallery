@@ -1,6 +1,4 @@
 # Ios Gallery version 1
--------------
-##### Table of Contents
 - [Description in English](#Description-in-English)
     - [About the project](#About-the-project)
     - [Features](#Features)
@@ -11,9 +9,8 @@
   - [Дальнейшее развитие](#Дальнейшее-развитие)
 
 ## Description in English
--------------
 ### About the project
-**Ios Gallery version 1** -- is the first test and demonstration project for my Github account. It is a photo gallery for the iOS mobile OS with *the following features:*
+**Ios Gallery version 1** - is the first test and demonstration project for my Github account. It is a photo gallery for the iOS mobile OS with *the following features:*
 - [x] Sign up
 - [x] Login the account
 - [x] Viewing the gallery
@@ -23,9 +20,9 @@
 - [x] Viewing User images
 - [x] Account Settings
 - [x] Changing the color theme
--  **And others**
+- [x] **And others**
 ### Features
-This [**API**](http://gallery.dev.webant.ru/api) was used for development. In case it is unavailable, there is a login button as the test user and switching to local test images in debug mode.
+This [**API**](http://gallery.dev.webant.ru/api) was used for development. In case it is unavailable, there is a login button as the test user and switching to local test images in **debug** mode.
 The feature of the first version is **Clean + MVP** architecture and the use of a little-known library for working with the network [RxNetworkApiClient](https://github.com/Starmel/RxNetworkApiClient).
 The CocoaPods dependency manager was used to install the dependencies. To install them use the command
 ```ruby
@@ -35,7 +32,7 @@ in the main project folder.
 **Podfile** consists of:
 | Dependency | Link |
 | ------ | ------ |
-| RxNetworkApiClient | https://github.com/Starmel/RxNetworkApiClient/blob/master/README.md |
+| RxNetworkApiClient | https://github.com/Starmel/RxNetworkApiClient |
 | Kingfisher | https://github.com/onevcat/Kingfisher |
 | R.swift | https://github.com/mac-cain13/R.swift |
 | DITranquillity | https://github.com/ivlevAstef/DITranquillity |
@@ -46,9 +43,8 @@ in the main project folder.
 I have plans to continue working on this project because it allows me to improve my skills, but this will be in the next versions of Ios Gallery. In the beginning, I wanted to make a branch from this project and redo everything on a more popular framework for interacting with the network or in general on URLSession, but I realized that I would have to redo almost everything. During my time working with this project, I have improved my skills on real tasks and rethought many of the things done in it.
 
 ## Описание на русском
--------------
 ### О проекте
-**Ios Gallery version 1** -- первый тестовый и показательный проект для моего Github аккаунта. Он представляет собой галерею фотографий, для мобильной ОС IOS *с возможностью:*
+**Ios Gallery version 1** - первый тестовый и показательный проект для моего Github аккаунта. Он представляет собой галерею фотографий, для мобильной ОС IOS *с возможностью:*
 - [x] Регистрации
 - [x] Входа в аккаунт
 - [x] Просмотр галереи
@@ -60,7 +56,7 @@ I have plans to continue working on this project because it allows me to improve
 - [x] Смены темы
 -  **И другие**
 ### Особенности
-Для разработки использовалось это [**API**](http://gallery.dev.webant.ru/api). В случае его недоступности в debug режиме присутствует кнопка входа под тестовым пользователем и переключение на локальные тестовые изображения.
+Для разработки использовалось это [**API**](http://gallery.dev.webant.ru/api). В случае его недоступности в **debug** режиме присутствует кнопка входа под тестовым пользователем и переключение на локальные тестовые изображения.
 Особенность первой версии заключается в архитектуре **Clean + MVP** и использовании малоизвестной библиотеки для работы с сетью [RxNetworkApiClient](https://github.com/Starmel/RxNetworkApiClient).
 Для установки зависимостей использовался менеджер зависимостей [CocoaPods](https://cocoapods.org). Чтобы установить их используйте команду
 ```ruby
@@ -70,7 +66,7 @@ pod install
 **Podfile** состоит из:
 | Dependency | Link |
 | ------ | ------ |
-| RxNetworkApiClient | https://github.com/Starmel/RxNetworkApiClient/blob/master/README.md |
+| RxNetworkApiClient | https://github.com/Starmel/RxNetworkApiClient |
 | Kingfisher | https://github.com/onevcat/Kingfisher |
 | R.swift | https://github.com/mac-cain13/R.swift |
 | DITranquillity | https://github.com/ivlevAstef/DITranquillity |

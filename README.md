@@ -1,4 +1,4 @@
-# Ios Gallery version 1
+# IosGalleryVersion1
 - [Description in English](#Description-in-English)
     - [About the project](#About-the-project)
     - [Features](#Features)

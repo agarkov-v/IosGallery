@@ -42,7 +42,7 @@ in the main project folder.
 | CocoaDebug | https://github.com/CocoaDebug/CocoaDebug |
 | DBDebugToolkit | https://github.com/dbukowski/DBDebugToolkit |
 ### Test account
-Для того, чтобы войти в приложение вы можете зарегестрироваться или войти под тестовым пользователем. В **debug** режиме данные уже введены в поля.
+To log in to the app, you can sign up or log in as a test user. In **debug** mode, the data is already entered in the fields.
 > User Name: testGalleryUser\
 > Password: test123
 ### Further development
@@ -80,7 +80,7 @@ pod install
 | CocoaDebug | https://github.com/CocoaDebug/CocoaDebug |
 | DBDebugToolkit | https://github.com/dbukowski/DBDebugToolkit |
 ### Тестовый аккаунт
-To log in to the app, you can sign up or log in as a test user. In **debug** mode, the data is already entered in the fields.
+Для того, чтобы войти в приложение вы можете зарегестрироваться или войти под тестовым пользователем. В **debug** режиме данные уже введены в поля.
 > User Name: testGalleryUser\
 > Password: test123
 ### Дальнейшее развитие

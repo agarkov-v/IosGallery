@@ -689,7 +689,7 @@ struct R: Rswift.Validatable {
       fileprivate init() {}
     }
 
-    /// This `R.string.localizable` struct is generated, and contains static references to 74 localization keys.
+    /// This `R.string.localizable` struct is generated, and contains static references to 75 localization keys.
     struct localizable {
       /// en translation: Account Gallery
       ///
@@ -699,6 +699,10 @@ struct R: Rswift.Validatable {
       ///
       /// Locales: ru, en
       static let add = Rswift.StringResource(key: "Add", tableName: "Localizable", bundle: R.hostingBundle, locales: ["ru", "en"], comment: nil)
+      /// en translation: Are you sure you want to sign out?
+      ///
+      /// Locales: ru, en
+      static let areYouSureYouWantToSignOut = Rswift.StringResource(key: "Are you sure you want to sign out?", tableName: "Localizable", bundle: R.hostingBundle, locales: ["ru", "en"], comment: nil)
       /// en translation: Authorization error, please try again
       ///
       /// Locales: ru, en
@@ -1016,6 +1020,21 @@ struct R: Rswift.Validatable {
         }
 
         return NSLocalizedString("Add", bundle: bundle, comment: "")
+      }
+
+      /// en translation: Are you sure you want to sign out?
+      ///
+      /// Locales: ru, en
+      static func areYouSureYouWantToSignOut(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("Are you sure you want to sign out?", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "Are you sure you want to sign out?"
+        }
+
+        return NSLocalizedString("Are you sure you want to sign out?", bundle: bundle, comment: "")
       }
 
       /// en translation: Authorization error, please try again

@@ -13,12 +13,16 @@ class LoginViewController: UIViewController {
     @IBOutlet private weak var welcomeLabel: UILabel!
     @IBOutlet private weak var loginTextField: UITextField! {
         didSet {
+            #if DEBUG
             loginTextField.text = "testGalleryUser"
+            #endif
         }
     }
     @IBOutlet private weak var passwordTextField: UITextField! {
         didSet {
+            #if DEBUG
             passwordTextField.text = "test123"
+            #endif
         }
     }
     @IBOutlet private weak var signInButton: UIButton!

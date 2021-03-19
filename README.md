@@ -43,7 +43,7 @@ in the main project folder.
 | DBDebugToolkit | https://github.com/dbukowski/DBDebugToolkit |
 ### Test account
 Для того, чтобы войти в приложение вы можете зарегестрироваться или войти под тестовым пользователем. В **debug** режиме данные уже введены в поля.
-> User Name: testGalleryUser
+> User Name: testGalleryUser\
 > Password: test123
 ### Further development
 I have plans to continue working on this project because it allows me to improve my skills, but this will be in the next versions of Ios Gallery. In the beginning, I wanted to make a branch from this project and redo everything on a more popular framework for interacting with the network or in general on URLSession, but I realized that I would have to redo almost everything. During my time working with this project, I have improved my skills on real tasks and rethought many of the things done in it.

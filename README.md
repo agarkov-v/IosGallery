@@ -81,7 +81,7 @@ pod install
 | DBDebugToolkit | https://github.com/dbukowski/DBDebugToolkit |
 ### Тестовый аккаунт
 To log in to the app, you can sign up or log in as a test user. In **debug** mode, the data is already entered in the fields.
-> User Name: testGalleryUser
+> User Name: testGalleryUser\
 > Password: test123
 ### Дальнейшее развитие
 У меня в планах и дальше заниматься эим проектом потому что он позволяет мне прокачивать свои навыки, однако уже в следующих версиях Ios Gallery. В начале я хотел сделать ветку от этого проекта и переделать все на более популярном фреймворке для взаимодействи с сетью или вообще на URLsession, но я осознал, что переделывать прийдется почти все. За время работы с этим проектом я прокачал свои навыки на реальных задачах и переосмыслил многие вещи, сделанные в нем.

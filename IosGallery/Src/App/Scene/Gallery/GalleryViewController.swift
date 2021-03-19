@@ -79,7 +79,9 @@ class GalleryViewController: UIViewController {
     private func prepareView() {
         modeSegmentControl.setTitle("New".localization(), forSegmentAt: 0)
         modeSegmentControl.setTitle("Popular".localization(), forSegmentAt: 1)
+        #if DEBUG
         modeSegmentControl.setTitle("Test".localization(), forSegmentAt: 2)
+        #endif
     }
     
     private func createSearchBar() {

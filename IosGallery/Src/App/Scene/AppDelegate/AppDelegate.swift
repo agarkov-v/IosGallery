@@ -64,6 +64,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         guard let userManager = userManager else { return }
         userManager.token = nil
         userManager.user = nil
+        Theme(rawValue: 0)?.setActive()
         guard let window = window else { return }
         let loginVC = R.storyboard.login.loginVC()!
         window.rootViewController = loginVC

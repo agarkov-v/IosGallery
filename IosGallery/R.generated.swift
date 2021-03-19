@@ -181,6 +181,8 @@ struct R: Rswift.Validatable {
   struct color {
     /// Color `AccentColor`.
     static let accentColor = Rswift.ColorResource(bundle: R.hostingBundle, name: "AccentColor")
+    /// Color `Pink`.
+    static let pink = Rswift.ColorResource(bundle: R.hostingBundle, name: "Pink")
     /// Color `bar`.
     static let bar = Rswift.ColorResource(bundle: R.hostingBundle, name: "bar")
     /// Color `blackWhite`.
@@ -191,8 +193,6 @@ struct R: Rswift.Validatable {
     static let gray = Rswift.ColorResource(bundle: R.hostingBundle, name: "gray")
     /// Color `inactiveGray`.
     static let inactiveGray = Rswift.ColorResource(bundle: R.hostingBundle, name: "inactiveGray")
-    /// Color `pink`.
-    static let pink = Rswift.ColorResource(bundle: R.hostingBundle, name: "pink")
     /// Color `placeholderGray`.
     static let placeholderGray = Rswift.ColorResource(bundle: R.hostingBundle, name: "placeholderGray")
     /// Color `tableBaseView`.
@@ -208,6 +208,15 @@ struct R: Rswift.Validatable {
     @available(iOS 11.0, *)
     static func accentColor(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIColor? {
       return UIKit.UIColor(resource: R.color.accentColor, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIColor(named: "Pink", bundle: ..., traitCollection: ...)`
+    @available(tvOS 11.0, *)
+    @available(iOS 11.0, *)
+    static func pink(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIColor? {
+      return UIKit.UIColor(resource: R.color.pink, compatibleWith: traitCollection)
     }
     #endif
 
@@ -253,15 +262,6 @@ struct R: Rswift.Validatable {
     @available(iOS 11.0, *)
     static func inactiveGray(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIColor? {
       return UIKit.UIColor(resource: R.color.inactiveGray, compatibleWith: traitCollection)
-    }
-    #endif
-
-    #if os(iOS) || os(tvOS)
-    /// `UIColor(named: "pink", bundle: ..., traitCollection: ...)`
-    @available(tvOS 11.0, *)
-    @available(iOS 11.0, *)
-    static func pink(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIColor? {
-      return UIKit.UIColor(resource: R.color.pink, compatibleWith: traitCollection)
     }
     #endif
 
@@ -689,7 +689,7 @@ struct R: Rswift.Validatable {
       fileprivate init() {}
     }
 
-    /// This `R.string.localizable` struct is generated, and contains static references to 74 localization keys.
+    /// This `R.string.localizable` struct is generated, and contains static references to 75 localization keys.
     struct localizable {
       /// en translation: Account Gallery
       ///
@@ -699,6 +699,10 @@ struct R: Rswift.Validatable {
       ///
       /// Locales: ru, en
       static let add = Rswift.StringResource(key: "Add", tableName: "Localizable", bundle: R.hostingBundle, locales: ["ru", "en"], comment: nil)
+      /// en translation: Are you sure you want to sign out?
+      ///
+      /// Locales: ru, en
+      static let areYouSureYouWantToSignOut = Rswift.StringResource(key: "Are you sure you want to sign out?", tableName: "Localizable", bundle: R.hostingBundle, locales: ["ru", "en"], comment: nil)
       /// en translation: Authorization error, please try again
       ///
       /// Locales: ru, en
@@ -1016,6 +1020,21 @@ struct R: Rswift.Validatable {
         }
 
         return NSLocalizedString("Add", bundle: bundle, comment: "")
+      }
+
+      /// en translation: Are you sure you want to sign out?
+      ///
+      /// Locales: ru, en
+      static func areYouSureYouWantToSignOut(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("Are you sure you want to sign out?", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "Are you sure you want to sign out?"
+        }
+
+        return NSLocalizedString("Are you sure you want to sign out?", bundle: bundle, comment: "")
       }
 
       /// en translation: Authorization error, please try again

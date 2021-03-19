@@ -76,7 +76,7 @@ class AccountSettingsViewController: UIViewController {
     }
     
     @IBAction private func onSignOut(_ sender: UIButton) {
-        showChoiceDialog(message: "Вы точно хотите выйти?".localization(), positiveMessage: "Yes".localization(), negativeMessage: "No".localization(), onChoice: { [weak self] isPositive in
+        showChoiceDialog(message: "Are you sure you want to sign out?".localization(), positiveMessage: "Yes".localization(), negativeMessage: "No".localization(), onChoice: { [weak self] isPositive in
             guard isPositive else { return }
                 self?.presenter.signOut()
         })

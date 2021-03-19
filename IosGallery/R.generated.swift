@@ -181,6 +181,8 @@ struct R: Rswift.Validatable {
   struct color {
     /// Color `AccentColor`.
     static let accentColor = Rswift.ColorResource(bundle: R.hostingBundle, name: "AccentColor")
+    /// Color `Pink`.
+    static let pink = Rswift.ColorResource(bundle: R.hostingBundle, name: "Pink")
     /// Color `bar`.
     static let bar = Rswift.ColorResource(bundle: R.hostingBundle, name: "bar")
     /// Color `blackWhite`.
@@ -191,8 +193,6 @@ struct R: Rswift.Validatable {
     static let gray = Rswift.ColorResource(bundle: R.hostingBundle, name: "gray")
     /// Color `inactiveGray`.
     static let inactiveGray = Rswift.ColorResource(bundle: R.hostingBundle, name: "inactiveGray")
-    /// Color `pink`.
-    static let pink = Rswift.ColorResource(bundle: R.hostingBundle, name: "pink")
     /// Color `placeholderGray`.
     static let placeholderGray = Rswift.ColorResource(bundle: R.hostingBundle, name: "placeholderGray")
     /// Color `tableBaseView`.
@@ -208,6 +208,15 @@ struct R: Rswift.Validatable {
     @available(iOS 11.0, *)
     static func accentColor(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIColor? {
       return UIKit.UIColor(resource: R.color.accentColor, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIColor(named: "Pink", bundle: ..., traitCollection: ...)`
+    @available(tvOS 11.0, *)
+    @available(iOS 11.0, *)
+    static func pink(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIColor? {
+      return UIKit.UIColor(resource: R.color.pink, compatibleWith: traitCollection)
     }
     #endif
 
@@ -253,15 +262,6 @@ struct R: Rswift.Validatable {
     @available(iOS 11.0, *)
     static func inactiveGray(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIColor? {
       return UIKit.UIColor(resource: R.color.inactiveGray, compatibleWith: traitCollection)
-    }
-    #endif
-
-    #if os(iOS) || os(tvOS)
-    /// `UIColor(named: "pink", bundle: ..., traitCollection: ...)`
-    @available(tvOS 11.0, *)
-    @available(iOS 11.0, *)
-    static func pink(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIColor? {
-      return UIKit.UIColor(resource: R.color.pink, compatibleWith: traitCollection)
     }
     #endif
 

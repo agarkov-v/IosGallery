@@ -1,11 +1,13 @@
 # IosGalleryVersion1
 - [Description in English](#Description-in-English)
-    - [About the project](#About-the-project)
-    - [Features](#Features)
-    - [Further development](#Further-development)
+  - [About the project](#About-the-project)
+  - [Features](#Features)
+  - [Test account](#Test-account)
+  - [Further development](#Further-development)
 - [Описание на русском](#Описание-на-русском)
   - [О проекте](#О-проекте)
   - [Особенности](#Особенности)
+  - [Тестовый аккаунт](#Тестовый-аккаунт)
   - [Дальнейшее развитие](#Дальнейшее-развитие)
 
 ## Description in English
@@ -39,6 +41,10 @@ in the main project folder.
 | IQKeyboardManager | https://github.com/hackiftekhar/IQKeyboardManager |
 | CocoaDebug | https://github.com/CocoaDebug/CocoaDebug |
 | DBDebugToolkit | https://github.com/dbukowski/DBDebugToolkit |
+### Test account
+Для того, чтобы войти в приложение вы можете зарегестрироваться или войти под тестовым пользователем. В **debug** режиме данные уже введены в поля.
+> User Name: testGalleryUser
+> Password: test123
 ### Further development
 I have plans to continue working on this project because it allows me to improve my skills, but this will be in the next versions of Ios Gallery. In the beginning, I wanted to make a branch from this project and redo everything on a more popular framework for interacting with the network or in general on URLSession, but I realized that I would have to redo almost everything. During my time working with this project, I have improved my skills on real tasks and rethought many of the things done in it.
 
@@ -73,5 +79,9 @@ pod install
 | IQKeyboardManager | https://github.com/hackiftekhar/IQKeyboardManager |
 | CocoaDebug | https://github.com/CocoaDebug/CocoaDebug |
 | DBDebugToolkit | https://github.com/dbukowski/DBDebugToolkit |
+### Тестовый аккаунт
+To log in to the app, you can sign up or log in as a test user. In **debug** mode, the data is already entered in the fields.
+> User Name: testGalleryUser
+> Password: test123
 ### Дальнейшее развитие
 У меня в планах и дальше заниматься эим проектом потому что он позволяет мне прокачивать свои навыки, однако уже в следующих версиях Ios Gallery. В начале я хотел сделать ветку от этого проекта и переделать все на более популярном фреймворке для взаимодействи с сетью или вообще на URLsession, но я осознал, что переделывать прийдется почти все. За время работы с этим проектом я прокачал свои навыки на реальных задачах и переосмыслил многие вещи, сделанные в нем.
